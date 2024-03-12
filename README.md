@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## UI/UX Design
 
-- Soon...
+- [Open FIgma](https://www.figma.com/file/ts07sfk8gxEPFhPwn0sB3R/TEDxUNPAD?type=design&node-id=0%3A1&mode=design&t=KOTmAELL59ZXUqVx-1)
 
 ## Drive
 
