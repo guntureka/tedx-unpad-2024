@@ -8,6 +8,7 @@ interface LabeledInputProps {
   className?: string;
   register: UseFormRegisterReturn;
   error?: FieldError;
+  isPassword?: boolean; // ditambahkan mas radit
 }
 
 const LabeledInput: React.FC<LabeledInputProps> = ({
@@ -17,6 +18,7 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
   className,
   register,
   error,
+  isPassword = false, // ditambahkan mas radit
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -35,11 +37,11 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
       <input
         placeholder={placeholder}
         id={id}
-        type={id === 'password' && !showPassword ? 'password' : 'text'}
+        type={isPassword && !showPassword ? 'password' : 'text'}
         className="w-full py-[12px] border-b-[2px] border-white bg-transparent font-inter-400 text-[16px] text-gray-light focus:outline-0 text-white placeholder-opacity-0 disabled:bg-gray-light"
         {...register}
       />
-      {id === "password" && (
+      {isPassword && (
         <button
           type="button"
           onClick={togglePasswordVisibility}
