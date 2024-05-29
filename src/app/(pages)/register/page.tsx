@@ -41,7 +41,7 @@ const Register: React.FC = (): React.ReactNode => {
     }, []);
 
     return (
-        <div className="w-screen grid md:grid-cols-2 px-4 md:px-20 items-center">
+        <div className="w-screen grid sm:grid-cols-1 md:grid-cols-2 px-4 md:px-20 items-center">
             <div className="hidden md:flex h-full justify-center items-center">
                 <div className="w-full h-full">
                     <img
@@ -56,8 +56,8 @@ const Register: React.FC = (): React.ReactNode => {
                 <h1 className="text-white text-2xl md:text-3xl font-semibold mb-5">Register</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="bg-darkgray-800 p-4 md:p-14 rounded-lg shadow-md space-y-10 md:space-y-10">
-                        <div className="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-4">
+                    <div className="bg-darkgray-800 p-4 md:p-10 rounded-lg shadow-md space-y-6 md:space-y-12">
+                        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                             <LabeledInput
                                 label="First Name"
                                 id="firstName"
@@ -87,7 +87,7 @@ const Register: React.FC = (): React.ReactNode => {
                             />
                         </div>
 
-                        <div className="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-4">
+                        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                             <LabeledInput
                                 label="Age"
                                 id="age"
@@ -175,7 +175,7 @@ const Register: React.FC = (): React.ReactNode => {
 
                         <div>
                             <label className="text-white font-semibold">Interest</label>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
                                 <div className="flex items-center">
                                     <input
                                         type="radio"
