@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import LabeledInput2 from "../../../components/ui/labeledinput2";
-import LabeledDropdown from "../../../components/ui/labeleddropdown";
+import LabeledInput2 from "@/components/ui/labeledinput2";
+import LabeledDropdown from "@/components/ui/labeleddropdown";
 import { useForm, SubmitHandler, } from 'react-hook-form';
-import { useNavbarType } from '../../../components/navbarcontext';
+import { useNavbarType } from '@/components/navbarcontext';
 
 interface DashboardInputs {
     firstName: string;
@@ -68,15 +68,17 @@ interface DashboardInputs {
   }, []);
 
   return (
-    <div className="w-screen px-[170px]">
-        <div className="flex rounded-[10px] justify-between bg-red-normal px-[50px] py-[40px] mt-[55px]">
+    <div className="w-screen px-12 sm:px-20 md:px-28 lg:px-36 xl:px-[170px]">
+        <div className="flex flex-col md:flex-row rounded-[10px] justify-between bg-red-normal mt-[55px]
+                        px-8 md:px-10 xl:px-[50px]
+                        py-8 md:py-10 xl:py-[40px]">
             <div className="flex flex-col gap-[8px]">
-                <h1 className="font-inter-900 text-[37px] text-white">The Flavors of Wisdom</h1>
-                <h2 className="font-inter-700 text-[20px] text-white/[.8]">A place where wisdom can be seen and discovered</h2>
-                <p className="font-inter-600 text-[14px] text-white/[.8]">TEDx Padjadjaran University</p>
-                <p className="font-inter-600 text-[14px] text-white/[.8]">COMING SOON</p>
+                <h1 className="font-inter-900 text-center md:text-left text-[33px] md:text-[37px] text-white">The Flavors of Wisdom</h1>
+                <h2 className="font-inter-700 text-center md:text-left text-[16px] md:text-[20px] text-white/[.8]">A place where wisdom can be seen and discovered</h2>
+                <p className="font-inter-600 text-center md:text-left text-[12px] md:-[14px] text-white/[.8]">TEDx Padjadjaran University</p>
+                <p className="font-inter-600 text-center md:text-left text-[12px] md:-[14px] text-white/[.8]">COMING SOON</p>
             </div>
-            <div className="flex flex-col gap-[5px] place-content-end">
+            <div className="flex flex-col gap-[5px] mt-[30px] place-content-end items-center">
                 <h3 className="font-inter-600 text-[14px] text-white text-center">Follow Us On:</h3>
                 <div className="flex flex-row items-center">
                     <a href="#">
@@ -107,11 +109,11 @@ interface DashboardInputs {
             </div>
         </div>
 
-        <div className="flex flex-col bg-grey-dark rounded-[10px] border-[2px] border-grey-light px-[160px] py-[60px] my-[40px] justify-center">
+        <div className="flex flex-col bg-grey-dark rounded-[10px] border-[2px] border-grey-light px-[40px] lg:px-[160px] py-[40px] lg:py-[60px] my-[40px] justify-center">
             <h2 className="font-inter-700 text-[24px] text-white text-center">Profile</h2>
             
-            <div>
-                <a className="flex flex-col gap-[16px] items-center mt-[25px]" href="#">
+            <div className="flex justify-center">
+                <a className="flex flex-col gap-[16px] items-center max-w-fit mt-[25px]" href="#">
                     <div className="w-[80px] h-[80px] bg-[#ECECEE] rounded-full flex justify-center items-center">
                         <svg height="26px" viewBox="0 0 512 512" width="26px" xmlns="http://www.w3.org/2000/svg"><title/><circle cx="256" cy="272" r="64" fill="#414141"/>
                             <path d="M456,144H373c-3,0-6.72-1.94-9.62-5l-27.28-42.8C325,80,320,80,302,80H210c-18,0-24,0-34.07,16.21L148.62,139c-2.22,2.42-5.34,5-8.62,5V128a8,8,0,0,0-8-8H92a8,8,0,0,0-8,8v16H56a24,24,0,0,0-24,24V408a24,24,0,0,0,24,24H456a24,24,0,0,0,24-24V168A24,24,0,0,0,456,144ZM260.51,367.9a96,96,0,1,1,91.39-91.39A96.11,96.11,0,0,1,260.51,367.9Z"
@@ -123,7 +125,7 @@ interface DashboardInputs {
             </div>
            
             <form onSubmit={handleSubmitProfile(onSubmitProfile)}>
-                <div className="grid grid-cols-2 grid-rows-4 gap-x-[60px] gap-y-[20px] mt-[60px]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-4 gap-x-[60px] gap-y-[20px] mt-[60px]">
                     <LabeledInput2
                         label="First Name"
                         id="firstName"
@@ -239,7 +241,7 @@ interface DashboardInputs {
             </form>
         </div>
 
-        <div className="flex flex-col gap-[60px] bg-grey-dark rounded-[10px] border-[2px] border-grey-light px-[368px] py-[60px] mb-[30px] justify-center">
+        <div className="flex flex-col gap-[60px] bg-grey-dark rounded-[10px] border-[2px] border-grey-light px-[40px] lg:px-[320px] py-[40px] lg:py-[60px] mb-[30px] justify-center">
             <h2 className="font-inter-700 text-[24px] text-white text-center">Change Password</h2>
             <form onSubmit={handleSubmitPassword(onSubmitPassword)}>
                 <div className="flex flex-col gap-y-[20px]">
