@@ -138,7 +138,7 @@ const Login: React.FC = () => {
           <span>Login with Google</span>
         </button>
         <p className="mt-[26px] font-inter-400 py-[10px] text-[16px] text-white text-center">
-          Don't have an account&nbsp;
+          Don&apos;t have an account&nbsp;
           <span>
             <Link href="/register" className="font-inter-600 hover:underline">
               Register

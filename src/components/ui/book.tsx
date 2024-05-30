@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import HTMLFlipBook from "react-pageflip";
 
 
@@ -16,15 +17,16 @@ const Book: React.FC = () => {
   };
 
   return (
-    <HTMLFlipBook width={350} height={600}>
-      <div/>
-      {generateImages().map((img, index) => (
-        <div className="Page" key={index}>
-          {img}
-        </div>
-      ))}
-      <div/>
-    </HTMLFlipBook>
+    <Link className="mt-[70px]" href="/main">Main</Link>
+    // <HTMLFlipBook width={350} height={600}>
+    //   <div/>
+    //   {generateImages().map((img, index) => (
+    //     <div className="Page" key={index}>
+    //       {img}
+    //     </div>
+    //   ))}
+    //   <div/>
+    // </HTMLFlipBook>
   );
 };
 
