@@ -2,9 +2,9 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
-import LabeledInput from "../../../components/ui/labeledinput";
+import LabeledInput from "@/components/ui/labeledinput";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavbarType } from "../../../components/navbarcontext";
+import { useNavbarType } from "@/components/navbarcontext";
 
 interface LoginInputs {
   email: string;
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
   const { setNavbarType } = useNavbarType();
 
   useEffect(() => {
-    setNavbarType("default");
+    setNavbarType("blank");
   }, []);
 
   return (

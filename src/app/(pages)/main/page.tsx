@@ -1,9 +1,13 @@
+"use client"
+
 import { Banner } from "@/components/Banner";
 import { AboutUs } from "@/components/AboutUs";
 import { CardBody, CardContainer, CardItem } from "@/components/LogoX";
 import Timeline from "@/components/Timeline";
 import Image from "next/image";
+import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useNavbarType } from "@/components/navbarcontext";
 import {
     Carousel,
     CarouselContent,
@@ -13,7 +17,7 @@ import {
     } from "@/components/Carousel";
 
 
-    export default function Home() {
+export default function Home() {
     const images = ["/banner1.jpg"];
     const slides = [
         {
@@ -32,6 +36,11 @@ import {
             },
         // Add more slide objects as needed
     ];
+
+    const { setNavbarType } = useNavbarType();
+    useEffect(() => {
+        setNavbarType("blank");
+      }, []);
 
     return (
         <main>

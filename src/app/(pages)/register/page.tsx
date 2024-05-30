@@ -37,7 +37,7 @@ const Register: React.FC = (): React.ReactNode => {
   const { setNavbarType } = useNavbarType();
 
   useEffect(() => {
-    setNavbarType("default");
+    setNavbarType("blank");
   }, []);
 
   return (
