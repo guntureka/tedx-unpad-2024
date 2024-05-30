@@ -140,7 +140,7 @@ const Login: React.FC = () => {
         <p className="mt-[26px] font-inter-400 py-[10px] text-[16px] text-white text-center">
           Don't have an account&nbsp;
           <span>
-            <Link href="#" className="font-inter-600 hover:underline">
+            <Link href="/register" className="font-inter-600 hover:underline">
               Register
             </Link>
           </span>
