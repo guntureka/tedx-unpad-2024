@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="w-screen h-[72px] flex px-4 sm:px-8 md:px-12 lg:px-16 xl:px-[70px] fixed top-[30px] z-10">
-      <div className="bg-[#FAFAFA] rounded-lg py-[20px] relative w-full h-full">
+      <div className="bg-[#FAFAFA] rounded-lg relative flex items-center w-full h-full">
         <div className="absolute left-4 sm:left-6 md:left-8 lg:left-10 xl:left-[30px]">
           <Link href="#">
             <img className="hidden md:inline-block" src="/logo-light.png" width={164} height={32} alt="Logo" />
