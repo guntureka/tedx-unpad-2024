@@ -23,6 +23,8 @@ const config: Config = {
       },
       fontFamily: {
         inter: ['Inter', "sans-serif"],
+        ebgaramond: ['"EB Garamond"', 'serif'],
+        questrial: ['Questrial', 'sans-serif'],
       },
       colors: {
         red: {

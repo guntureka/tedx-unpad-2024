@@ -71,7 +71,7 @@ interface DashboardInputs {
     <div className="w-screen px-[170px]">
         <div className="flex rounded-[10px] justify-between bg-red-normal px-[50px] py-[40px] mt-[55px]">
             <div className="flex flex-col gap-[8px]">
-                <h1 className="font-inter-900 text-[37px] text-white">The Flavors of Wisdom Festival</h1>
+                <h1 className="font-inter-900 text-[37px] text-white">The Flavors of Wisdom</h1>
                 <h2 className="font-inter-700 text-[20px] text-white/[.8]">A place where wisdom can be seen and discovered</h2>
                 <p className="font-inter-600 text-[14px] text-white/[.8]">TEDx Padjadjaran University</p>
                 <p className="font-inter-600 text-[14px] text-white/[.8]">COMING SOON</p>
