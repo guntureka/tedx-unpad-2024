@@ -52,6 +52,21 @@ const config = {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
+                ed: {
+                    dark: "#721E12",
+                    normal: "#C93420",
+                    light: "#EA887B",
+                },
+                black: {
+                    abs: "#000000",
+                    bg: "#1F1F1F",
+                    txt: "#232321",
+                },
+                grey: {
+                    dark: "#333333",
+                    light: "#999999",
+                },
+                white: "#FFFFFF",
             },
             borderRadius: {
                 lg: "var(--radius)",
@@ -67,10 +82,27 @@ const config = {
                     from: { height: "var(--radix-accordion-content-height)" },
                     to: { height: "0" },
                 },
+                meteor: {
+                    "0%": {
+                        transform: "rotate(215deg) translateX(0)",
+                        opacity: "1",
+                    },
+                    "70%": { opacity: "1" },
+                    "100%": {
+                        transform: "rotate(215deg) translateX(-500px)",
+                        opacity: "0",
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
+                "meteor-effect": "meteor 5s linear infinite",
+            },
+            fontFamily: {
+                inter: ["Inter", "sans-serif"],
+                ebgaramond: ['"EB Garamond"', "serif"],
+                questrial: ["Questrial", "sans-serif"],
             },
         },
     },
