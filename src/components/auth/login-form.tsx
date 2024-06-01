@@ -46,16 +46,7 @@ export const LoginForm = () => {
         },
     });
 
-    // const form = useForm<z.infer<typeof LoginSchema>>({
-    //     resolver: zodResolver(LoginSchema),
-    //     defaultValues: {
-    //         email: "",
-    //         password: "",
-    //     },
-    // });
-
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-        console.log(values);
         setError("");
         setSuccess("");
         startTransition(() => {
@@ -63,9 +54,6 @@ export const LoginForm = () => {
                 .then((data) => {
                     if (data?.error) {
                         setError(data.error);
-                    }
-                    if (data?.success) {
-                        setSuccess(data.error);
                     }
                 })
                 .catch(() => setError("Something went wrong!"));
@@ -196,7 +184,7 @@ export const LoginForm = () => {
                     Don&apos;t have an account&nbsp;
                     <span>
                         <Link
-                            href="/register"
+                            href="/auth/register"
                             className="font-inter-600 hover:underline"
                         >
                             Register
