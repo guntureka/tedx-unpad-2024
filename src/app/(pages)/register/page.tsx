@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import LabeledInput from "../../../components/ui/labeledinput";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -16,19 +16,26 @@ interface Register {
   phone: number;
   afiliasi: string;
   interest: string;
+  attended: string;
+  instagram: string;
+  othersocmed: string;
   reference: string;
   alamat: string;
-  haveAttended: boolean;
+  goals: string[];
+  otherGoal: string;
 }
 
 const Register: React.FC = (): React.ReactNode => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }, watch, setError, clearErrors,
     getValues,
   } = useForm<Register>({
     mode: "all",
+    defaultValues: {
+      goals: []
+    },
   });
 
   const onSubmit: SubmitHandler<Register> = (data) => {
@@ -40,6 +47,26 @@ const Register: React.FC = (): React.ReactNode => {
   useEffect(() => {
     setNavbarType("blank");
   }, []);
+
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const goals = watch("goals") as string[] || [];
+
+  useEffect(() => {
+    if (hasInteracted) {
+      if (goals.length < 1 || goals.length > 3) {
+        setError("goals", {
+          type: "manual",
+          message: "Please select at least 1 and at most 3 goals."
+        });
+      } else {
+        clearErrors("goals");
+      }
+    }
+  }, [goals, hasInteracted, setError, clearErrors]);
+
+  const handleInteraction = () => {
+    setHasInteracted(true);
+  };
 
   return (
     <div className="w-screen grid sm:grid-cols-1 md:grid-cols-2 px-4 md:px-20 items-center">
@@ -176,6 +203,41 @@ const Register: React.FC = (): React.ReactNode => {
             />
 
             <div>
+              <label className="text-white font-semibold">Have you attended a TED or TEDx event before (any kind)?</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="attendedY"
+                    value="Yes"
+                    {...register("attended", {
+                      required: "Attendance is required",
+                    })}
+                  />
+                  <label htmlFor="attendedY" className="ml-2 text-white">
+                    Yes
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="attendedN"
+                    value="Personalized Algorithm"
+                    {...register("attended", {
+                      required: "Attendance is required",
+                    })}
+                  />
+                  <label htmlFor="attendedN" className="ml-2 text-white">
+                    No
+                  </label>
+                  </div>
+              </div>
+              {errors.attended && (
+                <p className="text-red-500">{errors.attended.message}</p>
+              )}
+            </div>
+
+            <div>
               <label className="text-white font-semibold">Interest</label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
                 <div className="flex items-center">
@@ -227,7 +289,7 @@ const Register: React.FC = (): React.ReactNode => {
                     })}
                   />
                   <label htmlFor="interestFF" className="ml-2 text-white">
-                    Financial Freedom
+                    Economics, Entrepreneurship
                   </label>
                 </div>
               </div>
@@ -235,6 +297,120 @@ const Register: React.FC = (): React.ReactNode => {
                 <p className="text-red-500">{errors.interest.message}</p>
               )}
             </div>
+
+            <LabeledInput
+              label="Instagram"
+              id="instagram"
+              placeholder="Enter your instagram username"
+              register={register("instagram", {
+                required: "Instagram username is required",
+                minLength: {
+                  value: 1,
+                  message: "Invalid instagram username",
+                },
+              })}
+              error={errors.instagram}
+            />
+
+            <LabeledInput
+              label="Other Social Media"
+              id="othersocmed"
+              placeholder="(ex: LinkedIn, Facebook, Twitter, ....)"
+              register={register("othersocmed", {
+              })}
+              error={errors.othersocmed}
+            />
+      <div>
+        <label className="text-white font-semibold">Top three goals for attending this TEDx event</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalNetworking"
+              value="Networking"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestNetworking" className="ml-2 text-white">
+              Networking
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalLearning"
+              value="Learning new ideas"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestLearning" className="ml-2 text-white">
+              Learning new ideas
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalCollaborators"
+              value="Finding potential collaborators"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestCollaborators" className="ml-2 text-white">
+              Finding potential collaborators
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalInspiration"
+              value="Seeking inspiration"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestInspiration" className="ml-2 text-white">
+              Seeking inspiration
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalDevelopment"
+              value="Professional development"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestDevelopment" className="ml-2 text-white">
+              Professional development
+            </label>
+          </div>
+          <div className="flex flex-row">
+            <input
+              type="checkbox"
+              id="goalOther"
+              value="Other"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <LabeledInput
+                className="ml-[10px]"
+                label="Others (please specify)"
+                id="Others"
+                placeholder="Specify...."
+                register={register("otherGoal", {
+                  minLength: {
+                    value: 6,
+                    message: "Specify to at least 6 characters long",
+                  },
+                })}
+                error={errors.otherGoal}
+                disabled={!goals.includes("Other")}
+              />
+          </div>
+        </div>
+        {errors.goals && (
+          <p className="text-red-500 text-sm">Please select at least 1 and at most 3 interests.</p>
+        )}
+      </div>
 
             <LabeledInput
               label="Password"
