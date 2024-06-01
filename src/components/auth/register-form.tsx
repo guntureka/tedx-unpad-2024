@@ -30,7 +30,15 @@ export const RegisterForm = () => {
         defaultValues: {
             email: "",
             password: "",
-            name: ""
+            firstName: "",
+            lastName: "",
+            age: 0,
+            phone: "",
+            address: "",
+            affiliation: "",
+            reference: "",
+            interest: "",
+            confirmPassword: "",
         },
     });
 
@@ -38,13 +46,12 @@ export const RegisterForm = () => {
         setError("");
         setSuccess("");
         startTransition(() => {
-            register(values)
-                .then((data) => {
-                    setError(data.error);
-                    setSuccess(data.success);
-                });
+            register(values).then((data) => {
+                setError(data.error);
+                setSuccess(data.success);
+            });
         });
-    }
+    };
 
     return (
         <CardWrapper
@@ -54,22 +61,39 @@ export const RegisterForm = () => {
             showSocial
         >
             <Form {...form}>
-                <form 
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
                 >
                     <div className="space-y-4">
                         <FormField
                             control={form.control}
-                            name="name"
+                            name="firstName"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Name</FormLabel>
+                                    <FormLabel>First Name</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
-                                            placeholder="John Doe"
+                                            placeholder="John"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="lastName"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Last Name</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="Doe"
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -112,9 +136,135 @@ export const RegisterForm = () => {
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="confirmPassword"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Confirm Password</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="*******"
+                                            type="password"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="age"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Age</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="18"
+                                            type="number"
+                                            onChange={(e) => {
+                                                field.onChange(
+                                                    parseInt(e.target.value)
+                                                );
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Phone</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="+1234567890"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="address"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Address</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="1234 Main St, City, Country"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="affiliation"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Affiliation</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="University of Example"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="reference"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Reference</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="John Doe"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="interest"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Interest</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            disabled={isPending}
+                                            placeholder="Web Development"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                     </div>
-                    <FormError message={error}/>
-                    <FormSuccess message={success}/>
+                    <FormError message={error} />
+                    <FormSuccess message={success} />
                     <Button
                         disabled={isPending}
                         type="submit"
@@ -125,5 +275,5 @@ export const RegisterForm = () => {
                 </form>
             </Form>
         </CardWrapper>
-    )
-}
+    );
+};
