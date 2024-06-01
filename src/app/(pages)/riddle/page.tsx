@@ -11,8 +11,17 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { useNavbarType } from "../../../components/navbarcontext";
+import { useEffect } from "react";
+
 
 const RiddlePage = () => {
+  const { setNavbarType } = useNavbarType();
+
+  useEffect(() => {
+    setNavbarType("blank");
+  }, []);
+
   const words = ["Hustler", "Starter", "Seekers", "Explorers", "Odyssey"];
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState("");
@@ -72,7 +81,7 @@ const RiddlePage = () => {
           <Card className="border-gray-600 sm:mx-5 lg:mx-64 bg-[#F5F5F5] mt-4 mb-4 sm:mt-6 sm:mb-6 md:mt-8 md:mb-8 lg:mt-10 lg:mb-10">
             <CardContent>
               <img
-                src="./Riddle.jpg"
+                src="./RiddleFix.jpg"
                 alt="Riddle"
                 className="py-10 sm:py-12 md:py-14 lg:py-16"
               />

@@ -10,8 +10,16 @@ import { Input } from "@/components/ui/input";
 import { FlipWords } from "@/components/ui/flip-words";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation"; 
+import { useNavbarType } from "../../../components/navbarcontext";
+import { useEffect } from "react";
 
 const RiddleCorrectPage = () => {
+  const { setNavbarType } = useNavbarType();
+
+  useEffect(() => {
+    setNavbarType("blank");
+  }, []);
+
   const words = ["Hustler", "Starter", "Seekers", "Explorers", "Odyssey"];
   const [videoLink, setVideoLink] = useState("");
   const router = useRouter();

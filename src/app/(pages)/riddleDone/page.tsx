@@ -1,6 +1,14 @@
+"use client";
 import React from "react";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
+import { useNavbarType } from "../../../components/navbarcontext";
+import { useEffect } from "react";
 export default function RiddleDone() {
+  const { setNavbarType } = useNavbarType();
+  useEffect(() => {
+    setNavbarType("blank");
+  }, []);
+
   return (
     <>
       <div className="container mx-auto mt-10">

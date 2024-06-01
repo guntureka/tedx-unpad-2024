@@ -229,7 +229,7 @@ interface DashboardInputs {
             </form>
         </div>
 
-        <div className="flex flex-col gap-[60px] bg-grey-dark rounded-[10px] border-[2px] border-grey-light px-[40px] lg:px-[320px] py-[40px] lg:py-[60px] mb-[30px] justify-center">
+        {/* <div className="flex flex-col gap-[60px] bg-grey-dark rounded-[10px] border-[2px] border-grey-light px-[40px] lg:px-[320px] py-[40px] lg:py-[60px] mb-[30px] justify-center">
             <h2 className="font-inter-700 text-[24px] text-white text-center">Change Password</h2>
             <form onSubmit={handleSubmitPassword(onSubmitPassword)}>
                 <div className="flex flex-col gap-y-[20px]">
@@ -301,7 +301,7 @@ interface DashboardInputs {
                     </button>
                 </div>
             </form>
-        </div>
+        </div> */}
 
         <div className="flex justify-end mb-[85px]">
             <a href="#">

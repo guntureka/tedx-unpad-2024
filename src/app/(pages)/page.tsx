@@ -1,12 +1,13 @@
 "use client"
 
-import Book from '../../components/ui/book';
+import MultiParallax from "@/components/MultiParallax"
 
 export default function Home() {
   return (
-    <div className="flex justify-center">
-      <h2>Home Page</h2>
-      <Book/>
+  <main>
+    <div className="bg-black">
+      <MultiParallax />
     </div>
+  </main>
   )
 }

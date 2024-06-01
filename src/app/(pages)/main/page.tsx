@@ -47,10 +47,10 @@ export default function Home() {
         <Banner className="h-[40rem]" images={images}>
             <div className="z-50 flex flex-col justify-center items-start md:flex px-8 md:px-16">
             <h1 className="font-bold md:text-7xl text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
-                TEDxUNPAD
+                TEDxPadjadjaran University
             </h1>
             <h2 className="md:text-4xl text-left bg-clip-text text-transparent text-[#EA887B] bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
-                The Flavours of Wisdom
+                The Flavors of Wisdom
             </h2>
             <p className="md:text-3xl text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
                 A place where wisdom can be seen and discovered

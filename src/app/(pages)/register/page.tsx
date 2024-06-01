@@ -18,6 +18,7 @@ interface Register {
   interest: string;
   reference: string;
   alamat: string;
+  haveAttended: boolean;
 }
 
 const Register: React.FC = (): React.ReactNode => {
