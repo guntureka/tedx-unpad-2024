@@ -12,7 +12,7 @@ export const getUserByEmail = async (email: string) => {
     } catch (error) {
         return null;
     }
-}
+};
 
 export const getUserByID = async (id: string) => {
     try {
@@ -26,4 +26,24 @@ export const getUserByID = async (id: string) => {
     } catch (error) {
         return null;
     }
-}
+};
+
+export const getUserProfileByID = async (id: string) => {
+    try {
+        const user = await db.user.findUnique({
+            where: {
+                id,
+            },
+            select: {
+                id: true,
+                first_name: true,
+                last_name: true,
+                email: true,
+                Profile: true,
+            },
+        });
+        return user;
+    } catch (error) {
+        return null;
+    }
+};

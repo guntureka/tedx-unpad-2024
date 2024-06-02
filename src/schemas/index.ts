@@ -3,7 +3,7 @@ import * as z from "zod";
 
 export const SettingsSchema = z
     .object({
-        name: z.optional(z.string()),
+        firstName: z.optional(z.string()),
         isTwoFactorEnabled: z.optional(z.boolean()),
         role: z.enum([UserRole.ADMIN, UserRole.USER]),
         email: z.optional(z.string().email()),
@@ -103,3 +103,14 @@ export const RegisterSchema = z
         message: "Passwords do not match",
         path: ["confirmPassword"],
     });
+
+export const ProfileSchema = z.object({
+    firstName: z.optional(z.string()),
+    lastName: z.optional(z.string()),
+    age: z.optional(z.number().int()),
+    phone: z.optional(z.string()),
+    address: z.optional(z.string()),
+    affiliation: z.optional(z.string()),
+    reference: z.optional(z.string()),
+    interest: z.optional(z.string()),
+});
