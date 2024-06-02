@@ -69,7 +69,7 @@ export const LoginForm = () => {
   return (
     <div className="grid w-screen items-center px-4 sm:grid-cols-1 md:grid-cols-2 md:px-20">
       <div className="hidden h-full items-center justify-center md:flex">
-        <div className="h-full w-full">
+        <div className="h-full w-full overflow-hidden">
           <img
             className="h-full w-full object-cover duration-300 hover:scale-110"
             src="/loginbg.png"
@@ -84,7 +84,7 @@ export const LoginForm = () => {
         <FormError message={error} />
         <FormSuccess message={success} />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="bg-darkgray-800 space-y-6 rounded-lg p-4 shadow-md md:space-y-12 md:p-10">
+          <div className="bg-darkgray-800 space-y-6 rounded-lg p-4 md:space-y-12 md:p-10">
             <div className="flex flex-col space-y-6 md:flex-row md:space-x-4 md:space-y-0">
               <LabeledInput
                 label="Email"

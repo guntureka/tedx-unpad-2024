@@ -1,67 +1,77 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { RegisterSchema } from "@/schemas";
-import { FormError } from "@/components/form-error";
-import { FormSuccess } from "@/components/form-success";
-import { register as registerAction } from "@/actions/register";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import LabeledInput from "@/components/ui/labeledinput";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useNavbarType } from "@/components/navbarcontext";
 
-export const RegisterForm = () => {
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
+interface Register {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  age: number;
+  phone: number;
+  afiliasi: string;
+  interest: string;
+  attended: string;
+  instagram: string;
+  othersocmed: string;
+  reference: string;
+  alamat: string;
+  goals: string[];
+  otherGoal: string;
+}
 
+const Register: React.FC = (): React.ReactNode => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }, watch, setError, clearErrors,
     getValues,
-  } = useForm<z.infer<typeof RegisterSchema>>({
+  } = useForm<Register>({
     mode: "all",
-    resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      email: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      age: 0,
-      phone: "",
-      address: "",
-      affiliation: "",
-      reference: "",
-      interest: "",
-      confirmPassword: "",
+      goals: []
     },
   });
 
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    console.log(values);
-    setError("");
-    setSuccess("");
-    startTransition(() => {
-      registerAction(values)
-        .then((data) => {
-          setError(data.error);
-          setSuccess(data.success);
-          router.push("/auth/login");
-        })
-        .catch((error) => {
-          setError("An error occurred. Please try again.");
+  const onSubmit: SubmitHandler<Register> = (data) => {
+    console.log(data);
+  };
+
+  const { setNavbarType } = useNavbarType();
+
+  useEffect(() => {
+    setNavbarType("blank");
+  }, []);
+
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const goals = watch("goals") as string[] || [];
+
+  useEffect(() => {
+    if (hasInteracted) {
+      if (goals.length < 1 || goals.length > 3) {
+        setError("goals", {
+          type: "manual",
+          message: "Please select at least 1 and at most 3 goals."
         });
-    });
+      } else {
+        clearErrors("goals");
+      }
+    }
+  }, [goals, hasInteracted, setError, clearErrors]);
+
+  const handleInteraction = () => {
+    setHasInteracted(true);
   };
 
   return (
-    <div className="grid w-screen items-center px-4 sm:grid-cols-1 md:grid-cols-2 md:px-20">
-      <div className="hidden h-full items-center justify-center md:flex">
-        <div className="h-full w-full">
+    <div className="w-screen grid sm:grid-cols-1 lg:grid-cols-2 px-4 md:px-20 items-center">
+      <div className="hidden lg:flex h-full justify-center items-center">
+        <div className="w-full h-full overflow-hidden">
           <img
             className="h-full w-full object-cover duration-300 hover:scale-110"
             src="/loginbg.png"
@@ -70,15 +80,13 @@ export const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center space-y-1 p-4 font-inter md:p-10">
-        <h1 className="mb-5 text-2xl font-semibold text-white md:text-3xl">
+      <div className="flex flex-col font-inter justify-center p-4 md:p-10 space-y-1">
+        <h1 className="text-white text-2xl md:text-3xl font-semibold mb-5">
           Register
         </h1>
-        <FormError message={error} />
-        <FormSuccess message={success} />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="bg-darkgray-800 space-y-6 rounded-lg p-4 shadow-md md:space-y-12 md:p-10">
-            <div className="flex flex-col space-y-6 md:flex-row md:space-x-4 md:space-y-0">
+          <div className="bg-darkgray-800 p-4 md:p-10 rounded-lg space-y-6 md:space-y-12">
+            <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
               <LabeledInput
                 label="First Name"
                 id="firstName"
@@ -108,14 +116,12 @@ export const RegisterForm = () => {
               />
             </div>
 
-            <div className="flex flex-col space-y-6 md:flex-row md:space-x-4 md:space-y-0">
+            <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
               <LabeledInput
                 label="Age"
                 id="age"
                 placeholder="Enter your age"
-                type="number"
                 register={register("age", {
-                  valueAsNumber: true,
                   required: "Age is required",
                   min: {
                     value: 1,
@@ -124,6 +130,10 @@ export const RegisterForm = () => {
                   max: {
                     value: 100,
                     message: "Invalid age",
+                  },
+                  pattern: {
+                    value: /^\d+$/,
+                    message: "Age must be a number",
                   },
                 })}
                 error={errors.age}
@@ -166,20 +176,20 @@ export const RegisterForm = () => {
               label="Address"
               id="alamat"
               placeholder="Enter your address"
-              register={register("address", {
+              register={register("alamat", {
                 required: "Address is required",
               })}
-              error={errors.address}
+              error={errors.alamat}
             />
 
             <LabeledInput
               label="Affiliation"
               id="afiliasi"
               placeholder="Enter your affiliation (ex: Padjadjaran University)"
-              register={register("affiliation", {
+              register={register("afiliasi", {
                 required: "Affiliation is required",
               })}
-              error={errors.affiliation}
+              error={errors.afiliasi}
             />
 
             <LabeledInput
@@ -193,8 +203,43 @@ export const RegisterForm = () => {
             />
 
             <div>
-              <label className="font-semibold text-white">Interest</label>
-              <div className="mt-2 grid grid-cols-1 gap-7 md:grid-cols-2">
+              <label className="text-white font-semibold">Have you attended a TED or TEDx event before (any kind)?</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="attendedY"
+                    value="Yes"
+                    {...register("attended", {
+                      required: "Attendance is required",
+                    })}
+                  />
+                  <label htmlFor="attendedY" className="ml-2 text-white">
+                    Yes
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="attendedN"
+                    value="Personalized Algorithm"
+                    {...register("attended", {
+                      required: "Attendance is required",
+                    })}
+                  />
+                  <label htmlFor="attendedN" className="ml-2 text-white">
+                    No
+                  </label>
+                  </div>
+              </div>
+              {errors.attended && (
+                <p className="text-red-500">{errors.attended.message}</p>
+              )}
+            </div>
+
+            <div>
+              <label className="text-white font-semibold">Interest</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
                 <div className="flex items-center">
                   <input
                     type="radio"
@@ -238,13 +283,13 @@ export const RegisterForm = () => {
                   <input
                     type="radio"
                     id="interestFF"
-                    value="Financial Freedom"
+                    value="Economics & Entrepreneurship"
                     {...register("interest", {
                       required: "Interest is required",
                     })}
                   />
                   <label htmlFor="interestFF" className="ml-2 text-white">
-                    Financial Freedom
+                    Economics & Entrepreneurship
                   </label>
                 </div>
               </div>
@@ -252,6 +297,120 @@ export const RegisterForm = () => {
                 <p className="text-red-500">{errors.interest.message}</p>
               )}
             </div>
+
+            <LabeledInput
+              label="Instagram"
+              id="instagram"
+              placeholder="Enter your instagram username"
+              register={register("instagram", {
+                required: "Instagram username is required",
+                minLength: {
+                  value: 1,
+                  message: "Invalid instagram username",
+                },
+              })}
+              error={errors.instagram}
+            />
+
+            <LabeledInput
+              label="Other Social Media"
+              id="othersocmed"
+              placeholder="(ex: LinkedIn, Facebook, Twitter, ....)"
+              register={register("othersocmed", {
+              })}
+              error={errors.othersocmed}
+            />
+      <div>
+        <label className="text-white font-semibold">Top three goals for attending this TEDx event</label>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 mt-2">
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalNetworking"
+              value="Networking"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestNetworking" className="ml-2 text-white">
+              Networking
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalLearning"
+              value="Learning new ideas"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestLearning" className="ml-2 text-white">
+              Learning new ideas
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalCollaborators"
+              value="Finding potential collaborators"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestCollaborators" className="ml-2 text-white">
+              Finding potential collaborators
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalInspiration"
+              value="Seeking inspiration"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestInspiration" className="ml-2 text-white">
+              Seeking inspiration
+            </label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="goalDevelopment"
+              value="Professional development"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <label htmlFor="interestDevelopment" className="ml-2 text-white">
+              Professional development
+            </label>
+          </div>
+          <div className="flex flex-row">
+            <input
+              type="checkbox"
+              id="goalOther"
+              value="Other"
+              {...register("goals")}
+              onClick={handleInteraction}
+            />
+            <LabeledInput
+                className="ml-[10px]"
+                label=""
+                id="Others"
+                placeholder="Others (please specify)"
+                register={register("otherGoal", {
+                  minLength: {
+                    value: 6,
+                    message: "Specify to at least 6 characters long",
+                  },
+                })}
+                error={errors.otherGoal}
+                disabled={!goals.includes("Other")}
+              />
+          </div>
+        </div>
+        {errors.goals && (
+          <p className="text-red-500 text-sm">Please select at least 1 and at most 3 interests.</p>
+        )}
+      </div>
 
             <LabeledInput
               label="Password"
@@ -283,10 +442,7 @@ export const RegisterForm = () => {
 
             <button
               type="submit"
-              className={`mt-6 h-12 w-full rounded-lg bg-red-600 text-lg font-semibold text-white duration-150 hover:bg-red-700 ${
-                isPending ? "cursor-progress opacity-50" : ""
-              }`}
-              disabled={isPending}
+              className="w-full h-12 mt-6 rounded-lg bg-red-600 text-white text-lg font-semibold hover:bg-red-700 duration-150"
             >
               Register
             </button>
@@ -296,3 +452,5 @@ export const RegisterForm = () => {
     </div>
   );
 };
+
+export default Register;
