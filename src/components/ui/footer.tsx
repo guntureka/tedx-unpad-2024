@@ -1,18 +1,32 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const Footer: React.FC = () => {
   return (
-    <div className="w-full h-auto flex flex-col sm:flex-row px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-6 sm:py-10 bg-black-abs items-start sm:items-center sm:justify-between">
-      <div className="flex flex-col w-full sm:w-auto h-full justify-between mb-6 sm:mb-0">
+    <div className="flex h-auto w-full flex-col items-start bg-black-abs px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-10 md:px-12 lg:px-16 xl:px-20">
+      <div className="mb-6 flex h-full w-full flex-col justify-between sm:mb-0 sm:w-auto">
         <Image src="/logo-dark.png" width={246} height={48} alt="Logo" />
-        <p className="font-medium text-sm sm:text-base text-white mt-4 sm:mt-0">© 2024 Copyright. All rights reserved.</p>
+        <p className="mt-4 text-sm font-medium text-white sm:mt-0 sm:text-base">
+          © 2024 Copyright. All rights reserved.
+        </p>
       </div>
-      <div className="flex flex-col font-inter sm:flex-row w-full sm:w-auto gap-y-6 sm:gap-y-0 gap-x-8 md:gap-x-16 lg:gap-x-24">
-        <div className="flex font-inter flex-col w-1/2 sm:w-auto gap-y-4 sm:gap-y-6">
-          <p className="font-semibold text-sm sm:text-base text-white">Follow us on</p>
-          <a href="https://www.instagram.com/tedxpadjadjaranuniversity/" className="font-medium text-sm sm:text-base text-white hover:text-red-500 transition duration-150">Instagram</a>
-          <a href="https://www.linkedin.com/company/tedx-padjadjaran-university/" className="font-medium text-sm sm:text-base text-white hover:text-red-500 transition duration-150">LinkedIn</a>
+      <div className="flex w-full flex-col gap-x-8 gap-y-6 font-inter sm:w-auto sm:flex-row sm:gap-y-0 md:gap-x-16 lg:gap-x-24">
+        <div className="flex w-1/2 flex-col gap-y-4 font-inter sm:w-auto sm:gap-y-6">
+          <p className="text-sm font-semibold text-white sm:text-base">
+            Follow us on
+          </p>
+          <a
+            href="https://www.instagram.com/tedxpadjadjaranuniversity/"
+            className="text-sm font-medium text-white transition duration-150 hover:text-red-500 sm:text-base"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://www.linkedin.com/company/tedx-padjadjaran-university/"
+            className="text-sm font-medium text-white transition duration-150 hover:text-red-500 sm:text-base"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </div>

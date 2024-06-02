@@ -12,17 +12,17 @@ export default function RiddleDone() {
   return (
     <>
       <div className="container mx-auto mt-10">
-        <Card className="border-gray-600 lg:mb-64 sm:mt-30 sm:mb-24 bg-white sm:mx-5 lg:mx-60">
+        <Card className="sm:mt-30 border-gray-600 bg-white sm:mx-5 sm:mb-24 lg:mx-60 lg:mb-64">
           <CardContent>
-            <CardDescription className="text-lg text-center py-5 text-black font-inter">
+            <CardDescription className="text-black py-5 text-center font-inter text-lg">
               Thank you for participating! Your enthusiasm and effort are
               greatly appreciated. We hope you enjoy the challenges and continue
               to have fun while solving them.
             </CardDescription>
           </CardContent>
         </Card>
-        <button className="mx-auto mt-4 bg-red-500 text-white font-bold py-1 px-2 mb-10 rounded">
-          <div className="text-white font-inter font-bold  ">
+        <button className="mx-auto mb-10 mt-4 rounded bg-red-500 px-2 py-1 font-bold text-white">
+          <div className="font-inter font-bold text-white">
             <a href="/riddle">Go to homepage </a>
           </div>
         </button>

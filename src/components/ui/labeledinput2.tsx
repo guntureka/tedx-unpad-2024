@@ -27,18 +27,18 @@ const LabeledInput2: React.FC<LabeledInput2Props> = ({
   };
 
   return (
-    <div className={`w-full relative ${className}`}>
+    <div className={`relative w-full ${className}`}>
       <label
         htmlFor={id}
-        className="block mb-[13px] font-inter-600 text-[14px] leading-tight text-white"
+        className="font-inter-600 mb-[13px] block text-[14px] leading-tight text-white"
       >
         {label}
       </label>
       <input
         placeholder={placeholder}
         id={id}
-        type={id === 'password' && !showPassword ? 'password' : 'text'}
-        className="w-full p-[16px] bg-[#F5F6FA] rounded-[4px] font-inter-400 text-[14px] focus:outline-0 text-[#333333] placeholder-opacity-0 disabled:bg-[#979797] disabled:text-[#D9D9D9] disabled:cursor-not-allowed"
+        type={id === "password" && !showPassword ? "password" : "text"}
+        className="font-inter-400 w-full rounded-[4px] bg-[#F5F6FA] p-[16px] text-[14px] text-[#333333] placeholder-opacity-0 focus:outline-0 disabled:cursor-not-allowed disabled:bg-[#979797] disabled:text-[#D9D9D9]"
         {...register}
         disabled={disabled}
       />
@@ -46,7 +46,7 @@ const LabeledInput2: React.FC<LabeledInput2Props> = ({
         <button
           type="button"
           onClick={togglePasswordVisibility}
-          className="absolute right-[18px] bottom-[18px] focus:outline-none"
+          className="absolute bottom-[18px] right-[18px] focus:outline-none"
           disabled={disabled}
         >
           {showPassword ? (
@@ -54,7 +54,7 @@ const LabeledInput2: React.FC<LabeledInput2Props> = ({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="#333333"
-              className="w-[18px] h-[18px]"
+              className="h-[18px] w-[18px]"
             >
               <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
               <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
@@ -65,7 +65,7 @@ const LabeledInput2: React.FC<LabeledInput2Props> = ({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="#333333"
-              className="w-[18px] h-[18px]"
+              className="h-[18px] w-[18px]"
             >
               <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
               <path
@@ -77,11 +77,11 @@ const LabeledInput2: React.FC<LabeledInput2Props> = ({
           )}
         </button>
       )}
-      {error && <span className="text-red-500 text-sm">{error.message}</span>}
+      {error && <span className="text-sm text-red-500">{error.message}</span>}
     </div>
   );
 };
 
-LabeledInput2.displayName = 'LabeledInput2';
+LabeledInput2.displayName = "LabeledInput2";
 
 export default LabeledInput2;

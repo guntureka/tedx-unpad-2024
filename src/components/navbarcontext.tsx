@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
-type NavbarType = 'default' | 'profile' | 'blank'| 'none';
+type NavbarType = "default" | "profile" | "blank" | "none";
 
 interface NavbarContextProps {
   navbarType: NavbarType;
@@ -11,8 +11,10 @@ interface NavbarContextProps {
 
 const NavbarContext = createContext<NavbarContextProps | undefined>(undefined);
 
-export const NavbarProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [navbarType, setNavbarType] = useState<NavbarType>('default');
+export const NavbarProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [navbarType, setNavbarType] = useState<NavbarType>("default");
   return (
     <NavbarContext.Provider value={{ navbarType, setNavbarType }}>
       {children}
@@ -23,7 +25,7 @@ export const NavbarProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 export const useNavbarType = (): NavbarContextProps => {
   const context = useContext(NavbarContext);
   if (!context) {
-    throw new Error('useNavbarType must be used within a NavbarProvider');
+    throw new Error("useNavbarType must be used within a NavbarProvider");
   }
   return context;
 };

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import { FlipWords } from "@/components/ui/flip-words";
 import { motion } from "framer-motion";
 import { LampContainer } from "@/components/ui/lamp";
@@ -13,7 +13,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { useNavbarType } from "../../../components/navbarcontext";
 import { useEffect } from "react";
-
 
 const RiddlePage = () => {
   const { setNavbarType } = useNavbarType();
@@ -39,7 +38,7 @@ const RiddlePage = () => {
 
   return (
     <>
-      <div className="px-0 mx-0 top-0">
+      <div className="top-0 mx-0 px-0">
         <LampContainer className="bg-[#1F1F1F]">
           <motion.h1
             initial={{ opacity: 0.5, y: 100 }}
@@ -49,7 +48,7 @@ const RiddlePage = () => {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500  bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+            className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
           >
             Welcome aboard our Wisdom
             <FlipWords className="text-white" words={words} duration={3000} />
@@ -57,9 +56,9 @@ const RiddlePage = () => {
         </LampContainer>
 
         <div className="container mt-11">
-          <Card className="border-gray-600 sm:mx-5 lg:mx-64 bg-[#F5F5F5] mt-4 mb-4 sm:mt-6 sm:mb-6 md:mt-8 md:mb-8 lg:mt-10 lg:mb-10">
+          <Card className="mb-4 mt-4 border-gray-600 bg-[#F5F5F5] sm:mx-5 sm:mb-6 sm:mt-6 md:mb-8 md:mt-8 lg:mx-64 lg:mb-10 lg:mt-10">
             <CardContent>
-              <CardDescription className="text-lg text-center text-black font-inter py-5 sm:text-xl md:text-2xl lg:text-3xl">
+              <CardDescription className="text-black py-5 text-center font-inter text-lg sm:text-xl md:text-2xl lg:text-3xl">
                 Congratulations on discovering the secret riddle website! Your
                 curiosity and problem-solving skills have led you to this hidden
                 gem. Prepare yourself for a journey filled with challenging
@@ -68,17 +67,17 @@ const RiddlePage = () => {
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="border-gray-600 sm:mx-5 lg:mx-64 bg-[#F5F5F5] mt-4 mb-4 sm:mt-6 sm:mb-6 md:mt-8 md:mb-8 lg:mt-10 lg:mb-10">
+          <Card className="mb-4 mt-4 border-gray-600 bg-[#F5F5F5] sm:mx-5 sm:mb-6 sm:mt-6 md:mb-8 md:mt-8 lg:mx-64 lg:mb-10 lg:mt-10">
             <CardContent>
-              <CardHeader className="text-4xl font-ebgaramond font-semibold text-center sm:text-5xl md:text-6xl lg:text-7xl">
+              <CardHeader className="text-center font-ebgaramond text-4xl font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
                 First Riddle
               </CardHeader>
-              <CardDescription className="text-lg font-inter text-black text-center sm:text-xl md:text-2xl lg:text-3xl">
+              <CardDescription className="text-black text-center font-inter text-lg sm:text-xl md:text-2xl lg:text-3xl">
                 Can you guess this puzzle?
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="border-gray-600 sm:mx-5 lg:mx-64 bg-[#F5F5F5] mt-4 mb-4 sm:mt-6 sm:mb-6 md:mt-8 md:mb-8 lg:mt-10 lg:mb-10">
+          <Card className="mb-4 mt-4 border-gray-600 bg-[#F5F5F5] sm:mx-5 sm:mb-6 sm:mt-6 md:mb-8 md:mt-8 lg:mx-64 lg:mb-10 lg:mt-10">
             <CardContent>
               <img
                 src="./RiddleFix.jpg"
@@ -87,9 +86,9 @@ const RiddlePage = () => {
               />
             </CardContent>
           </Card>
-          <Card className="border-gray-600 sm:mx-5 lg:mx-64 bg-[#F5F5F5] mt-4 sm:mt-6 md:mt-8 lg:mt-10">
+          <Card className="mt-4 border-gray-600 bg-[#F5F5F5] sm:mx-5 sm:mt-6 md:mt-8 lg:mx-64 lg:mt-10">
             <CardContent>
-              <CardHeader className="text-4xl font-garamound font-semibold text-center sm:text-5xl md:text-6xl font-ebgaramond lg:text-7xl">
+              <CardHeader className="font-garamound text-center font-ebgaramond text-4xl font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
                 So what is it?
               </CardHeader>
 
@@ -100,13 +99,13 @@ const RiddlePage = () => {
                   placeholder="Enter your answer here"
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded sm:text-lg md:text-xl lg:text-2xl"
+                  className="w-full rounded border border-gray-300 p-2 sm:text-lg md:text-xl lg:text-2xl"
                   required
                 />
                 {feedback && <p className="mt-4 text-red-500">{feedback}</p>}
                 <button
                   type="submit"
-                  className="mt-4 p-2 bg-red-500 text-white rounded font-inter sm:p-3 md:p-4 lg:p-5"
+                  className="mt-4 rounded bg-red-500 p-2 font-inter text-white sm:p-3 md:p-4 lg:p-5"
                 >
                   Submit
                 </button>
@@ -115,7 +114,6 @@ const RiddlePage = () => {
           </Card>
         </div>
       </div>
-
     </>
   );
 };
