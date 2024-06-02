@@ -132,7 +132,7 @@ export const LoginForm = () => {
               </label>
             </div>
             <Link
-              href="#"
+              href="/auth/reset"
               className="font-inter-400 ml-[10px] text-[14px] text-white hover:underline"
             >
               Forget Password?
