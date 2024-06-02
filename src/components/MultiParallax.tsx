@@ -4,7 +4,6 @@ import React, { useRef, useEffect } from "react";
 import Book from "./ui/book";
 import { useNavbarType } from "./navbarcontext";
 import Image from "next/image";
-import BookMobile from "./ui/BookMobile";
 export default function MultiParallax() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
