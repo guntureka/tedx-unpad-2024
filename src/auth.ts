@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { getUserByID } from "@/data/user";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import authConfig from "./auth.config";
-import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
+// import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 import { getAccountByUserId } from "@/data/account";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
