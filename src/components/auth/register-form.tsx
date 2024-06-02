@@ -3,31 +3,21 @@
 import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
 import { RegisterSchema } from "@/schemas";
-import { Input } from "@/components/ui/input";
-import { CardWrapper } from "@/components/auth/card-wrapper";
-import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { register as registerAction } from "@/actions/register";
 import React, { useEffect } from "react";
-import Link from "next/link";
 import LabeledInput from "@/components/ui/labeledinput";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavbarType } from "@/components/navbarcontext";
+import { useRouter } from "next/navigation";
 
 export const RegisterForm = () => {
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
+    const router = useRouter();
 
     const {
         register,
@@ -61,6 +51,7 @@ export const RegisterForm = () => {
                 .then((data) => {
                     setError(data.error);
                     setSuccess(data.success);
+                    router.push("/auth/login");
                 })
                 .catch((error) => {
                     setError("An error occurred. Please try again.");

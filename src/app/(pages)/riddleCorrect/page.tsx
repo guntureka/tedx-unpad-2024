@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { FlipWords } from "@/components/ui/flip-words";
 import { motion } from "framer-motion";
-import { useNavbarType } from "../../../components/navbarcontext";
+import { useNavbarType } from "@/components/navbarcontext";
 
 const RiddleCorrectPage = () => {
     const userId = useCurrentUser()?.id;
