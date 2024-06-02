@@ -45,6 +45,11 @@ const POST = async (req: Request): Promise<Response> => {
 const GET = async (req: Request): Promise<Response> => {
     try {
       const role = await currentRole();
+
+      if (role === "ADMIN") {
+        const riddleSubmissions = await db.riddleSubmission.findMany();
+        return new NextResponse(JSON.stringify({ riddleSubmissions }), { status: 200 });
+      }
   
       if (role !== "USER") {
         return new NextResponse(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
