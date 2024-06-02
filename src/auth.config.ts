@@ -35,9 +35,6 @@ export default {
               password: user.password,
               role: user.role,
               isTwoFactorEnabled: user.isTwoFactorEnabled,
-              isOAuth: false, // Add this line
-              firstName: user.first_name, // Add this line
-              lastName: user.last_name, // Add this line
             };
           }
         }

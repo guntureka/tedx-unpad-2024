@@ -60,7 +60,6 @@ declare module "next-auth" {
      */
     role: UserRole | null;
     isTwoFactorEnabled: boolean | null;
-    isOAuth: boolean | null;
     first_name: string | null;
     last_name: string | null;
   }

@@ -24,6 +24,10 @@ export const getAccountByUserId = async (id: string) => {
       },
     });
 
+    if (!account) {
+      return null;
+    }
+
     return account;
   } catch (error) {
     return null;

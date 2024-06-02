@@ -1,39 +1,48 @@
-import NextAuth from "next-auth";
 import {
+  adminRoutes,
   apiAuthPrefix,
   authRoutes,
   DEFAULT_LOGIN_REDIRECT,
   publicRoutes,
 } from "@/routes";
 import { auth } from "@/auth";
-import authConfig from "@/auth.config";
-import { NextRequest } from "next/server";
-
-// const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-  console.log(req.auth);
+  const { nextUrl } = req;
+  const isLoggedIn = !!req.auth;
   const user = req.auth?.user;
-  //   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-  //   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-  //   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-  //   if (isApiAuthRoute) {
-  //     return;
-  //   }
+  console.log(user);
 
-  //   if (isAuthRoute) {
-  //     if (isLoggedIn) {
-  //       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-  //     }
-  //     return;
-  //   }
+  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isAdminRoute = nextUrl.pathname.includes(adminRoutes);
 
-  //   if (!isLoggedIn && !isPublicRoute) {
-  //     return Response.redirect(new URL("/auth/login", nextUrl));
-  //   }
+  if (isApiAuthRoute) {
+    return;
+  }
 
-  return;
+  if (isAuthRoute) {
+    if (isLoggedIn) {
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    }
+    return;
+  }
+
+  if (!isLoggedIn && !isPublicRoute) {
+    return Response.redirect(new URL("/auth/login", nextUrl));
+  }
+
+  if (isAdminRoute && user?.role !== "ADMIN") {
+    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+  }
+
+  if (nextUrl.pathname.startsWith("/dashboard") && user?.role === "ADMIN") {
+    if (!nextUrl.pathname.includes("/admin")) {
+      return Response.redirect(new URL("/dashboard/admin", nextUrl));
+    }
+  }
 });
 
 // Optionally, don't invoke Middleware on some paths

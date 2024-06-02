@@ -26,6 +26,8 @@ export const authRoutes: string[] = [
  */
 export const apiAuthPrefix: string = "/api/auth";
 
+export const adminRoutes: string = "/admin";
+
 /**
  * The default redirect route after logging in
  * @type {string}
