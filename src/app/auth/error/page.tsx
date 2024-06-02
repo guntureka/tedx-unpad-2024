@@ -1,8 +1,9 @@
-import { CardWrapper } from "@/components/auth/card-wrapper";
-import { ErrorCard } from "@/components/auth/error-card";
-
 const AuthErrorPage = () => {
-  return <ErrorCard />;
+  return (
+    <div>
+      <h1>AuthErrorPage</h1>
+    </div>
+  );
 };
 
 export default AuthErrorPage;

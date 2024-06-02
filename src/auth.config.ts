@@ -10,6 +10,12 @@ export default {
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      profile: (profile) => ({
+        id: profile.id,
+        first_name: profile.name,
+        email: profile.email,
+        image: profile.picture,
+      }),
     }),
     Credentials({
       async authorize(credentials) {
