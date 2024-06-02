@@ -22,7 +22,6 @@ export const getProfile = async () => {
 
     return { status: "success", data: dbUser };
   } catch (error: any) {
-    console.error(error);
     return { status: "error", message: error.message };
   }
 };

@@ -10,7 +10,6 @@ import { register as registerAction } from "@/actions/register";
 import React, { useEffect } from "react";
 import LabeledInput from "@/components/ui/labeledinput";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavbarType } from "@/components/navbarcontext";
 import { useRouter } from "next/navigation";
 
 export const RegisterForm = () => {
