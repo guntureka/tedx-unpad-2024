@@ -1,7 +1,7 @@
 import React from "react";
 import HTMLFlipBook from "react-pageflip";
 
-const Book: React.FC = () => {
+const BookMobile: React.FC = () => {
   const folderPath = "./menu";
   const numberOfPages = 8;
 
@@ -34,16 +34,16 @@ const Book: React.FC = () => {
 
   return (
     <HTMLFlipBook
-      width={397}
-      height={561}
+      width={ 298}
+      height={421}
       className="demo-book"
       style={Style}
       startPage={0}
       size={"fixed"}
       minWidth={0}
-      maxWidth={397}
+      maxWidth={1754}
       minHeight={0}
-      maxHeight={397}
+      maxHeight={1240}
       drawShadow={true}
       flippingTime={1000}
       usePortrait={true}
@@ -69,4 +69,4 @@ const Book: React.FC = () => {
   );
 };
 
-export default Book;
+export default BookMobile;

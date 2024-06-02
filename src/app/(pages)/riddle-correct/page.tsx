@@ -9,8 +9,6 @@ import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { FlipWords } from "@/components/ui/flip-words";
-import { motion } from "framer-motion";
 import { useNavbarType } from "@/components/navbarcontext";
 
 const RiddleCorrectPage = () => {
@@ -21,8 +19,7 @@ const RiddleCorrectPage = () => {
   useEffect(() => {
     setNavbarType("blank");
   }, []);
-
-  const words = ["Hustler", "Starter", "Seekers", "Explorers", "Odyssey"];
+  
   const [videoLink, setVideoLink] = useState("");
   const router = useRouter();
 
@@ -70,7 +67,7 @@ const RiddleCorrectPage = () => {
 
         if (response.ok) {
           console.log("Submitted video link:", videoLink);
-          router.push("/riddleDone");
+          router.push("/riddle-done");
         } else {
           const errorData = await response.json();
           alert(`Error: ${errorData.error}`);

@@ -25,12 +25,12 @@ const RiddlePage = () => {
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState("");
   const router = useRouter();
-  const correctAnswer = "Indonesia Emas 2045"; // Replace with the actual correct answer
+  const correctAnswer = "Indonesia Emas 2045"; 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
-      router.push("/riddleCorrect");
+      router.push("/riddle-correct");
     } else {
       setFeedback("Incorrect answer. Please try again.");
     }

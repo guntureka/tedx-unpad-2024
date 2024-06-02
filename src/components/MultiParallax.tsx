@@ -3,7 +3,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef, useEffect } from "react";
 import Book from "./ui/book";
 import { useNavbarType } from "./navbarcontext";
-
+import Image from "next/image";
+import BookMobile from "./ui/BookMobile";
 export default function MultiParallax() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
@@ -20,7 +21,7 @@ export default function MultiParallax() {
     [-300, -1000],
   );
   const podiumTranslateY = useTransform(scrollYProgress, [0, 1], [-1200, 400]);
-  const podiumTranslateX = useTransform(scrollYProgress, [0, 1], [-300, 2500]);
+  const podiumTranslateX = useTransform(scrollYProgress, [0, 0.5], [50, 1500]);
   const podiumScale = useTransform(scrollYProgress, [0, 1], [0.3, 0.7]);
   const bookTranslateX = useTransform(scrollYProgress, [0, 0.5], [1000, 30]);
   const people1TranslateX = useTransform(scrollYProgress, [0, 1], [300, 1000]);
@@ -28,12 +29,37 @@ export default function MultiParallax() {
 
   return (
     <>
+      <section className="block lg:hidden bg-black-bg">
+        <Image
+          src="/web-final.png"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          className=""
+        />
+        <motion.div
+          className="z-40 h-20 w-40 cursor-pointer rounded-full bg-white p-4 shadow-lg"
+          initial={{ scale: 0, y: -100, x: 200 }}
+          animate={{ rotate: 360, scale: 1, y: 50 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+        >
+          <h1 className="text-sm  text-center font-inter font-semibold">
+            Open via dekstop for full experience!
+          </h1>
+        </motion.div>
+      </section>
+
       <div ref={ref}>
-        <div className="hidden lg:relative lg:grid lg:h-screen lg:w-full lg:place-items-center lg:overflow-hidden">
+        <div className="hidden overflow-hidden sm:relative sm:grid sm:h-screen sm:w-full sm:place-items-center">
           <motion.div
-            className="z-50 h-40 w-72 cursor-pointer rounded-full bg-white p-4 shadow-lg"
+            className="z-50 hidden h-40 w-72 cursor-pointer rounded-full bg-white p-4 shadow-lg lg:block"
             initial={{ scale: 0 }}
-            animate={{ rotate: 360, scale: 1 }}
+            animate={{ rotate: 360, scale: 1, y: -200 }}
+            variants={{}}
             transition={{
               type: "spring",
               stiffness: 260,
@@ -41,7 +67,6 @@ export default function MultiParallax() {
             }}
             style={{
               x: bubbleTranslateX,
-              y: -200,
             }}
           >
             <h1 className="py-8 text-center font-inter text-2xl font-semibold">
@@ -51,29 +76,25 @@ export default function MultiParallax() {
           <motion.img
             src="./asset/waiter.svg"
             alt=""
-            className="absolute z-40 object-cover"
-            initial={{ scale: 0 }}
+            className="absolute z-40 hidden object-cover lg:block"
+            initial={{ scale: 0, y: 200, x: 0 }}
             animate={{ scale: 0.27 }}
             style={{
-              y: 0,
-              scale: 0.27,
               translateX: waiterTranslateX,
-              translateY: 200,
             }}
           />
           <motion.img
             src="./asset/building.svg"
             alt=""
-            className="absolute inset-0 z-20 object-cover"
-            style={{
-              translateX: 340,
-            }}
+            className="absolute inset-0 z-20 hidden object-cover lg:block"
+            initial={{ x: 340 }}
           />
           <motion.img
             src="/asset/background.svg"
             alt=""
-            className="absolute inset-0 z-0 object-cover"
-            style={{
+            className="absolute inset-0 z-0 hidden object-cover lg:block"
+            initial={{
+              x: 0,
               y: 0,
               scale: 0.8,
               translateX: 190,
@@ -83,10 +104,9 @@ export default function MultiParallax() {
           <motion.img
             src="./asset/people1.svg"
             alt=""
-            className="absolute z-10 object-cover"
+            className="absolute z-10 hidden object-cover lg:block"
+            initial={{ scale: 0.4, x: 0, y: 0 }}
             style={{
-              y: 0,
-              scale: 0.2,
               translateX: people1TranslateX,
             }}
             animate={{
@@ -96,10 +116,9 @@ export default function MultiParallax() {
           <motion.img
             src="./asset/people2.svg"
             alt=""
-            className="absolute z-10 object-cover"
+            className="absolute z-10 hidden object-cover lg:block"
+            initial={{ scale: 0.4, x: 0, y: 0 }}
             style={{
-              y: 0,
-              scale: 0.2,
               translateX: people2TranslateX,
             }}
             animate={{
@@ -117,27 +136,24 @@ export default function MultiParallax() {
               bottom: 0,
             }}
           />
-        </div>
-        <div className="hidden overflow-hidden bg-black-abs pb-24 pt-[50px] sm:block">
           <motion.img
             src="./asset/podium.svg"
             alt=""
-            className="absolute z-50 overflow-visible object-cover"
+            className="absolute z-50 hidden overflow-visible object-cover lg:block"
             style={{
               y: 0,
               scale: 0.2,
               translateX: podiumTranslateX,
-              translateY: -750,
             }}
-            initial={{ x: 0 }}
+            initial={{ x: -200, y: 150 }}
             animate={{ scale: 0.3 }}
           />
-          <h1 className="text-4xl text-white"></h1>
-
+        </div>
+        <div className="hidden overflow-hidden bg-black-abs pb-24 pt-[50px] sm:block">
           <motion.img
             src="./asset/Nampan.svg"
             alt=""
-            className="absolute z-0 overflow-hidden object-cover"
+            className="absolute z-0 hidden overflow-hidden object-cover lg:block"
             style={{
               y: 0,
               scale: 0.7,
@@ -146,7 +162,7 @@ export default function MultiParallax() {
           />
 
           <motion.div
-            className="z-30 -mx-8 mb-20 overflow-hidden px-10 py-36"
+            className="z-30 -mx-8 mb-20 hidden overflow-hidden px-10 py-36 lg:block"
             style={{
               translateX: bookTranslateX,
             }}
@@ -155,21 +171,6 @@ export default function MultiParallax() {
           </motion.div>
         </div>
       </div>
-
-      <img src="./web-final.png" alt="" className="block md:hidden" />
-      <motion.div
-        className="z-10 block h-24 w-36 cursor-pointer rounded-full bg-white shadow-lg md:hidden"
-        initial={{ scale: 0 }}
-        animate={{ rotate: 360, scale: 1 }}
-        style={{
-          x: 190,
-          y: -400,
-        }}
-      >
-        <h1 className="text-wrap px-3 py-4 text-center font-inter text-sm">
-          Open via desktop for a better experience!
-        </h1>
-      </motion.div>
     </>
   );
 }
