@@ -29,12 +29,15 @@ const Register: React.FC = (): React.ReactNode => {
   const {
     register,
     handleSubmit,
-    formState: { errors }, watch, setError, clearErrors,
+    formState: { errors },
+    watch,
+    setError,
+    clearErrors,
     getValues,
   } = useForm<Register>({
     mode: "all",
     defaultValues: {
-      goals: []
+      goals: [],
     },
   });
 
@@ -49,14 +52,14 @@ const Register: React.FC = (): React.ReactNode => {
   }, []);
 
   const [hasInteracted, setHasInteracted] = useState(false);
-  const goals = watch("goals") as string[] || [];
+  const goals = (watch("goals") as string[]) || [];
 
   useEffect(() => {
     if (hasInteracted) {
       if (goals.length < 1 || goals.length > 3) {
         setError("goals", {
           type: "manual",
-          message: "Please select at least 1 and at most 3 goals."
+          message: "Please select at least 1 and at most 3 goals.",
         });
       } else {
         clearErrors("goals");
@@ -69,9 +72,9 @@ const Register: React.FC = (): React.ReactNode => {
   };
 
   return (
-    <div className="w-screen grid sm:grid-cols-1 lg:grid-cols-2 px-4 md:px-20 items-center">
-      <div className="hidden lg:flex h-full justify-center items-center">
-        <div className="w-full h-full overflow-hidden">
+    <div className="grid w-screen items-center px-4 sm:grid-cols-1 md:px-20 lg:grid-cols-2">
+      <div className="hidden h-full items-center justify-center lg:flex">
+        <div className="h-full w-full overflow-hidden">
           <img
             className="h-full w-full object-cover duration-300 hover:scale-110"
             src="/loginbg.png"
@@ -80,13 +83,13 @@ const Register: React.FC = (): React.ReactNode => {
         </div>
       </div>
 
-      <div className="flex flex-col font-inter justify-center p-4 md:p-10 space-y-1">
-        <h1 className="text-white text-2xl md:text-3xl font-semibold mb-5">
+      <div className="flex flex-col justify-center space-y-1 p-4 font-inter md:p-10">
+        <h1 className="mb-5 text-2xl font-semibold text-white md:text-3xl">
           Register
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="bg-darkgray-800 p-4 md:p-10 rounded-lg space-y-6 md:space-y-12">
-            <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
+          <div className="bg-darkgray-800 space-y-6 rounded-lg p-4 md:space-y-12 md:p-10">
+            <div className="flex flex-col space-y-6 md:flex-row md:space-x-4 md:space-y-0">
               <LabeledInput
                 label="First Name"
                 id="firstName"
@@ -116,7 +119,7 @@ const Register: React.FC = (): React.ReactNode => {
               />
             </div>
 
-            <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
+            <div className="flex flex-col space-y-6 md:flex-row md:space-x-4 md:space-y-0">
               <LabeledInput
                 label="Age"
                 id="age"
@@ -203,8 +206,10 @@ const Register: React.FC = (): React.ReactNode => {
             />
 
             <div>
-              <label className="text-white font-semibold">Have you attended a TED or TEDx event before (any kind)?</label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
+              <label className="font-semibold text-white">
+                Have you attended a TED or TEDx event before (any kind)?
+              </label>
+              <div className="mt-2 grid grid-cols-1 gap-7 md:grid-cols-2">
                 <div className="flex items-center">
                   <input
                     type="radio"
@@ -230,7 +235,7 @@ const Register: React.FC = (): React.ReactNode => {
                   <label htmlFor="attendedN" className="ml-2 text-white">
                     No
                   </label>
-                  </div>
+                </div>
               </div>
               {errors.attended && (
                 <p className="text-red-500">{errors.attended.message}</p>
@@ -238,8 +243,8 @@ const Register: React.FC = (): React.ReactNode => {
             </div>
 
             <div>
-              <label className="text-white font-semibold">Interest</label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-2">
+              <label className="font-semibold text-white">Interest</label>
+              <div className="mt-2 grid grid-cols-1 gap-7 md:grid-cols-2">
                 <div className="flex items-center">
                   <input
                     type="radio"
@@ -316,101 +321,116 @@ const Register: React.FC = (): React.ReactNode => {
               label="Other Social Media"
               id="othersocmed"
               placeholder="(ex: LinkedIn, Facebook, Twitter, ....)"
-              register={register("othersocmed", {
-              })}
+              register={register("othersocmed", {})}
               error={errors.othersocmed}
             />
-      <div>
-        <label className="text-white font-semibold">Top three goals for attending this TEDx event</label>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 mt-2">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="goalNetworking"
-              value="Networking"
-              {...register("goals")}
-              onClick={handleInteraction}
-            />
-            <label htmlFor="interestNetworking" className="ml-2 text-white">
-              Networking
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="goalLearning"
-              value="Learning new ideas"
-              {...register("goals")}
-              onClick={handleInteraction}
-            />
-            <label htmlFor="interestLearning" className="ml-2 text-white">
-              Learning new ideas
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="goalCollaborators"
-              value="Finding potential collaborators"
-              {...register("goals")}
-              onClick={handleInteraction}
-            />
-            <label htmlFor="interestCollaborators" className="ml-2 text-white">
-              Finding potential collaborators
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="goalInspiration"
-              value="Seeking inspiration"
-              {...register("goals")}
-              onClick={handleInteraction}
-            />
-            <label htmlFor="interestInspiration" className="ml-2 text-white">
-              Seeking inspiration
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="goalDevelopment"
-              value="Professional development"
-              {...register("goals")}
-              onClick={handleInteraction}
-            />
-            <label htmlFor="interestDevelopment" className="ml-2 text-white">
-              Professional development
-            </label>
-          </div>
-          <div className="flex flex-row">
-            <input
-              type="checkbox"
-              id="goalOther"
-              value="Other"
-              {...register("goals")}
-              onClick={handleInteraction}
-            />
-            <LabeledInput
-                className="ml-[10px]"
-                label=""
-                id="Others"
-                placeholder="Others (please specify)"
-                register={register("otherGoal", {
-                  minLength: {
-                    value: 6,
-                    message: "Specify to at least 6 characters long",
-                  },
-                })}
-                error={errors.otherGoal}
-                disabled={!goals.includes("Other")}
-              />
-          </div>
-        </div>
-        {errors.goals && (
-          <p className="text-red-500 text-sm">Please select at least 1 and at most 3 interests.</p>
-        )}
-      </div>
+            <div>
+              <label className="font-semibold text-white">
+                Top three goals for attending this TEDx event
+              </label>
+              <div className="mt-2 grid grid-cols-1 gap-7 lg:grid-cols-2">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="goalNetworking"
+                    value="Networking"
+                    {...register("goals")}
+                    onClick={handleInteraction}
+                  />
+                  <label
+                    htmlFor="interestNetworking"
+                    className="ml-2 text-white"
+                  >
+                    Networking
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="goalLearning"
+                    value="Learning new ideas"
+                    {...register("goals")}
+                    onClick={handleInteraction}
+                  />
+                  <label htmlFor="interestLearning" className="ml-2 text-white">
+                    Learning new ideas
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="goalCollaborators"
+                    value="Finding potential collaborators"
+                    {...register("goals")}
+                    onClick={handleInteraction}
+                  />
+                  <label
+                    htmlFor="interestCollaborators"
+                    className="ml-2 text-white"
+                  >
+                    Finding potential collaborators
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="goalInspiration"
+                    value="Seeking inspiration"
+                    {...register("goals")}
+                    onClick={handleInteraction}
+                  />
+                  <label
+                    htmlFor="interestInspiration"
+                    className="ml-2 text-white"
+                  >
+                    Seeking inspiration
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="goalDevelopment"
+                    value="Professional development"
+                    {...register("goals")}
+                    onClick={handleInteraction}
+                  />
+                  <label
+                    htmlFor="interestDevelopment"
+                    className="ml-2 text-white"
+                  >
+                    Professional development
+                  </label>
+                </div>
+                <div className="flex flex-row">
+                  <input
+                    type="checkbox"
+                    id="goalOther"
+                    value="Other"
+                    {...register("goals")}
+                    onClick={handleInteraction}
+                  />
+                  <LabeledInput
+                    className="ml-[10px]"
+                    label=""
+                    id="Others"
+                    placeholder="Others (please specify)"
+                    register={register("otherGoal", {
+                      minLength: {
+                        value: 6,
+                        message: "Specify to at least 6 characters long",
+                      },
+                    })}
+                    error={errors.otherGoal}
+                    disabled={!goals.includes("Other")}
+                  />
+                </div>
+              </div>
+              {errors.goals && (
+                <p className="text-sm text-red-500">
+                  Please select at least 1 and at most 3 interests.
+                </p>
+              )}
+            </div>
 
             <LabeledInput
               label="Password"
@@ -442,7 +462,7 @@ const Register: React.FC = (): React.ReactNode => {
 
             <button
               type="submit"
-              className="w-full h-12 mt-6 rounded-lg bg-red-600 text-white text-lg font-semibold hover:bg-red-700 duration-150"
+              className="mt-6 h-12 w-full rounded-lg bg-red-600 text-lg font-semibold text-white duration-150 hover:bg-red-700"
             >
               Register
             </button>
