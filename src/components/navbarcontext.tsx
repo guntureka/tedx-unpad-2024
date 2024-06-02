@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type NavbarType = 'default' | 'profile' | 'blank';
+type NavbarType = 'default' | 'profile' | 'blank'| 'none';
 
 interface NavbarContextProps {
   navbarType: NavbarType;

@@ -10,6 +10,7 @@ interface LabeledInputProps {
     error?: FieldError;
     isPassword?: boolean; // ditambahkan mas radit
     type?: string;
+  disabled?: boolean;
 }
 
 const LabeledInput: React.FC<LabeledInputProps> = ({
@@ -21,6 +22,7 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
     error,
     isPassword = false, // ditambahkan mas radit
     type = "text",
+  disabled = false,
 }) => {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -40,7 +42,8 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
                 placeholder={placeholder}
                 id={id}
                 type={isPassword && !showPassword ? "password" : type}
-                className="w-full py-[12px] border-b-[2px] border-white bg-transparent font-inter-400 text-[16px] text-gray-light focus:outline-0 text-white placeholder-opacity-0 disabled:bg-gray-light"
+                disabled={disabled}
+        className="w-full py-[12px] border-b-[2px] border-white bg-transparent font-inter-400 text-[16px] text-gray-light focus:outline-0 text-white placeholder-opacity-0 disabled:border-grey-dark duration-150"
                 {...register}
             />
             {isPassword && (
