@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
     <div className="fixed top-[30px] z-[100] flex h-[72px] w-screen px-4 sm:px-8 md:px-12 lg:px-16 xl:px-[70px]">
       <div className="relative flex h-full w-full items-center rounded-lg bg-[#FAFAFA]">
         <div className="absolute left-4 sm:left-6 md:left-8 lg:left-10 xl:left-[30px]">
-          <Link href="/main">
+          <Link href="/">
             <img
               className="hidden md:inline-block"
               src="/logo-light.png"
