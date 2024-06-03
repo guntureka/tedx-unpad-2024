@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useRouter,useSearchParams } from "next/navigation";
+import { useState, useTransition, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { LoginSchema } from "@/schemas";
@@ -17,6 +17,7 @@ import { signIn } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 export const LoginForm = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
@@ -28,9 +29,10 @@ export const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
 
   const { setNavbarType } = useNavbarType();
-
+  const previousPathRef = useRef<string>("");
   useEffect(() => {
     setNavbarType("blank");
+    previousPathRef.current = document.referrer || "/";
   }, []);
 
   const {
@@ -54,15 +56,16 @@ export const LoginForm = () => {
         .then((data) => {
           if (data?.error) {
             setError(data.error);
+          } else {
+            router.push(previousPathRef.current || DEFAULT_LOGIN_REDIRECT); 
           }
         })
         .catch(() => setError("Something went wrong!"));
     });
   };
-
   const onClick = (provider: "google") => {
     signIn(provider, {
-      callbackUrl: DEFAULT_LOGIN_REDIRECT,
+      callbackUrl: previousPathRef.current || DEFAULT_LOGIN_REDIRECT,
     });
   };
 
