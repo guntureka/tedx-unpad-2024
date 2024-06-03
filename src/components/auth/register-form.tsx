@@ -244,7 +244,7 @@ export const RegisterForm = () => {
                     })}
                   />
                   <label htmlFor="interestFF" className="ml-2 text-white">
-                    Financial Freedom
+                    Economics & Entrepreneurship
                   </label>
                 </div>
               </div>

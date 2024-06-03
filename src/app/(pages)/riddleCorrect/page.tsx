@@ -28,7 +28,9 @@ const RiddleCorrectPage = () => {
 
   useEffect(() => {
     const checkAlreadySubmitted = async () => {
-      if (!userId) return;
+      if (!userId) {
+        window.location.reload();
+      }
 
       try {
         const response = await fetch(`/api/riddle?userId=${userId}`, {
@@ -45,11 +47,9 @@ const RiddleCorrectPage = () => {
           }
         } else {
           const errorData = await response.json();
-          alert(`Error: ${errorData.error}`);
         }
       } catch (error) {
         console.error("Error checking if already submitted:", error);
-        alert("An error occurred while checking if already submitted.");
       }
     };
 
