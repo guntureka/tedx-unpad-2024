@@ -23,7 +23,7 @@ export default function RiddleDone() {
         </Card>
         <button className="mx-auto mb-10 mt-4 rounded bg-red-500 px-2 py-1 font-bold text-white">
           <div className="font-inter font-bold text-white">
-            <a href="/riddle">Go to homepage </a>
+            <a href="/">Go to homepage </a>
           </div>
         </button>
       </div>
