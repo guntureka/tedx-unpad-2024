@@ -8,13 +8,13 @@ import {
 import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { useCurrentID } from "@/hooks/use-current-id";
 import { FlipWords } from "@/components/ui/flip-words";
 import { motion } from "framer-motion";
 import { useNavbarType } from "@/components/navbarcontext";
 
 const RiddleCorrectPage = () => {
-  const userId = useCurrentUser()?.id;
+  const userId = useCurrentID();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { setNavbarType } = useNavbarType();
 
