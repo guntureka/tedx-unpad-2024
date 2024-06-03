@@ -14,7 +14,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "TEDxUnpad",
   description: "by Tim Dev",
-  icons: "favicon.ico",
 };
 
 export default async function RootLayout({
