@@ -29,7 +29,7 @@ export default async function RootLayout({
           <NavbarProvider>
             <Toaster />
             <Navbar />
-            <div className="pt-[102px] overflow-hidden">{children}</div>
+            <div className="overflow-hidden pt-[102px]">{children}</div>
             <Footer />
           </NavbarProvider>
         </body>
