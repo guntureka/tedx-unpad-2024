@@ -29,6 +29,7 @@ const RiddleCorrectPage = () => {
   useEffect(() => {
     const checkAlreadySubmitted = async () => {
       if (!userId) {
+        router.push("/riddleCorrect");
         window.location.reload();
       }
 
