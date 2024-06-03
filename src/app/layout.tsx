@@ -7,9 +7,9 @@ import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import { NavbarProvider } from "@/components/navbarcontext";
 import "./globals.css";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export const metadata: Metadata = {
   title: "TEDxUnpad",
@@ -24,17 +24,19 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <SessionProvider session={session}>
-      <html lang="en">
-        <body className={`bg-black-bg ` + inter.className}>
-          <NavbarProvider>
-            <Toaster />
-            <Navbar />
-            <div className="pt-[102px]">{children}</div>
-            <Footer />
-          </NavbarProvider>
-        </body>
-      </html>
-    </SessionProvider>
+    <>
+      <SessionProvider session={session}>
+        <html lang="en">
+          <body className={`bg-black-bg ` + inter.className}>
+            <NavbarProvider>
+              <Toaster />
+              <Navbar />
+              <div className="pt-[102px]">{children}</div>
+              <Footer />
+            </NavbarProvider>
+          </body>
+        </html>
+      </SessionProvider>
+    </>
   );
 }

@@ -14,11 +14,7 @@ export default function MultiParallax() {
   }, []);
 
   const waiterTranslateX = useTransform(scrollYProgress, [0, 1], [-500, -1000]);
-  const bubbleTranslateX = useTransform(
-    scrollYProgress,
-    [0, 0.5],
-    [-300, -1000],
-  );
+  const bubbleTranslateX = useTransform(scrollYProgress,[0, 0.5],[-300, -1000]);
   const podiumTranslateY = useTransform(scrollYProgress, [0, 1], [-1200, 400]);
   const podiumTranslateX = useTransform(scrollYProgress, [0, 0.5], [50, 1500]);
   const podiumScale = useTransform(scrollYProgress, [0, 1], [0.3, 0.7]);
@@ -28,7 +24,7 @@ export default function MultiParallax() {
 
   return (
     <>
-      <section className="block lg:hidden bg-black-bg">
+      <section className="block bg-black-bg lg:hidden">
         <Image
           src="/web-final.png"
           alt=""
@@ -46,7 +42,7 @@ export default function MultiParallax() {
             damping: 20,
           }}
         >
-          <h1 className="text-sm  text-center font-inter font-semibold">
+          <h1 className="text-center font-inter text-sm font-semibold">
             Open via dekstop for full experience!
           </h1>
         </motion.div>
