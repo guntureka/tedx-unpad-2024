@@ -13,20 +13,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { useNavbarType } from "../../../components/navbarcontext";
 import { useEffect } from "react";
-
+import { useSession } from "next-auth/react";
 
 const RiddlePage = () => {
   const { setNavbarType } = useNavbarType();
-
-  useEffect(() => {
-    setNavbarType("blank");
-  }, []);
+  const { data: session } = useSession();
 
   const words = ["Hustler", "Starter", "Seekers", "Explorers", "Odyssey"];
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState("");
   const router = useRouter();
   const correctAnswer = "Indonesia Emas 2045"; // Replace with the actual correct answer
+
+  useEffect(() => {
+    setNavbarType("blank");
+  });
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

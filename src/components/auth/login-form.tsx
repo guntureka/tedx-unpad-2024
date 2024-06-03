@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter,useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useTransition, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -32,8 +32,9 @@ export const LoginForm = () => {
   const previousPathRef = useRef<string>("");
   useEffect(() => {
     setNavbarType("blank");
-    previousPathRef.current = document.referrer || "/";
-  }, []);
+    const next = searchParams.get("next");
+    previousPathRef.current = next || DEFAULT_LOGIN_REDIRECT;
+  }, [searchParams]);
 
   const {
     register,
@@ -47,7 +48,6 @@ export const LoginForm = () => {
       password: "",
     },
   });
-
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
     setSuccess("");
@@ -57,12 +57,15 @@ export const LoginForm = () => {
           if (data?.error) {
             setError(data.error);
           } else {
-            router.push(previousPathRef.current || DEFAULT_LOGIN_REDIRECT); 
+            const redirectPath =
+              previousPathRef.current || DEFAULT_LOGIN_REDIRECT;
+            router.push(redirectPath);
           }
         })
         .catch(() => setError("Something went wrong!"));
     });
   };
+
   const onClick = (provider: "google") => {
     signIn(provider, {
       callbackUrl: previousPathRef.current || DEFAULT_LOGIN_REDIRECT,
