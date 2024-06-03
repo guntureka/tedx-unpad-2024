@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { useNavbarType } from "../../../components/navbarcontext";
 import { useEffect } from "react";
 
+
 const RiddlePage = () => {
   const { setNavbarType } = useNavbarType();
 
