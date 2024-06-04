@@ -58,7 +58,6 @@ export const LoginForm = () => {
           if (data?.error) {
             setError(data.error);
           } else {
-            
             router.push(redirectPath);
           }
         })
@@ -68,7 +67,7 @@ export const LoginForm = () => {
 
   const onClick = (provider: "google") => {
     signIn(provider, {
-      callbackUrl: DEFAULT_LOGIN_REDIRECT
+      callbackUrl: DEFAULT_LOGIN_REDIRECT,
     });
   };
 
@@ -84,7 +83,7 @@ export const LoginForm = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center space-y-1 p-4 font-inter md:p-10">
-        <h1 className="font-inter-600 text-2xl text-white md:text-3xl">
+        <h1 className="font-inter-600 text-2xl text-white md:text-3xl md:mx-9 mx-4">
           Login
         </h1>
         <FormError message={error} />
@@ -124,19 +123,6 @@ export const LoginForm = () => {
             </div>
           </div>
           <div className="mt-[22px] flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                className="h-[15px] w-[15px]"
-                type="checkbox"
-                id="remember-me"
-              />
-              <label
-                className="font-inter-400 ml-[10px] text-[14px] text-white"
-                htmlFor="remember-me"
-              >
-                Remember Me
-              </label>
-            </div>
             <Link
               href="/auth/reset"
               className="font-inter-400 ml-[10px] text-[14px] text-white hover:underline"
@@ -146,7 +132,7 @@ export const LoginForm = () => {
           </div>
           <button
             type="submit"
-            className="bg-red-normal font-inter-600 hover:bg-red-dark mt-[70px] h-[55px] w-full rounded-[10px] text-[18px] text-white duration-150"
+            className="font-inter-600 mt-[70px] h-[55px] w-full rounded-[10px] bg-red-normal text-[18px] text-white duration-150 hover:bg-red-dark"
           >
             Login
           </button>
