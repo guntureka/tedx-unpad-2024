@@ -12,7 +12,7 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TEDxUnpad",
+  title: "TEDxPadjadjaranUniversity",
   description: "by Tim Dev",
 };
 
