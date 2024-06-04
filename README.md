@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Soon...
 
-## Another Platform
+## Platform
 
 - Soon.... `<platform>(<link>): <used for>`
 
