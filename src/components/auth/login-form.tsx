@@ -48,6 +48,7 @@ export const LoginForm = () => {
       password: "",
     },
   });
+  const redirectPath = previousPathRef.current || DEFAULT_LOGIN_REDIRECT;
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
     setSuccess("");
@@ -57,8 +58,7 @@ export const LoginForm = () => {
           if (data?.error) {
             setError(data.error);
           } else {
-            const redirectPath =
-              previousPathRef.current || DEFAULT_LOGIN_REDIRECT;
+            
             router.push(redirectPath);
           }
         })
@@ -68,7 +68,7 @@ export const LoginForm = () => {
 
   const onClick = (provider: "google") => {
     signIn(provider, {
-      callbackUrl: previousPathRef.current || DEFAULT_LOGIN_REDIRECT,
+      callbackUrl: DEFAULT_LOGIN_REDIRECT
     });
   };
 

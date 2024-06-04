@@ -346,8 +346,8 @@ const Dashboard: React.FC = () => {
               options={[
                 "Inferiority Complex",
                 "Personalized Algorithm",
-                "Quarter Life Crysis",
-                "Financial Freedom",
+                "Quarter Life Crisis",
+                "Economics & Entrepreneurship",
               ]}
               selectedOption={selectedOption}
               onSelectChange={handleSelectChange}
