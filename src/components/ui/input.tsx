@@ -40,6 +40,7 @@ const Input = ({
         disabled={disabled}
         {...register}
         required={required}
+        value={value}
         className="text-gray-light w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-dark py-4 relative"
       />
       {isPassword && (

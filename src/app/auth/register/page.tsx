@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import RegisterForm from "@/components/auth/register-form";
 
 export const metadata: Metadata = {
@@ -16,7 +16,8 @@ const page = () => {
             src={"/loginbg.png"}
             alt="login background"
             objectFit="cover"
-            fill
+            layout="fill"
+            priority
             className="duration-300 hover:scale-110"
           />
         </div>

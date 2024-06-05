@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import LoginForm from "@/components/auth/login-form";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -16,7 +16,8 @@ const LoginPage = () => {
             src={"/loginbg.png"}
             alt="login background"
             objectFit="cover"
-            fill
+            layout="fill"
+            priority
             className="duration-300 hover:scale-110"
           />
         </div>

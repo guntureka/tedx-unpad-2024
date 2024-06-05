@@ -17,11 +17,11 @@ export const registerSchema = z
       .string()
       .min(1, "Phone number is required!")
       .regex(/^[0-9]+$/, "Phone number must contain only digits")
-      .regex(/^(08|\+62)/, "Phone number must start with +62 or 08"),
+      .regex(/^(08|62)/, "Phone number must start with 62 or 08"),
     born: z.coerce.date(),
-    // affiliation: z.string().min(1, "Affiliation is required!"), // Uncommented line
-    // reference: z.string().min(1, "Reference is required!"), // Uncommented line
-    // interest: z.string().min(1, "Interest is required!"), // Uncommented line
+    affiliation: z.string().min(1, "Affiliation is required!"), // Uncommented line
+    reference: z.string().min(1, "Reference is required!"), // Uncommented line
+    interest: z.string().min(1, "Interest is required!"), // Uncommented line
   })
   .refine(
     (data) => {

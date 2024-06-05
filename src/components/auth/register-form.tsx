@@ -43,9 +43,9 @@ const RegisterForm = () => {
       address: "",
       born: undefined,
       phone: "",
-      // affiliation: "",
-      // reference: "",
-      // interest: "",
+      affiliation: "",
+      reference: "",
+      interest: "",
     },
   });
 
@@ -126,7 +126,7 @@ const RegisterForm = () => {
             isPassword
             error={errors.confirmPassword}
           />
-          {/* <FormField
+          <FormField
             id="affiliation"
             label="Affiliation"
             placeholder="Enter your affiliation (ex: Universitas Padjadjaran)"
@@ -139,9 +139,9 @@ const RegisterForm = () => {
             placeholder="(ex: Instagram, Tiktok, Friends, etc)"
             register={register("reference")}
             error={errors.reference}
-          /> */}
-          {/* <div className="space-y-4"> */}
-          {/* <p>Interest</p>
+          />
+          <div className="space-y-4">
+            <p>Interest</p>
             <div className="grid grid-cols-1 md:grid-cols-2">
               {interestData.map((data, index) => (
                 <div
@@ -149,7 +149,7 @@ const RegisterForm = () => {
                   className="flex justify-start items-center gap-4 py-4"
                 >
                   <Input
-                    id={`interest#${index}`}
+                    id={`interest-${index}`}
                     value={data}
                     register={register("interest")}
                     type="radio"
@@ -158,7 +158,7 @@ const RegisterForm = () => {
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
           <button
             type="submit"
             className="w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4"

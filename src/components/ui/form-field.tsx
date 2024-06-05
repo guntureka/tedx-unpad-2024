@@ -51,6 +51,7 @@ const FormField = ({
           disabled={disabled}
           isPassword={isPassword}
           placeholder={placeholder}
+          value={value}
         />
       ) : (
         <Input
@@ -62,6 +63,7 @@ const FormField = ({
           isPassword={isPassword}
           placeholder={placeholder}
           required={required}
+          value={value}
         />
       )}
       {error && <p className="text-sm text-red-500 py-2">{error.message}</p>}
