@@ -2,13 +2,19 @@
 
 import { loginSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import FormField from "../ui/form-field";
 import Link from "next/link";
+import { FormSuccess } from "../ui/success-form";
+import { FormError } from "../ui/error-form";
 
 const LoginForm = () => {
+  const [success, setSuccess] = useState<string | undefined>("");
+  const [error, setError] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
+
   const {
     handleSubmit,
     register,
@@ -25,9 +31,11 @@ const LoginForm = () => {
     console.log(values);
   };
   return (
-    <div className="flex flex-col justify-center  w-full space-y-10">
+    <div className="flex flex-col justify-center  w-full space-y-10 py-20 z-10">
       <h1 className="text-2xl md:text-3xl text-start font-bold">Login</h1>
       <div className="flex flex-col justify-center  w-full space-y-4">
+        <FormSuccess message={success} />
+        <FormError message={error} />
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-4 "

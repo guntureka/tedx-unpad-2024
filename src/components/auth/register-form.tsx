@@ -3,12 +3,15 @@
 import { registerSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import FormField from "../ui/form-field";
 import Label from "../ui/label";
 import Input from "../ui/input";
+import { FormSuccess } from "../ui/success-form";
+import { FormError } from "../ui/error-form";
+import { registerAction } from "@/actions/auth";
 
 const interestData = [
   "Post Colonialism & Inferiority Complex",
@@ -17,17 +20,11 @@ const interestData = [
   "Economics & Entrepreneurship",
 ];
 
-const getAge = (birthDate: Date) => {
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
-};
-
 const RegisterForm = () => {
+  const [success, setSuccess] = useState<string | undefined>("");
+  const [error, setError] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
+
   const {
     handleSubmit,
     register,
@@ -50,14 +47,31 @@ const RegisterForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof registerSchema>) => {
-    const age = getAge(new Date(values.born));
-    console.log(age);
-    console.log(values);
+    setError("");
+    setSuccess("");
+    startTransition(() => {
+      registerAction(values)
+        .then((data) => {
+          if (data && data.error) {
+            setError(data.error);
+          }
+          if (data && data.success) {
+            setSuccess(data.success);
+          }
+        })
+        .catch((error) => {
+          setError("An error occurred. Please try again.");
+        });
+    });
   };
+
   return (
-    <div className="flex flex-col justify-center  w-full space-y-10">
+    <div className="flex flex-col justify-center  w-full space-y-10 py-20 z-10">
       <h1 className="text-2xl md:text-3xl text-start font-bold">Register</h1>
       <div className="flex flex-col justify-center  w-full space-y-4">
+        <FormSuccess message={success} />
+        <FormError message={error} />
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-4 "
@@ -161,7 +175,10 @@ const RegisterForm = () => {
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4"
+            disabled={isPending}
+            className={`w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+              isPending ? "cursor-progress opacity-50" : ""
+            } `}
           >
             Submit
           </button>

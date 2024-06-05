@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <main className="flex flex-col w-full h-screen px-10 lg:px-20">
-      <div className="grid grid-cols-1 w-full h-full md:grid-cols-2 gap-14">
-        <div className="w-full relative md:flex hidden">
+      <div className="grid grid-cols-1 w-full h-full md:grid-cols-2 md:gap-14">
+        <div className="w-full md:relative md:flex">
           <Image
             src={"/loginbg.png"}
             alt="login background"
