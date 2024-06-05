@@ -13,7 +13,11 @@ export const registerSchema = z
     password: z.string().min(6, "Password is required!"),
     confirmPassword: z.string().min(6, "Password is required!"),
     address: z.string().min(1, "Address is required!"),
-    phone: z.string().min(1, "Phone number is required!").regex(/^[0-9]+$/,"Phone number must contain only digits"),
+    phone: z
+      .string()
+      .min(1, "Phone number is required!")
+      .regex(/^[0-9]+$/, "Phone number must contain only digits")
+      .regex(/^(08|\+62)/, "Phone number must start with +62 or 08"),
     born: z.coerce.date(),
     // affiliation: z.string().min(1, "Affiliation is required!"), // Uncommented line
     // reference: z.string().min(1, "Reference is required!"), // Uncommented line
