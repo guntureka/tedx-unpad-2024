@@ -344,8 +344,8 @@ const Dashboard: React.FC = () => {
               })}
               error={errorsProfile.interest}
               options={[
-                "Inferiority Complex",
-                "Personalized Algorithm",
+                "Post Colonialism & Inferiority Complex",
+                "Social Media Algorithm ",
                 "Quarter Life Crisis",
                 "Economics & Entrepreneurship",
               ]}

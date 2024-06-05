@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import LabeledInput from "@/components/ui/labeledinput";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useNavbarType } from "@/components/navbarcontext";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -40,6 +41,11 @@ export const RegisterForm = () => {
       confirmPassword: "",
     },
   });
+  
+  const { setNavbarType } = useNavbarType();
+  useEffect(() => {
+    setNavbarType("blank");
+  })
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     console.log(values);
@@ -71,7 +77,7 @@ export const RegisterForm = () => {
       </div>
 
       <div className="flex flex-col justify-center space-y-1 p-4 font-inter md:p-10">
-        <h1 className="mb-5 text-2xl font-semibold text-white md:text-3xl">
+        <h1 className="mb-5 text-2xl font-semibold text-white md:text-3xl md:mx-9 mx-4">
           Register
         </h1>
         <FormError message={error} />
@@ -199,26 +205,26 @@ export const RegisterForm = () => {
                   <input
                     type="radio"
                     id="interestIC"
-                    value="Inferiority Complex"
+                    value="Post Colonialism & Inferiority Complex"
                     {...register("interest", {
                       required: "Interest is required",
                     })}
                   />
                   <label htmlFor="interestIC" className="ml-2 text-white">
-                    Inferiority Complex
+                  Post Colonialism & Inferiority Complex
                   </label>
                 </div>
                 <div className="flex items-center">
                   <input
                     type="radio"
                     id="interestPA"
-                    value="Personalized Algorithm"
+                    value="Social Media Algorithm"
                     {...register("interest", {
                       required: "Interest is required",
                     })}
                   />
                   <label htmlFor="interestPA" className="ml-2 text-white">
-                    Personalized Algorithm
+                  Social Media Algorithm
                   </label>
                 </div>
                 <div className="flex items-center">
@@ -238,7 +244,7 @@ export const RegisterForm = () => {
                   <input
                     type="radio"
                     id="interestFF"
-                    value="Financial Freedom"
+                    value="Economics & Entrepreneurship"
                     {...register("interest", {
                       required: "Interest is required",
                     })}

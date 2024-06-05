@@ -158,16 +158,30 @@ export default function MultiParallax() {
 
       <img src="./web-final.png" alt="" className="block md:hidden" />
       <motion.div
-        className="z-10 block h-24 w-36 cursor-pointer rounded-full bg-white shadow-lg md:hidden"
+        className="z-10 block h-16 w-36 cursor-pointer rounded-full bg-white shadow-lg md:hidden"
         initial={{ scale: 0 }}
         animate={{ rotate: 360, scale: 1 }}
+        style={{
+          x: 10,
+          y: -200,
+        }}
+      >
+        <h1 className="text-wrap px-3 py-4 text-center font-inter text-xs">
+          Open via desktop for a better experience!
+        </h1>
+      </motion.div>
+
+      <motion.div
+        className="z-10 mt-4 block h-16 w-36 cursor-pointer rounded-full bg-white shadow-lg md:hidden"
+        initial={{ scale: 0 }}
+        animate={{ rotate: -360, scale: 1 }}
         style={{
           x: 190,
           y: -400,
         }}
       >
-        <h1 className="text-wrap px-3 py-4 text-center font-inter text-sm">
-          Open via desktop for a better experience!
+        <h1 className="text-wrap px-3 py-2 text-center font-inter text-xs">
+          Remember to rescan the QR code after login & register!
         </h1>
       </motion.div>
     </>
