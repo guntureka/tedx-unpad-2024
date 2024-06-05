@@ -23,7 +23,7 @@ const Input = ({
   type = "text",
   disabled = false,
   required,
-  value
+  value,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,7 +41,7 @@ const Input = ({
         {...register}
         required={required}
         value={value}
-        className="text-gray-light w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-dark py-4 relative"
+        className="text-gray-300 w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600 py-4 relative"
       />
       {isPassword && (
         <button
