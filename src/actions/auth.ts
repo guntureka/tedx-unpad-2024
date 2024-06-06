@@ -1,11 +1,13 @@
 "use server";
 
-import { registerSchema } from "@/lib/schemas";
+import { loginSchema, registerSchema } from "@/lib/schemas";
 import { getAge } from "@/utils/converter";
 import { db } from "@/utils/db";
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 import { getUserByEmail } from "./user";
+import { signIn } from "@/auth";
+import { AuthError, CredentialsSignin } from "next-auth";
 
 export const registerAction = async (
   values: z.infer<typeof registerSchema>
@@ -59,6 +61,8 @@ export const registerAction = async (
             email,
           },
         },
+        firstName: firstName,
+        lastName: lastName,
         address: address,
         phone: phone,
         age: age,
@@ -73,5 +77,50 @@ export const registerAction = async (
     };
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const credentialsLogin = async (values: z.infer<typeof loginSchema>) => {
+  const validatedFields = loginSchema.safeParse(values);
+
+  if (!validatedFields.success) {
+    return {
+      error: "Invalid fields!",
+    };
+  }
+
+  const { email, password } = validatedFields.data;
+
+  const user = await getUserByEmail(email);
+
+  if (!user) {
+    return {
+      error: "User did not exist!",
+    };
+  }
+
+  const passwordMatch = await bcrypt.compare(password, user.password!);
+
+  if (!passwordMatch) {
+    return {
+      error: "Password did not match!",
+    };
+  }
+
+  try {
+    await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid credentials!" };
+        default:
+          return { error: "Something went wrong!" };
+      }
+    }
   }
 };

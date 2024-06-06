@@ -2,18 +2,23 @@
 
 import { loginSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState, useTransition } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import FormField from "../ui/form-field";
 import Link from "next/link";
 import { FormSuccess } from "../ui/success-form";
 import { FormError } from "../ui/error-form";
+import { credentialsLogin } from "@/actions/auth";
+import { signIn } from "next-auth/react";
+import { AuthError } from "next-auth";
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+  const params = useSearchParams();
 
   const {
     handleSubmit,
@@ -27,9 +32,43 @@ const LoginForm = () => {
     },
   });
 
+  useEffect(() => {
+    const errorParams = params.get("error");
+
+    if (errorParams) {
+      switch (errorParams) {
+        case "OAuthAccountNotLinked":
+          setError("Try login with another provider");
+        default:
+          return;
+      }
+    }
+  }, [params]);
+
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
-    console.log(values);
+    setError("");
+    setSuccess("");
+    startTransition(() => {
+      credentialsLogin(values)
+        .then((data) => {
+          if (data && data.error) {
+            setError(data.error);
+          } else {
+            setSuccess("Login successed!");
+          }
+        })
+        .catch((error) => setError(error));
+    });
   };
+
+  const handleProviderLogin = async (provider: string) => {
+    setError("");
+    setSuccess("");
+    startTransition(async () => {
+      await signIn(provider);
+    });
+  };
+
   return (
     <div className="flex flex-col justify-center  w-full space-y-10 py-20 z-10">
       <h1 className="text-2xl md:text-3xl text-start font-bold">Login</h1>
@@ -63,7 +102,9 @@ const LoginForm = () => {
           </Link>
           <button
             type="submit"
-            className="w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4"
+            className={`w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+              isPending ? "cursor-progress opacity-50" : ""
+            }`}
           >
             Submit
           </button>
@@ -71,10 +112,10 @@ const LoginForm = () => {
         <p className="text-center text-gray-400">or</p>
         <button
           type="button"
-          onClick={() => {
-            console.log("google");
-          }}
-          className="w-full rounded-lg flex items-center justify-center gap-4  bg-white text-black py-4 duration-150 hover:bg-gray-400"
+          onClick={() => handleProviderLogin("google")}
+          className={`w-full rounded-lg flex items-center justify-center gap-4  bg-white text-black py-4 duration-150 hover:bg-gray-400 ${
+            isPending ? "cursor-progress opacity-50" : ""
+          }`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
