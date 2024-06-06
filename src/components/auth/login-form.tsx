@@ -70,7 +70,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center  w-full space-y-10 py-20 z-10">
+    <div className="flex flex-col justify-center  w-full space-y-10 py-40 z-10">
       <h1 className="text-2xl md:text-3xl text-start font-bold">Login</h1>
       <div className="flex flex-col justify-center  w-full space-y-4">
         <FormSuccess message={success} />
@@ -96,7 +96,7 @@ const LoginForm = () => {
           />
           <Link
             href="/auth/reset"
-            className="font-inter-400 ml-[10px] text-[14px] text-white hover:underline"
+            className=" text-sm text-white underline-offset-4 underline"
           >
             Forget Password?
           </Link>
@@ -147,7 +147,10 @@ const LoginForm = () => {
         <p className="font-inter-400 mt-[26px] py-[10px] text-center text-[16px] text-white">
           Don&apos;t have an account?&nbsp;
           <span>
-            <Link href="/auth/register" className="underline">
+            <Link
+              href="/auth/register"
+              className="underline underline-offset-4"
+            >
               Register
             </Link>
           </span>

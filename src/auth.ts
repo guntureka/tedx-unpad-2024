@@ -16,43 +16,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
     signIn: "/auth/login",
   },
-  providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    Credentials({
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        const validatedFields = loginSchema.safeParse(credentials);
 
-        if (validatedFields.success) {
-          const { email, password } = validatedFields.data;
-
-          const user = await getUserByEmail(email);
-
-          if (!user || !user.password) {
-            // throw new Error("Invalid emai or password!");
-            return null;
-          }
-
-          const passwordMatch = await bcrypt.compare(password, user.password);
-
-          if (!passwordMatch) {
-            // throw new Error("Password did not match!");
-            return null;
-          }
-
-          return user;
-        }
-        // throw new CredentialsSignin("Please Provide email and password!");
-        return null;
-      },
-    }),
-  ],
   callbacks: {
     async jwt({ token, user, profile }) {
       if (!token.sub || !user) {
@@ -111,7 +75,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         },
         data: { emailVerified: new Date() },
       });
+
+      const nameSplit = user.name?.split(" ")!;
+
+      const firstName = nameSplit[0]!;
+      const lastName = nameSplit.slice(1).join(" ");
+
+      await db.profile.create({
+        data: {
+          user: {
+            connect: {
+              id: user.id,
+            },
+          },
+          firstName: firstName,
+          lastName: lastName,
+        },
+      });
     },
   },
-  // ...authConfig,
+  ...authConfig,
 });

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import dynamic from "next/dynamic";
 
@@ -9,7 +7,7 @@ const AnimationNotFound = dynamic(
 
 const NotFound = () => {
   return (
-    <main className="flex flex-col justify-center w-full h-screen md:p-20 p-10">
+    <main className="flex flex-col justify-center w-full h-screen lg:p-20 p-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
         <div className="flex flex-col space-y-10 justify-center ">
           <h1 className="md:text-6xl text-2xl font-extrabold">

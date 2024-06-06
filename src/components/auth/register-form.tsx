@@ -66,7 +66,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center  w-full space-y-10 py-20 z-10">
+    <div className="flex flex-col justify-center  w-full space-y-10 py-40 z-10">
       <h1 className="text-2xl md:text-3xl text-start font-bold">Register</h1>
       <div className="flex flex-col justify-center  w-full space-y-4">
         <FormSuccess message={success} />
@@ -186,7 +186,7 @@ const RegisterForm = () => {
         <p className="font-inter-400 mt-[26px] py-[10px] text-center text-[16px] text-white">
           have an account?&nbsp;
           <span>
-            <Link href="/auth/login" className="underline">
+            <Link href="/auth/login" className="underline underline-offset-4">
               Login
             </Link>
           </span>

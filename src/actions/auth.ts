@@ -93,10 +93,16 @@ export const credentialsLogin = async (values: z.infer<typeof loginSchema>) => {
 
   const user = await getUserByEmail(email);
 
-  if (!user) {
+  if (!user ) {
     return {
       error: "User did not exist!",
     };
+  }
+
+  if(!user.password){
+    return {
+      error: "Try login with another provider!"
+    }
   }
 
   const passwordMatch = await bcrypt.compare(password, user.password!);
