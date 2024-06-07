@@ -12,7 +12,7 @@ const Footer = () => {
       </div>
       <div className="flex w-full flex-col gap-x-8 gap-y-6 font-inter sm:w-auto sm:flex-row sm:gap-y-0 md:gap-x-16 lg:gap-x-24">
         <div className="flex w-1/2 flex-col gap-y-4 font-inter sm:w-auto sm:gap-y-6">
-          <p className="text-sm font-semibold text-white sm:text-base">
+          <p className="text-lg font-semibold text-white sm:text-xl">
             Follow us on
           </p>
           <a

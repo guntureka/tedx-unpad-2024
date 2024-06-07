@@ -4,6 +4,11 @@ import FestivalBanner from "@/components/ui/festival-banner";
 import ProfileForm from "@/components/profile/profile-form";
 import { auth } from "@/auth";
 import { getProfileByUserId } from "@/actions/profile";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
 const ProfilePage = async () => {
   const session = await auth();

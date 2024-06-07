@@ -1,5 +1,10 @@
 import FestivalBanner from "@/components/ui/festival-banner";
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Submission",
+};
 
 const SubmissionPage = () => {
   return (

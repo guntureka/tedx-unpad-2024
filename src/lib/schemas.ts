@@ -48,3 +48,7 @@ export const profileSchema = z.object({
   interest: z.string().min(1, "Interest is required!"),
   // image: z.any()
 });
+
+export const riddleSchema = z.object({
+  answer: z.string().min(1, "Required answer!"),
+});

@@ -44,7 +44,10 @@ const Input = ({
         required={required}
         defaultValue={value}
         name={name}
-        className="text-gray-300 w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600 py-4 relative"
+        className={cn(
+          "text-gray-300 w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600 py-4 relative",
+          className
+        )}
       />
       {isPassword && (
         <button
