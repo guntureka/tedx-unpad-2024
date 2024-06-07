@@ -7,7 +7,10 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import React from "react";
+
+
 const RiddlePage = () => {
   return (
     <main className="">
@@ -53,7 +56,7 @@ const RiddlePage = () => {
               <CardHeader className="text-black font-garamound text-center font-ebgaramond text-4xl font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
                 So what is it?
               </CardHeader>
-              <RiddleForm />
+              <RiddleForm variants="riddle" />
             </CardContent>
           </Card>
         </div>
