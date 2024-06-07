@@ -24,6 +24,7 @@ const LoginForm = () => {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -55,6 +56,7 @@ const LoginForm = () => {
             setError(data.error);
           } else {
             setSuccess("Login successed!");
+            reset();
           }
         })
         .catch((error) => setError(error));

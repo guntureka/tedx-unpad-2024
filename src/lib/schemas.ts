@@ -32,3 +32,19 @@ export const registerSchema = z
       path: ["confirmPassword"],
     }
   );
+
+export const profileSchema = z.object({
+  firstName: z.string().min(1, "First name is required!"),
+  lastName: z.string().min(1, "Last name is required!"),
+  born: z.coerce.date(),
+  phone: z
+    .string()
+    .min(1, "Phone number is required!")
+    .regex(/^[0-9]+$/, "Phone number must contain only digits")
+    .regex(/^(08|62)/, "Phone number must start with 62 or 08"),
+  address: z.string().min(1, "Address is required!"),
+  affiliation: z.string().min(1, "Affiliation is required!"),
+  reference: z.string().min(1, "Reference is required!"),
+  interest: z.string().min(1, "Interest is required!"),
+  // image: z.any()
+});

@@ -7,6 +7,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
+const authorizeRoute = ["/profile", "/submission"];
+
 const Header = ({ session }: { session: Session | null }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const pathname = usePathname();
@@ -39,12 +41,12 @@ const Header = ({ session }: { session: Session | null }) => {
           </div>
           {/* ------------------------- Middle Menu -------------------------- */}
           <div className=" hidden md:flex">
-            {pathname.includes("/profile") ? (
+            {authorizeRoute.includes(pathname) ? (
               <div className="flex justify-center items-center gap-4 text-black">
-                <Link href={"#"} className="text-black">
+                <Link href={"/profile"} className="text-black">
                   Profile
                 </Link>
-                <Link href={"#"} className="text-black">
+                <Link href={"/submission"} className="text-black">
                   Submission
                 </Link>
               </div>
@@ -68,27 +70,41 @@ const Header = ({ session }: { session: Session | null }) => {
                   onClick={() => setOpen(!isOpen)}
                 >
                   {isOpen ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 32 32"
-                      fill="currentColor"
-                      className="h-[24px] w-[24px]"
-                    >
-                      <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
-                    </svg>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 32 32"
+                        fill="currentColor"
+                        className="h-[24px] w-[24px]"
+                      >
+                        <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
+                      </svg>
+                    </div>
                   ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-[24px] w-[24px]"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <div>
+                      {session.user.image ? (
+                        <Image
+                          src={session.user.image}
+                          alt="profile-photo"
+                          width={32}
+                          height={32}
+                          className="rounded-full"
+                        />
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="h-[24px] w-[24px]"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      )}
+                    </div>
                   )}
                 </button>
 
@@ -99,7 +115,7 @@ const Header = ({ session }: { session: Session | null }) => {
                         <div className=" flex-col justify-center items-start w-full space-y-2 md:flex">
                           <div
                             className={`${
-                              pathname.includes("/profile")
+                              authorizeRoute.includes(pathname)
                                 ? `flex md:hidden `
                                 : ` `
                             }flex flex-col justify-center items-start w-full space-y-2 `}
@@ -112,7 +128,7 @@ const Header = ({ session }: { session: Session | null }) => {
                               Profile
                             </Link>
                             <Link
-                              href={"/profile"}
+                              href={"/submission"}
                               onClick={() => setOpen(!isOpen)}
                               className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
                             >
@@ -122,7 +138,7 @@ const Header = ({ session }: { session: Session | null }) => {
                           </div>
                           <div
                             className={`${
-                              pathname.includes("/profile")
+                              authorizeRoute.includes(pathname)
                                 ? ``
                                 : `flex md:hidden `
                             }flex flex-col justify-center items-start w-full space-y-2 `}

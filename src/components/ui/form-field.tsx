@@ -23,6 +23,7 @@ interface FormFieldProps {
   variants?: "input" | "textarea";
   required?: boolean;
   value?: string;
+  name?: string;
 }
 
 const FormField = ({
@@ -38,6 +39,7 @@ const FormField = ({
   variants = "input",
   required = false,
   value,
+  name = id,
 }: FormFieldProps) => {
   return (
     <div className={cn("relative w-full space-y-1", className)}>
@@ -64,6 +66,7 @@ const FormField = ({
           placeholder={placeholder}
           required={required}
           value={value}
+          name={name}
         />
       )}
       {error && <p className="text-sm text-red-500 py-2">{error.message}</p>}

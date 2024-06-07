@@ -29,6 +29,7 @@ const RegisterForm = () => {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -57,6 +58,7 @@ const RegisterForm = () => {
           }
           if (data && data.success) {
             setSuccess(data.success);
+            reset();
           }
         })
         .catch((error) => {
@@ -85,7 +87,7 @@ const RegisterForm = () => {
               error={errors.firstName}
             />
             <FormField
-              id="lastNanme"
+              id="lastName"
               label="Last name"
               placeholder="Enter your last name"
               register={register("lastName")}
@@ -167,8 +169,9 @@ const RegisterForm = () => {
                     value={data}
                     register={register("interest")}
                     type="radio"
+                    name="interest"
                   />
-                  <Label id={"interest"} label={data} className="" />
+                  <Label id={`interest-${index}`} label={data} className="" />
                 </div>
               ))}
             </div>

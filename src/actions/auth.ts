@@ -34,7 +34,7 @@ export const registerAction = async (
   } = validatedFields.data;
 
   const age = getAge(born);
-  const name = values.firstName.concat(" ", values.lastName);
+  const name = firstName.concat(" ", lastName);
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
@@ -69,6 +69,7 @@ export const registerAction = async (
         affiliate: affiliation,
         reference: reference,
         interest: interest,
+        born: born,
       },
     });
 
@@ -93,16 +94,16 @@ export const credentialsLogin = async (values: z.infer<typeof loginSchema>) => {
 
   const user = await getUserByEmail(email);
 
-  if (!user ) {
+  if (!user) {
     return {
       error: "User did not exist!",
     };
   }
 
-  if(!user.password){
+  if (!user.password) {
     return {
-      error: "Try login with another provider!"
-    }
+      error: "Try login with another provider!",
+    };
   }
 
   const passwordMatch = await bcrypt.compare(password, user.password!);

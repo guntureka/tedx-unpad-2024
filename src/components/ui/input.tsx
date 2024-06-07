@@ -12,6 +12,7 @@ interface InputProps {
   disabled?: boolean;
   required?: boolean;
   value?: string;
+  name?: string;
 }
 
 const Input = ({
@@ -24,6 +25,7 @@ const Input = ({
   disabled = false,
   required,
   value,
+  name,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -40,8 +42,8 @@ const Input = ({
         disabled={disabled}
         {...register}
         required={required}
-        value={value}
-        name={id}
+        defaultValue={value}
+        name={name}
         className="text-gray-300 w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600 py-4 relative"
       />
       {isPassword && (
