@@ -38,12 +38,12 @@ export default function MultiParallax() {
               y: -200,
             }}
           >
-            <h1 className="py-8 text-center font-inter text-2xl font-semibold">
+            <h1 className="text-black py-8 text-center font-inter text-2xl font-semibold">
               Fancy to taste the flavors of wisdom?
             </h1>
           </motion.div>
           <motion.img
-            src="./asset/waiter.svg"
+            src="./assets/parallax/waiter.svg"
             alt=""
             className="absolute z-40 object-cover"
             initial={{ scale: 0 }}
@@ -56,7 +56,7 @@ export default function MultiParallax() {
             }}
           />
           <motion.img
-            src="./asset/building.svg"
+            src="./assets/parallax/building.svg"
             alt=""
             className="absolute inset-0 z-20 object-cover"
             style={{
@@ -64,7 +64,7 @@ export default function MultiParallax() {
             }}
           />
           <motion.img
-            src="/asset/background.svg"
+            src="/assets/background.svg"
             alt=""
             className="absolute inset-0 z-0 object-cover"
             style={{
@@ -75,7 +75,7 @@ export default function MultiParallax() {
             }}
           />
           <motion.img
-            src="./asset/people1.svg"
+            src="./assets/parallax/people1.svg"
             alt=""
             className="absolute z-10 object-cover"
             style={{
@@ -88,7 +88,7 @@ export default function MultiParallax() {
             }}
           />
           <motion.img
-            src="./asset/people2.svg"
+            src="./assets/parallax/people2.svg"
             alt=""
             className="absolute z-10 object-cover"
             style={{
@@ -101,7 +101,7 @@ export default function MultiParallax() {
             }}
           />
           <motion.img
-            src="./asset/bush.svg"
+            src="./assets/parallax/bush.svg"
             alt=""
             className="absolute z-30 object-cover"
             style={{
@@ -114,7 +114,7 @@ export default function MultiParallax() {
         </div>
         <div className="hidden overflow-hidden bg-black-abs pb-24 pt-[50px] sm:block">
           <motion.img
-            src="./asset/podium.svg"
+            src="./assets/parallax/podium.svg"
             alt=""
             className="absolute z-50 overflow-visible object-cover"
             style={{
@@ -129,7 +129,7 @@ export default function MultiParallax() {
           <h1 className="text-4xl text-white"></h1>
 
           <motion.img
-            src="./asset/Nampan.svg"
+            src="./assets/parallax/Nampan.svg"
             alt=""
             className="absolute z-0 overflow-hidden object-cover"
             style={{
