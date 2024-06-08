@@ -8,10 +8,6 @@ export const getUserByEmail = async (email: string) => {
       },
     });
 
-    if (!user) {
-      return null;
-    }
-
     return user;
   } catch (error) {
     console.log(error);

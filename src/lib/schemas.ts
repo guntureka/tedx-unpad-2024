@@ -56,3 +56,18 @@ export const riddleSchema = z.object({
 export const forgotPasswordSchema = z.object({
   email: z.string().email("Email is required!"),
 });
+
+export const newPasswordSchema = z
+  .object({
+    password: z.string().min(6, "Password is required!"),
+    confirmPassword: z.string().min(6, "Confirmation password is required!"),
+  })
+  .refine(
+    (data) => {
+      return data.confirmPassword === data.password;
+    },
+    {
+      message: "Password do not match!",
+      path: ["confirmPassword"],
+    }
+  );

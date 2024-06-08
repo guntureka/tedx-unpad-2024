@@ -13,12 +13,15 @@ import { credentialsLogin } from "@/actions/auth";
 import { signIn } from "next-auth/react";
 import { AuthError } from "next-auth";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+
   const params = useSearchParams();
+  const router = useRouter();
 
   const {
     handleSubmit,
@@ -57,6 +60,7 @@ const LoginForm = () => {
           } else {
             setSuccess("Login successed!");
             reset();
+            router.push("/");
           }
         })
         .catch((error) => setError(error));

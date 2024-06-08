@@ -12,6 +12,7 @@ import Input from "../ui/input";
 import { FormSuccess } from "../ui/success-form";
 import { FormError } from "../ui/error-form";
 import { registerAction } from "@/actions/auth";
+import { useRouter } from "next/navigation";
 
 const interestData = [
   "Post Colonialism & Inferiority Complex",
@@ -24,6 +25,8 @@ const RegisterForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+
+  const router = useRouter();
 
   const {
     handleSubmit,

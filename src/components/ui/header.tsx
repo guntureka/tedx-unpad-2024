@@ -40,26 +40,35 @@ const Header = ({ session }: { session: Session | null }) => {
             </Link>
           </div>
           {/* ------------------------- Middle Menu -------------------------- */}
-          <div className=" hidden md:flex">
-            {authorizeRoute.includes(pathname) ? (
-              <div className="flex justify-center items-center gap-4 text-black">
-                <Link href={"/profile"} className="text-black">
-                  Profile
-                </Link>
-                <Link href={"/submission"} className="text-black">
-                  Submission
-                </Link>
-              </div>
-            ) : (
-              <div className="flex justify-center items-center gap-4 text-black">
-                <Link href={"#"} className="text-black">
-                  Event
-                </Link>
-                <Link href={"#"} className="text-black">
-                  Partnership
-                </Link>
-              </div>
-            )}
+          <div className="flex">
+            <div className="hidden md:flex">
+              {authorizeRoute.includes(pathname) ? (
+                <div className="flex justify-center items-center gap-4 text-black">
+                  <Link href={"/profile"} className="text-black">
+                    Profile
+                  </Link>
+                  <Link href={"/submission"} className="text-black">
+                    Submission
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex justify-center items-center gap-4 text-black">
+                  <Link href={"#"} className="text-black">
+                    Event
+                  </Link>
+                  <Link href={"#"} className="text-black">
+                    Partnership
+                  </Link>
+                </div>
+              )}
+            </div>
+            <Image
+              src={"/logo-white.png"}
+              alt="logo"
+              width={164}
+              height={32}
+              className="md:hidden block:"
+            />
           </div>
           {/* ------------------------- Right Menu -------------------------- */}
           <div>

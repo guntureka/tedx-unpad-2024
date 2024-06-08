@@ -4,7 +4,10 @@ export const authRoutes = [
   "/auth/login",
   "/auth/register",
   "/auth/forgot-password",
+  "/auth/new-password",
 ];
+
+export const adminRoutes = "/dashboard";
 
 export const apiAuthPrefix = "/api/auth";
 
