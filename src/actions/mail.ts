@@ -15,7 +15,7 @@ export const sendPasswordResetByEmail = async (
   email: string,
   token: string
 ) => {
-  const appUrl = process.env.APP_URL || "http://localhost:3000";
+  const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
   const resetLink = `${appUrl}/auth/new-password?token=${token}`;
 
   const mailOptions = {
