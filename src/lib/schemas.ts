@@ -52,3 +52,7 @@ export const profileSchema = z.object({
 export const riddleSchema = z.object({
   answer: z.string().min(1, "Required answer!"),
 });
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().email("Email is required!"),
+});

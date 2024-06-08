@@ -1,6 +1,10 @@
 "use server";
 
-import { loginSchema, registerSchema } from "@/lib/schemas";
+import {
+  forgotPasswordSchema,
+  loginSchema,
+  registerSchema,
+} from "@/lib/schemas";
 import { getAge } from "@/utils/converter";
 import { db } from "@/utils/db";
 import { z } from "zod";
@@ -8,6 +12,8 @@ import bcrypt from "bcryptjs";
 import { getUserByEmail } from "./user";
 import { signIn } from "@/auth";
 import { AuthError, CredentialsSignin } from "next-auth";
+import { generatePasswordResetToken } from "@/lib/tokens";
+import { sendPasswordResetByEmail } from "./mail";
 
 export const registerAction = async (
   values: z.infer<typeof registerSchema>
@@ -129,5 +135,51 @@ export const credentialsLogin = async (values: z.infer<typeof loginSchema>) => {
           return { error: "Something went wrong!" };
       }
     }
+  }
+};
+
+export const forgotPassword = async (
+  values: z.infer<typeof forgotPasswordSchema>
+) => {
+  const validatedFields = forgotPasswordSchema.safeParse(values);
+
+  if (!validatedFields.success) {
+    return {
+      error: "Invalid fields",
+    };
+  }
+
+  const { email } = validatedFields.data;
+
+  const user = await getUserByEmail(email);
+
+  if (!user) {
+    return {
+      error: "Email not found",
+    };
+  }
+
+  try {
+    const passwordResetToken = await generatePasswordResetToken(email);
+
+    if (!passwordResetToken) {
+      return {
+        error: "Token failed to generated",
+      };
+    }
+    // generate email
+
+    await sendPasswordResetByEmail(
+      passwordResetToken.email!,
+      passwordResetToken.token!
+    );
+
+    console.log(passwordResetToken);
+
+    return { success: "Reset email has been sent!" };
+  } catch (error) {
+    return {
+      error: "Something went wrong!",
+    };
   }
 };

@@ -97,7 +97,7 @@ const LoginForm = () => {
             error={errors.password}
           />
           <Link
-            href="/auth/reset"
+            href="/auth/forgot-password"
             className=" text-sm text-white underline-offset-4 underline"
           >
             Forget Password?
