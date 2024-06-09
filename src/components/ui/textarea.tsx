@@ -26,8 +26,8 @@ const Textarea = ({
   return (
     <textarea
       className={cn(
-        "text-gray-light w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-dark py-4 relative resize-none",
-        className
+        "text-gray-light disabled:border-gray-dark relative w-full resize-none border-b-2 border-white bg-transparent py-4 placeholder-opacity-0 duration-150 focus:outline-0",
+        className,
       )}
       placeholder={placeholder}
       rows={3}

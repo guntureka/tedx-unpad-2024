@@ -87,10 +87,10 @@ const RiddleForm = ({ variants }: RiddleFormProps) => {
                   variants === "riddle" ? "answer here" : "video link here"
                 }`}
                 {...field}
-                className="w-full rounded border border-gray-300 p-2 sm:text-lg md:text-xl lg:text-2xl text-black bg-transparent"
+                className="w-full rounded border border-gray-300 bg-transparent p-2 text-black sm:text-lg md:text-xl lg:text-2xl"
               />
               {errors.answer && (
-                <p className="text-sm text-red-500 py-2">
+                <p className="py-2 text-sm text-red-500">
                   {errors.answer.message}
                 </p>
               )}
@@ -100,7 +100,7 @@ const RiddleForm = ({ variants }: RiddleFormProps) => {
         <button
           type="submit"
           disabled={isPending}
-          className="rounded bg-red-500 p-2 font-inter text-white sm:p-3 md:p-4 lg:p-5"
+          className="font-inter rounded bg-red-500 p-2 text-white sm:p-3 md:p-4 lg:p-5"
         >
           Submit
         </button>

@@ -10,18 +10,17 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
-
 const RiddlePage = () => {
   return (
     <main className="">
       <div className="">
         <LampShow />
       </div>
-      <div className="flex flex-col w-full min-h-screen px-10 lg:px-20 py-20">
-        <div className="flex flex-col space-y-14 max-w-3xl mx-auto">
-          <Card className=" border-gray-600 bg-[#F5F5F5] ">
+      <div className="flex min-h-screen w-full flex-col px-10 py-20 lg:px-20">
+        <div className="mx-auto flex max-w-3xl flex-col space-y-14">
+          <Card className="border-gray-600 bg-[#F5F5F5]">
             <CardContent>
-              <CardDescription className="text-black py-5 text-center font-inter text-lg sm:text-xl md:text-2xl lg:text-3xl">
+              <CardDescription className="font-inter py-5 text-center text-lg text-black sm:text-xl md:text-2xl lg:text-3xl">
                 Congratulations on discovering the secret riddle website! Your
                 curiosity and problem-solving skills have led you to this hidden
                 gem. Prepare yourself for a journey filled with challenging
@@ -30,17 +29,17 @@ const RiddlePage = () => {
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className=" border-gray-600 bg-[#F5F5F5] ">
+          <Card className="border-gray-600 bg-[#F5F5F5]">
             <CardContent>
-              <CardHeader className="text-center text-black font-ebgaramond text-4xl font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
+              <CardHeader className="font-ebgaramond text-center text-4xl font-semibold text-black sm:text-5xl md:text-6xl lg:text-7xl">
                 First Riddle
               </CardHeader>
-              <CardDescription className="text-black text-center font-inter text-lg sm:text-xl md:text-2xl lg:text-3xl">
+              <CardDescription className="font-inter text-center text-lg text-black sm:text-xl md:text-2xl lg:text-3xl">
                 Can you guess this puzzle?
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className=" border-gray-600 bg-[#F5F5F5] ">
+          <Card className="border-gray-600 bg-[#F5F5F5]">
             <CardContent>
               <Image
                 src="/assets/RiddleFix.jpg"
@@ -51,9 +50,9 @@ const RiddlePage = () => {
               />
             </CardContent>
           </Card>
-          <Card className=" border-gray-600 bg-[#F5F5F5]">
+          <Card className="border-gray-600 bg-[#F5F5F5]">
             <CardContent>
-              <CardHeader className="text-black font-garamound text-center font-ebgaramond text-4xl font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
+              <CardHeader className="font-garamound font-ebgaramond text-center text-4xl font-semibold text-black sm:text-5xl md:text-6xl lg:text-7xl">
                 So what is it?
               </CardHeader>
               <RiddleForm variants="riddle" />

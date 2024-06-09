@@ -11,7 +11,7 @@ const Label = ({ id, label, className }: LabelProps) => {
   return (
     <label
       htmlFor={id}
-      className={cn("leading-tight block text-md", className)}
+      className={cn("text-md block leading-tight", className)}
     >
       {label}
     </label>

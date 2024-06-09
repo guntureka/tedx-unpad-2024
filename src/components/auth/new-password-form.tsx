@@ -73,11 +73,11 @@ const NewPasswordForm = ({ token }: { token: string }) => {
           error={errors.confirmPassword}
           isPassword
         />
-        <div className="flex w-full justify-center items-center">
+        <div className="flex w-full items-center justify-center">
           <button
             type="submit"
             disabled={isPending}
-            className={`w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+            className={`w-full rounded-lg bg-red-600 py-4 text-white duration-150 hover:bg-red-700 ${
               isPending ? "cursor-progress opacity-50" : ""
             }`}
           >

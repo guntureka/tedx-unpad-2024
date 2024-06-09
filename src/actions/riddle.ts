@@ -1,4 +1,4 @@
-'use server'
+"use server";
 
 import { riddleSchema } from "@/lib/schemas";
 import { db } from "@/utils/db";
@@ -6,7 +6,7 @@ import { z } from "zod";
 
 export const createRiddleSubmission = async (
   id: string,
-  values: z.infer<typeof riddleSchema>
+  values: z.infer<typeof riddleSchema>,
 ) => {
   const validatedFields = riddleSchema.safeParse(values);
 
@@ -17,7 +17,7 @@ export const createRiddleSubmission = async (
   }
 
   const { answer } = validatedFields.data;
-  console.log(id)
+  console.log(id);
 
   try {
     await db.riddleSubmission.create({

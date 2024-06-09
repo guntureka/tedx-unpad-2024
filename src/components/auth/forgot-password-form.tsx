@@ -61,21 +61,21 @@ const ForgotPasswordForm = () => {
                 id="email"
                 placeholder="Enter your email here"
                 {...field}
-                className="w-full rounded border bg-white border-gray-300 py-4 px-2  text-black bg-transparent"
+                className="w-full rounded border border-gray-300 bg-transparent bg-white px-2 py-4 text-black"
               />
               {errors.email && (
-                <p className="text-sm text-red-500 py-2 ">
+                <p className="py-2 text-sm text-red-500">
                   {errors.email.message}
                 </p>
               )}
             </div>
           )}
         />
-        <div className="flex w-full justify-center items-center">
+        <div className="flex w-full items-center justify-center">
           <button
             type="submit"
             disabled={isPending}
-            className={`w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+            className={`w-full rounded-lg bg-red-600 py-4 text-white duration-150 hover:bg-red-700 ${
               isPending ? "cursor-progress opacity-50" : ""
             }`}
           >

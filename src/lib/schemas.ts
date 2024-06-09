@@ -30,7 +30,7 @@ export const registerSchema = z
     {
       message: "Password do not match!",
       path: ["confirmPassword"],
-    }
+    },
   );
 
 export const profileSchema = z.object({
@@ -69,5 +69,5 @@ export const newPasswordSchema = z
     {
       message: "Password do not match!",
       path: ["confirmPassword"],
-    }
+    },
   );
