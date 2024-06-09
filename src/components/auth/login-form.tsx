@@ -1,3 +1,4 @@
+
 "use client";
 
 import { loginSchema } from "@/lib/schemas";
@@ -61,6 +62,7 @@ const LoginForm = () => {
             setSuccess("Login successed!");
             reset();
             router.push("/");
+            router.refresh();
           }
         })
         .catch((error) => setError(error));
