@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const LoginPage = () => {
   return (
     <main className="flex flex-col w-full h-screen px-10 lg:px-20">
-      <div className="grid grid-cols-1 w-full h-full md:grid-cols-2 md:gap-14">
+      <div className="grid grid-cols-1 w-full h-full md:grid-cols-2 md:gap-14 overflow-hidden">
         <div className="w-full md:relative md:flex hidden">
           <Image
             src={"/loginbg.png"}
