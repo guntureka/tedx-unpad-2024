@@ -50,7 +50,7 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en " suppressHydrationWarning>
-      <body className={cn("bg-[#1F1F1F]", inter.className)}>
+      <body className={cn("bg-gradient-to-r from-[#000000] to-[#451b15] from-50%", inter.className)}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <Header session={session} />
