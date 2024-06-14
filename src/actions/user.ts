@@ -13,3 +13,7 @@ export const getUserByEmail = async (email: string) => {
     console.log(error);
   }
 };
+
+export const getAllUser = async () => {
+  
+}

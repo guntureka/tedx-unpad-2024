@@ -25,6 +25,10 @@ export default auth((req) => {
     return;
   }
 
+  // if (nextUrl.pathname.startsWith("/api/migration")) {
+  //   return;
+  // }
+
   if (isAuthRoute) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
