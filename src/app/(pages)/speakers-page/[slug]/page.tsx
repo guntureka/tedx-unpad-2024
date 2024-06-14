@@ -10,6 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import { Metadata } from "next";
+
 
 interface Speaker {
   slug: string;
@@ -24,6 +26,10 @@ interface Speaker {
 interface SpeakersPageProps {
   params: { slug: string };
 }
+
+export const metadata: Metadata = {
+  title: "Topic Talks",
+};
 
 const SpeakersPage: React.FC<SpeakersPageProps> = ({ params }) => {
   const { slug } = params;
@@ -62,8 +68,12 @@ const SpeakersPage: React.FC<SpeakersPageProps> = ({ params }) => {
               />
             </CardHeader>
             <CardContent className="content-center">
-              <p className="text-black md:text-white md:-py-10 font-bold">{title}</p>
-              <p className="text-black md:text-white font-semibold">{Nama_Speakers}</p>
+              <p className="text-black md:text-white md:-py-10 font-bold">
+                {title}
+              </p>
+              <p className="text-black md:text-white font-semibold">
+                {Nama_Speakers}
+              </p>
               <p className="text-black md:text-white text-sm text-justify">
                 {Profile_Singkat} {Garis_Besar_Ted_Talks}
               </p>
