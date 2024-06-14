@@ -99,8 +99,16 @@ export const updateTicketStatusById = async (
     });
 
     return ticket;
+
+    // if return is a message, uncomment the comment section and uncomment previous return
+    // return {
+    //   success: "Ticket updated successfully",
+    // };
   } catch (error) {
     console.log(error);
+    // return {
+    //   error: "Something went wrong!",
+    // };
   }
 };
 
@@ -125,7 +133,15 @@ export const updateTicketStatusByUserId = async (
     });
 
     return ticket;
+
+    // if return is a message, uncomment the comment section and uncomment previous return
+    // return {
+    //   success: "Ticket updated successfully",
+    // };
   } catch (error) {
     console.log(error);
+    // return {
+    //   error: "Something went wrong!",
+    // };
   }
 };
