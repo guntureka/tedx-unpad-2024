@@ -29,6 +29,10 @@ export default auth((req) => {
   //   return;
   // }
 
+  if (nextUrl.pathname.startsWith("/api/test")) {
+    return;
+  }
+
   if (isAuthRoute) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
