@@ -35,11 +35,13 @@ const MainEventPage = () => {
                 Interactive Exhibition
               </p>
               <p className="text-xs text-justify py-1">
-                Imagine an exhibition where you don't just look, you
-                participate! This section will likely feature art installations
-                or displays that encourage you to touch, move, or interact with
-                them in some way. It's a chance to fully immerse yourself in the
-                artistic experience.
+                <p className="text-xs text-justify py-1">
+                  Imagine an exhibition where you don&apos;t just look, you
+                  participate! This section will likely feature art
+                  installations or displays that encourage you to touch, move,
+                  or interact with them in some way. It&apos;s a chance to fully
+                  immerse yourself in the artistic experience.
+                </p>
               </p>
             </CardContent>
           </Card>
@@ -84,8 +86,8 @@ const MainEventPage = () => {
               </p>
               <p className="text-xs text-justify py-1">
                 A multi-sensory experience that uses movement, music, and
-                audience interaction to explore the theme of "Flavors of
-                Wisdom."
+                audience interaction to explore the theme of &quot;Flavors of
+                Wisdom.&quot;
               </p>
             </CardContent>
           </Card>
@@ -152,7 +154,7 @@ const MainEventPage = () => {
               <p className="text-xs text-justify py-1">
                 Mingle with fellow wisdom wonderers! This is a designated time
                 to connect with others, share your impressions of the event, and
-                potentially build new relationships or collaborations. It's a
+                potentially build new relationships or collaborations. It&apos;s a
                 great opportunity to expand your network and meet like-minded
                 people.
               </p>
