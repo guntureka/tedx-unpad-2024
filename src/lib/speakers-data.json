@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "quarter-life-crisis",
+    "Foto_Speakers": "/speakers.jpeg",
+    "Nama_Speakers": "Fredrick Dermawan Purba",
+    "Profile_Singkat": "Speaker 1 is a renowned expert in environmental science with over 20 years of experience.",
+    "Garis_Besar_Ted_Talks": "An in-depth look at the impact of climate change on biodiversity and ecosystems.",
+    "Additional_Info": "Published multiple research papers on sustainable practices.",
+    "title": "Quarter Life Crisis"
+  },
+  {
+    "slug": "economics-and-entrepreneurship",
+    "Foto_Speakers": "/speakers.jpeg",
+    "Nama_Speakers": "Yoel Tristan Kurniawan",
+    "Profile_Singkat": "Speaker 1 is a renowned expert in environmental science with over 20 years of experience.",
+    "Garis_Besar_Ted_Talks": "An in-depth look at the impact of climate change on biodiversity and ecosystems.",
+    "Additional_Info": "Published multiple research papers on sustainable practices.",
+    "title": "Economics and Entrepreneurship"
+  },
+  {
+    "slug": "post-colonialism-and-inferiority-complex",
+    "Foto_Speakers": "/speakers.jpeg",
+    "Nama_Speakers": "Dea Anugrah",
+    "Profile_Singkat": "Speaker 1 is a renowned expert in environmental science with over 20 years of experience.",
+    "Garis_Besar_Ted_Talks": "An in-depth look at the impact of climate change on biodiversity and ecosystems.",
+    "Additional_Info": "Published multiple research papers on sustainable practices.",
+    "title": "Post Colonialism and Inferiority Complex"
+  },
+  {
+    "slug": "personalized-algorithm",
+    "Foto_Speakers": "/speakers.jpeg",
+    "Nama_Speakers": "Fredrick Dermawan Purba",
+    "Profile_Singkat": "Speaker 1 is a renowned expert in environmental science with over 20 years of experience.",
+    "Garis_Besar_Ted_Talks": "An in-depth look at the impact of climate change on biodiversity and ecosystems.",
+    "Additional_Info": "Published multiple research papers on sustainable practices.",
+    "title": "Personalized Algorithm"
+  }
+]
