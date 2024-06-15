@@ -1,8 +1,9 @@
-"use client"
+"use client";
+
 import { Metadata } from "next";
 import { profileSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Profile, Ticket } from "@prisma/client";
+import { Profile, Ticket, User } from "@prisma/client";
 import React, { useState, useTransition, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { array, z } from "zod";
@@ -12,29 +13,18 @@ import { FormSuccess } from "@/components/ui/success-form";
 import { FormError } from "@/components/ui/error-form";
 import { createTicketByUserId } from "@/actions/ticket";
 import { getAllTicket } from "@/actions/ticket";
+import { ticketSchema } from "@/lib/schemas";
 
-const ticketSchema = z.object({
-  nickname: z.string().min(1, "Nickname is required"),
-  haveAttended: z.boolean(),
-  linkedin: z.string().url().optional(),
-  instagram: z.string().url().optional(),
-  twitter: z.string().url().optional(),
-  facebook: z.string().url().optional(),
-  reason: z.string().min(1, "Reason is required"),
-  selfishReason: z.string().min(1, "Selfish reason is required"),
-  selflessReason: z.string().min(1, "Selfless reason is required"),
-  goal: array(z.string()).min(1, "Goal is required"),
-});
+
 
 const goalOptions = ["I want to A", "I want to B", "I want to C","I want to D"];
 
-const BuyTicketForm = () => {
+const BuyTicketForm = (profile:Profile) => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const [tickets, setTickets] = useState<Ticket[] | undefined>([]);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  
+
 
   useEffect(() => {
     startTransition(() => {
@@ -57,7 +47,7 @@ const BuyTicketForm = () => {
     register,
     control,
     formState: { errors },
-    watch,reset,
+    reset,
   } = useForm<z.infer<typeof ticketSchema>>({
     resolver: zodResolver(ticketSchema),
     defaultValues: {
@@ -78,22 +68,22 @@ const BuyTicketForm = () => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      createTicketByUserId(values, "666ce022e7fd044dc36af8a7")
+      createTicketByUserId(values,"666dde45689c2a827e0dae62")
         .then((data) => {
           if (data && data.status === "success") {
             setSuccess("Ticket created successfully!");
             reset();
+            console.log("kontol")
           } else {
             setError(data.message);
           }
         })
         .catch((error) => {
           setError("Something went wrong!");
+          console.log("anjing")
         });
     });
   };
-
-  
 
   return (
     <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
@@ -184,7 +174,7 @@ const BuyTicketForm = () => {
                     <div key={index} className="flex items-center space-x-2">
                       <input
                         type="checkbox"
-                        id={goal} 
+                        id={goal}
                         value={goal}
                         {...register("goal")}
                       />
@@ -203,7 +193,7 @@ const BuyTicketForm = () => {
                       isPending ? "cursor-progress opacity-50" : ""
                     }`}
                   >
-                    Save
+                    Buy Ticket!
                   </button>
 
                   <button
@@ -271,4 +261,4 @@ const BuyTicketForm = () => {
   );
 };
 
-export default BuyTicketForm
+export default BuyTicketForm;
