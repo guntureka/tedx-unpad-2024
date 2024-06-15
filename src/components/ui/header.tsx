@@ -122,52 +122,22 @@ const Header = ({ session }: { session: Session | null }) => {
                     <div className="absolute left-0 top-28 flex w-full rounded-lg bg-white text-black">
                       <div className="relative flex w-full flex-col items-start justify-center space-y-2 p-5">
                         <div className="w-full flex-col items-start justify-center space-y-2 md:flex">
-                          <div
-                            className={`${
-                              authorizeRoute.includes(pathname)
-                                ? `flex md:hidden`
-                                : ` `
-                            }flex w-full flex-col items-start justify-center space-y-2`}
-                          >
+                          {/* TODO: NEED TO FIX BY FE */}
+                          {authorizeRoute.includes(pathname) ? (
                             <Link
                               href={"/profile"}
-                              onClick={() => setOpen(!isOpen)}
                               className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
                               Profile
                             </Link>
+                          ) : (
                             <Link
-                              href={"/submission"}
-                              onClick={() => setOpen(!isOpen)}
-                              className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
-                            >
-                              Submission
-                            </Link>
-                            <hr className="w-full border bg-black" />
-                          </div>
-                          <div
-                            className={`${
-                              authorizeRoute.includes(pathname)
-                                ? ``
-                                : `flex md:hidden`
-                            }flex w-full flex-col items-start justify-center space-y-2`}
-                          >
-                            <Link
-                              href={"/profile"}
-                              onClick={() => setOpen(!isOpen)}
+                              href={"#"}
                               className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
                               Events
                             </Link>
-                            <Link
-                              href={"/profile"}
-                              onClick={() => setOpen(!isOpen)}
-                              className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
-                            >
-                              Partnership
-                            </Link>
-                            <hr className="w-full border bg-black" />
-                          </div>
+                          )}
                           <button
                             className="w-full rounded-lg bg-red-600 p-4 text-white hover:bg-red-700"
                             onClick={() => signOut()}
