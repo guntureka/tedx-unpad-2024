@@ -26,13 +26,15 @@ const ticketSchema = z.object({
   goal: array(z.string()).min(1, "Goal is required"),
 });
 
-const goalOptions = ["I want to A", "I want to B", "I want to C"];
+const goalOptions = ["I want to A", "I want to B", "I want to C","I want to D"];
 
 const BuyTicketForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const [tickets, setTickets] = useState<Ticket[] | undefined>([]);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  
 
   useEffect(() => {
     startTransition(() => {
@@ -55,7 +57,7 @@ const BuyTicketForm = () => {
     register,
     control,
     formState: { errors },
-    reset,
+    watch,reset,
   } = useForm<z.infer<typeof ticketSchema>>({
     resolver: zodResolver(ticketSchema),
     defaultValues: {
@@ -90,6 +92,8 @@ const BuyTicketForm = () => {
         });
     });
   };
+
+  
 
   return (
     <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
@@ -180,7 +184,7 @@ const BuyTicketForm = () => {
                     <div key={index} className="flex items-center space-x-2">
                       <input
                         type="checkbox"
-                        id={goal}
+                        id={goal} 
                         value={goal}
                         {...register("goal")}
                       />
