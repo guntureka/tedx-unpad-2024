@@ -120,7 +120,7 @@ model Ticket {
   selflessReason String?
   goal           String[]
   payment_image  String?
-  status         TicketStatus @default(NONE)
+  status         TicketStatus @default(REVIEW).
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique @db.ObjectId
