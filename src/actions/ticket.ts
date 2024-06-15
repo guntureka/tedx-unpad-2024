@@ -23,13 +23,13 @@ export const getAllTicket = async () => {
       status: "success",
       message: "Tickets retrieved successfully",
       data: tickets,
-    }
+    };
   } catch (error) {
     console.log(error);
     return {
       status: "error",
       message: "Something went wrong!",
-    }
+    };
   }
 };
 
@@ -46,7 +46,7 @@ export const getAllTicketCustom = async (custom: CustomOutput) => {
       status: "success",
       message: "Tickets retrieved successfully",
       data: tickets,
-    }
+    };
   } catch (error) {
     console.log(error);
     return {
@@ -73,13 +73,13 @@ export const getTicketById = async (id: string) => {
       status: "success",
       message: "Ticket retrieved successfully",
       data: tickets,
-    }
+    };
   } catch (error) {
     console.log(error);
     return {
       status: "error",
       message: "Something went wrong!",
-    }
+    };
   }
 };
 
@@ -100,13 +100,13 @@ export const getTicketByUserId = async (id: string) => {
       status: "success",
       message: "Ticket retrieved successfully",
       data: tickets,
-    }
+    };
   } catch (error) {
     console.log(error);
     return {
       status: "error",
       message: "Something went wrong!",
-    }
+    };
   }
 };
 
@@ -195,7 +195,6 @@ export const createTicketByUserId = async (data: any, userId: string) => {
         ...data,
       },
     });
-
 
     return {
       status: "success",

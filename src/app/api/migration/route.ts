@@ -9,11 +9,9 @@ import { NextResponse } from "next/server";
 export const POST = async () => {
   // try {
   //   const users = await db.user.findMany();
-
   //   if (!users) {
   //     return NextResponse.json({ error: "User doesnt exist" });
   //   }
-
   //   users.map(async (user, index) => {
   //     let firstName = "";
   //     let lastName = "";
@@ -24,7 +22,6 @@ export const POST = async () => {
   //       lastName = user.last_name;
   //     }
   //     const name = firstName.concat(" ", lastName);
-
   //     await db.user.update({
   //       where: {
   //         id: user.id,
@@ -33,13 +30,11 @@ export const POST = async () => {
   //         name: name,
   //       },
   //     });
-
   //     const existingProfile = await db.profile.findFirst({
   //       where: {
   //         userId: user.id,
   //       },
   //     });
-
   //     if (existingProfile) {
   //       await db.profile.update({
   //         where: {
@@ -64,7 +59,6 @@ export const POST = async () => {
   //       });
   //     }
   //   });
-
   //   return Response.json({ message: "Success migrate" });
   // } catch (error) {
   //   Response.json(error);
