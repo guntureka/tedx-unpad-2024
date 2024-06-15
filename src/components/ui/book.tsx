@@ -10,7 +10,12 @@ const Book: React.FC = () => {
     for (let i = 1; i <= numberOfPages; i++) {
       const imagePath = `${folderPath}/${i}.png`;
       images.push(
-        <img className="object-fit" key={i} src={imagePath} alt={`Page ${i}`} />
+        <img
+          className="object-fit"
+          key={i}
+          src={imagePath}
+          alt={`Page ${i}`}
+        />,
       );
     }
     return images;

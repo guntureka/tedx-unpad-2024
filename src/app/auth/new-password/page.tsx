@@ -20,9 +20,9 @@ const ForgotPassword = ({ searchParams }: ForgotPasswordProps) => {
   }
 
   return (
-    <main className="flex flex-col w-full justify-center items-center min-h-screen px-10 lg:px-20 py-40">
-      <div className="outline max-w-2xl outline-white outline-1 z-10 flex flex-col rounded-lg p-10 bg-[#333333] w-full space-y-10">
-        <h1 className="text-3xl font-bold text-center">New Password</h1>
+    <main className="flex min-h-screen w-full flex-col items-center justify-center px-10 py-40 lg:px-20">
+      <div className="z-10 flex w-full max-w-2xl flex-col space-y-10 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white">
+        <h1 className="text-center text-3xl font-bold">New Password</h1>
         <NewPasswordForm token={token} />
       </div>
     </main>

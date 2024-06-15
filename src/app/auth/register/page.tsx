@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <main className="flex flex-col w-full h-full px-10 lg:px-20">
-      <div className="grid grid-cols-1 w-full h-full md:grid-cols-2 md:gap-14">
-        <div className="w-full md:relative md:flex hidden">
+    <main className="flex h-full w-full flex-col px-10 lg:px-20">
+      <div className="grid h-full w-full grid-cols-1 md:grid-cols-2 md:gap-14">
+        <div className="hidden w-full md:relative md:flex">
           <Image
             src={"/loginbg.png"}
             alt="login background"

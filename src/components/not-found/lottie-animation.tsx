@@ -9,7 +9,7 @@ const LottieAnimation = ({ className = "" }: { className?: string }) => {
   return (
     <Lottie
       animationData={AnimationNotFound}
-      className={cn("flex justify-center items-center max-w-80", className)}
+      className={cn("flex max-w-80 items-center justify-center", className)}
     />
   );
 };

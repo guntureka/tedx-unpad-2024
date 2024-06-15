@@ -13,9 +13,9 @@ const Header = ({ session }: { session: Session | null }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const pathname = usePathname();
   return (
-    <header className="flex w-full ">
-      <div className="fixed z-[100] top-[30px] flex w-full lg:px-20 px-10">
-        <div className="relative flex w-full justify-between items-center rounded-lg bg-[#FAFAFA] p-5">
+    <header className="flex w-full">
+      <div className="fixed top-[30px] z-[100] flex w-full px-10 lg:px-20">
+        <div className="relative flex w-full items-center justify-between rounded-lg bg-[#FAFAFA] p-5">
           {/* ------------------------- Logo -------------------------- */}
           <div>
             <Link href={"/"} onClick={() => setOpen(false)}>
@@ -43,7 +43,7 @@ const Header = ({ session }: { session: Session | null }) => {
           <div className="flex">
             <div className="hidden md:flex">
               {authorizeRoute.includes(pathname) ? (
-                <div className="flex justify-center items-center gap-4 text-black">
+                <div className="flex items-center justify-center gap-4 text-black">
                   <Link href={"/profile"} className="text-black">
                     Profile
                   </Link>
@@ -52,7 +52,7 @@ const Header = ({ session }: { session: Session | null }) => {
                   </Link>
                 </div>
               ) : (
-                <div className="flex justify-center items-center gap-4 text-black">
+                <div className="flex items-center justify-center gap-4 text-black">
                   <Link href={"#"} className="text-black">
                     Event
                   </Link>
@@ -67,15 +67,15 @@ const Header = ({ session }: { session: Session | null }) => {
               alt="logo"
               width={164}
               height={32}
-              className="md:hidden block:"
+              className="block: md:hidden"
             />
           </div>
           {/* ------------------------- Right Menu -------------------------- */}
           <div>
             {session?.user ? (
-              <div className="flex justify-center items-center">
+              <div className="flex items-center justify-center">
                 <button
-                  className="text-black p-2"
+                  className="p-2 text-black"
                   onClick={() => setOpen(!isOpen)}
                 >
                   {isOpen ? (
@@ -118,58 +118,28 @@ const Header = ({ session }: { session: Session | null }) => {
                 </button>
 
                 {isOpen && (
-                  <div className="w-full flex">
-                    <div className="absolute top-28 left-0 w-full flex bg-white text-black rounded-lg">
-                      <div className="relative flex flex-col justify-center items-start w-full p-5 space-y-2">
-                        <div className=" flex-col justify-center items-start w-full space-y-2 md:flex">
-                          <div
-                            className={`${
-                              authorizeRoute.includes(pathname)
-                                ? `flex md:hidden `
-                                : ` `
-                            }flex flex-col justify-center items-start w-full space-y-2 `}
-                          >
+                  <div className="flex w-full">
+                    <div className="absolute left-0 top-28 flex w-full rounded-lg bg-white text-black">
+                      <div className="relative flex w-full flex-col items-start justify-center space-y-2 p-5">
+                        <div className="w-full flex-col items-start justify-center space-y-2 md:flex">
+                          {/* TODO: NEED TO FIX BY FE */}
+                          {authorizeRoute.includes(pathname) ? (
                             <Link
                               href={"/profile"}
-                              onClick={() => setOpen(!isOpen)}
-                              className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
+                              className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
                               Profile
                             </Link>
+                          ) : (
                             <Link
-                              href={"/submission"}
-                              onClick={() => setOpen(!isOpen)}
-                              className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
-                            >
-                              Submission
-                            </Link>
-                            <hr className="bg-black w-full border" />
-                          </div>
-                          <div
-                            className={`${
-                              authorizeRoute.includes(pathname)
-                                ? ``
-                                : `flex md:hidden `
-                            }flex flex-col justify-center items-start w-full space-y-2 `}
-                          >
-                            <Link
-                              href={"/profile"}
-                              onClick={() => setOpen(!isOpen)}
-                              className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
+                              href={"#"}
+                              className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
                               Events
                             </Link>
-                            <Link
-                              href={"/profile"}
-                              onClick={() => setOpen(!isOpen)}
-                              className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
-                            >
-                              Partnership
-                            </Link>
-                            <hr className="bg-black w-full border" />
-                          </div>
+                          )}
                           <button
-                            className="rounded-lg text-white bg-red-600 p-4 hover:bg-red-700 w-full"
+                            className="w-full rounded-lg bg-red-600 p-4 text-white hover:bg-red-700"
                             onClick={() => signOut()}
                           >
                             Logout
@@ -182,21 +152,21 @@ const Header = ({ session }: { session: Session | null }) => {
               </div>
             ) : (
               <div>
-                <div className="md:flex justify-center items-center gap-4 hidden">
+                <div className="hidden items-center justify-center gap-4 md:flex">
                   <Link href={"/auth/register"}>
-                    <button className="outline-black outline outline-1 rounded-lg py-2 px-4  text-black hover:bg-gray-200">
+                    <button className="rounded-lg px-4 py-2 text-black outline outline-1 outline-black hover:bg-gray-200">
                       Register
                     </button>
                   </Link>
                   <Link href={"/auth/login"}>
-                    <button className="rounded-lg bg-red-600 py-2 px-4 hover:bg-red-700">
+                    <button className="rounded-lg bg-red-600 px-4 py-2 hover:bg-red-700">
                       Login
                     </button>
                   </Link>
                 </div>
-                <div className="flex justify-center items-center md:hidden">
+                <div className="flex items-center justify-center md:hidden">
                   <button
-                    className="text-black p-2"
+                    className="p-2 text-black"
                     onClick={() => setOpen(!isOpen)}
                   >
                     {isOpen ? (
@@ -221,32 +191,32 @@ const Header = ({ session }: { session: Session | null }) => {
                   </button>
 
                   {isOpen && (
-                    <div className="w-full flex">
-                      <div className="absolute top-28 left-0 w-full flex bg-white text-black rounded-lg">
-                        <div className="relative flex flex-col justify-center items-start w-full p-5 space-y-2">
-                          <div className=" md:hidden flex-col justify-center items-start w-full space-y-2 flex">
+                    <div className="flex w-full">
+                      <div className="absolute left-0 top-28 flex w-full rounded-lg bg-white text-black">
+                        <div className="relative flex w-full flex-col items-start justify-center space-y-2 p-5">
+                          <div className="flex w-full flex-col items-start justify-center space-y-2 md:hidden">
                             <Link
                               href={"#"}
                               onClick={() => setOpen(!isOpen)}
-                              className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
+                              className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
                               Events
                             </Link>
                             <Link
                               href={"#"}
                               onClick={() => setOpen(!isOpen)}
-                              className="py-4 px-2 hover:px-4 w-full hover:bg-gray-200 hover:rounded-lg"
+                              className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
                               Partnership
                             </Link>
-                            <hr className="bg-black w-full border" />
+                            <hr className="w-full border bg-black" />
                           </div>
                           <Link
                             href={"/auth/register"}
                             className="w-full"
                             onClick={() => setOpen(!isOpen)}
                           >
-                            <button className="outline-black outline outline-1 rounded-lg p-4  text-black hover:bg-gray-200 w-full">
+                            <button className="w-full rounded-lg p-4 text-black outline outline-1 outline-black hover:bg-gray-200">
                               Register
                             </button>
                           </Link>
@@ -255,7 +225,7 @@ const Header = ({ session }: { session: Session | null }) => {
                             className="w-full"
                             onClick={() => setOpen(!isOpen)}
                           >
-                            <button className="rounded-lg text-white bg-red-600 p-4 outline outline-red-600 outline-1 hover:bg-red-700 w-full">
+                            <button className="w-full rounded-lg bg-red-600 p-4 text-white outline outline-1 outline-red-600 hover:bg-red-700">
                               Login
                             </button>
                           </Link>

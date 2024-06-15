@@ -2,9 +2,9 @@ import React from "react";
 
 const FestivalBanner = () => {
   return (
-    <div className="bg-red-600 flex flex-col md:flex-row justify-between p-8 rounded-lg z-10 space-y-10">
+    <div className="z-10 flex flex-col justify-between space-y-10 rounded-lg bg-red-600 p-8 md:flex-row">
       <div className="flex flex-col space-y-4">
-        <h1 className="text-4xl text-center md:text-left md:text-3xl font-bold">
+        <h1 className="text-center text-4xl font-bold md:text-left md:text-3xl">
           The Flavours of Wisdom Festival
         </h1>
         <p className="text-sm">
