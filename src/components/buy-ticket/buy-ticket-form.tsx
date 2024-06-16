@@ -15,11 +15,15 @@ import { createTicketByUserId } from "@/actions/ticket";
 import { getAllTicket } from "@/actions/ticket";
 import { ticketSchema } from "@/lib/schemas";
 
+interface BuyTicketFormProps {
+  userID: string;
+}
+
 
 
 const goalOptions = ["I want to A", "I want to B", "I want to C","I want to D"];
 
-const BuyTicketForm = (profile:Profile) => {
+const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -68,7 +72,7 @@ const BuyTicketForm = (profile:Profile) => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      createTicketByUserId(values,"666dde45689c2a827e0dae62")
+      createTicketByUserId(values, userID)
         .then((data) => {
           if (data && data.status === "success") {
             setSuccess("Ticket created successfully!");

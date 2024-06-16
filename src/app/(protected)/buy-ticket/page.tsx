@@ -21,6 +21,7 @@ const BuyTicket = async () => {
     }
     const profile = await getProfileByUserId(session.user.id!)
     const ticket = await getTicketByUserId(session.user.id!)
+    const userID = session.user.id!;
     if (!profile) {
       return <div>not found</div>;
     }
@@ -44,7 +45,7 @@ const BuyTicket = async () => {
     <main>
       <main className='flex min-h-screen w-full flex-col px-10 py-40 lg:px-20'>
         <div className="flex w-full flex-col space-y-14 sm:px-10 md:px-13 xl:px-32" >
-          <BuyTicketForm {...profile} />
+        <BuyTicketForm userID={userID} />
         </div>
       </main>
     </main>
