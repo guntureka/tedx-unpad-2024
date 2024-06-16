@@ -19,16 +19,18 @@ interface BuyTicketFormProps {
   userID: string;
 }
 
-
-
-const goalOptions = ["I want to A", "I want to B", "I want to C","I want to D"];
+const goalOptions = [
+  "I want to A",
+  "I want to B",
+  "I want to C",
+  "I want to D",
+];
 
 const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const [tickets, setTickets] = useState<Ticket[] | undefined>([]);
-
 
   useEffect(() => {
     startTransition(() => {
@@ -65,6 +67,7 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
       selfishReason: "",
       selflessReason: "",
       goal: [],
+      status: "REVIEW",
     },
   });
 
