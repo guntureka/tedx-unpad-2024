@@ -3,7 +3,7 @@
 import { Metadata } from "next";
 import { profileSchema } from "@/lib/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Profile, Ticket, User } from "@prisma/client";
+import { Ticket } from "@prisma/client";
 import React, { useState, useTransition, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { array, z } from "zod";
@@ -14,16 +14,19 @@ import { FormError } from "@/components/ui/error-form";
 import { createTicketByUserId } from "@/actions/ticket";
 import { getAllTicket } from "@/actions/ticket";
 import { ticketSchema } from "@/lib/schemas";
+import { useRouter } from "next/navigation";
 
 interface BuyTicketFormProps {
   userID: string;
 }
 
 const goalOptions = [
-  "I want to A",
-  "I want to B",
-  "I want to C",
-  "I want to D",
+  "Networking",
+  "Learning New Ideas",
+  "Professional Development",
+  "Finding Potential Collaborators",
+  "Seeking Inspiration",
+  "Others",
 ];
 
 const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
@@ -31,6 +34,7 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const [tickets, setTickets] = useState<Ticket[] | undefined>([]);
+  const router = useRouter();
 
   useEffect(() => {
     startTransition(() => {
@@ -80,21 +84,20 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
           if (data && data.status === "success") {
             setSuccess("Ticket created successfully!");
             reset();
-            console.log("kontol")
+            router.push("buy-ticket/ticket-sent");
           } else {
             setError(data.message);
           }
         })
         .catch((error) => {
           setError("Something went wrong!");
-          console.log("anjing")
         });
     });
   };
 
   return (
     <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
-      <div className="flex w-full flex-col sm:px-10 md:px-14 xl:px-32">
+      <div className="z-10 flex w-full flex-col items-center justify-center space-y-4 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white">
         {/* Create Ticket Data */}
         <div className="flex w-full flex-col space-y-10">
           <h1 className="text-4xl font-bold">Create Ticket</h1>
@@ -108,74 +111,73 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
               <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
                 <FormField
                   id="nickname"
-                  label="Nickname"
+                  label="Nickname (to put on badges):"
                   placeholder="Enter your nickname"
                   register={register("nickname")}
                   error={errors.nickname}
                 />
                 <FormField
                   id="haveAttended"
-                  label="Have you attended before?"
+                  label="Have you attended a TED or TEDx event before? (check if you have)"
                   type="checkbox"
                   register={register("haveAttended")}
                   error={errors.haveAttended}
+                  className="block "
                 />
                 <FormField
                   id="linkedin"
                   label="Linkedin"
                   type="url"
-                  placeholder="Enter your linkedin"
+                  placeholder="Enter your LinkedIn profile"
                   register={register("linkedin")}
                   error={errors.linkedin}
                 />
                 <FormField
                   id="instagram"
-                  label="Instagram"
-                  type="url"
-                  placeholder="Enter your instagram"
+                  label="Instagram Username"
+                  placeholder="Enter your Instagram username"
                   register={register("instagram")}
                   error={errors.instagram}
                 />
                 <FormField
                   id="twitter"
-                  label="Twitter"
-                  type="url"
-                  placeholder="Enter your twitter"
+                  label="Twitter URL (Optional)"
+                  placeholder="Enter your Twitter URL (Optional)"
                   register={register("twitter")}
                   error={errors.twitter}
                 />
                 <FormField
                   id="facebook"
-                  label="Facebook"
-                  type="url"
-                  placeholder="Enter your facebook"
+                  label="Twitter Facebook (Optional)"
+                  placeholder="Enter your Facebook URL (Optional)"
                   register={register("facebook")}
                   error={errors.facebook}
                 />
                 <FormField
                   id="reason"
-                  label="Reason"
-                  placeholder="Enter your reason"
+                  label="What are the most topic you like to talk about? "
+                  placeholder="e.g.: K-Pop, Technology, etc."
                   register={register("reason")}
                   error={errors.reason}
                 />
                 <FormField
                   id="selfishReason"
-                  label="Selfish Reason"
-                  placeholder="Enter your selfish reason"
+                  label="What's your selfish reason for wanting to join TEDx?"
+                  placeholder="Write your selfish reason here (max. 20 words)"
                   register={register("selfishReason")}
                   error={errors.selfishReason}
                 />
                 <FormField
                   id="selflessReason"
-                  label="Selfless Reason"
-                  placeholder="Enter your selfless reason"
+                  label="What's your selfless reason for wanting to join TEDx?"
+                  placeholder="Write your selfless reason here (max. 20 words)"
                   register={register("selflessReason")}
                   error={errors.selflessReason}
                 />
                 <div className="flex w-full flex-col space-y-4">
                   <label htmlFor="goal" className="text-lg font-semibold">
-                    Goal
+                    What are your top three goals for attending this TEDx event?
+                    (You can choose max 3)
                   </label>
                   {goalOptions.map((goal, index) => (
                     <div key={index} className="flex items-center space-x-2">
@@ -202,66 +204,10 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
                   >
                     Buy Ticket!
                   </button>
-
-                  <button
-                    type="button"
-                    onClick={() => reset()}
-                    className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
-                      isPending ? "cursor-progress opacity-50" : ""
-                    }`}
-                  >
-                    Reset
-                  </button>
                 </div>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-
-      {/* Get All Ticket Data */}
-      <div className="flex w-full flex-col space-y-10 sm:px-10 md:px-14 xl:px-32">
-        <h1 className="text-4xl font-bold">All Tickets</h1>
-        <div className="flex w-full flex-col space-y-4">
-          {tickets && tickets.length > 0 ? (
-            <div className="flex w-full flex-col space-y-4">
-              {tickets.map((ticket, index) => (
-                <div
-                  key={index}
-                  className="flex w-full flex-col space-y-4 border border-gray-200 p-4"
-                >
-                  <h3 className="text-xl font-semibold">{ticket.nickname}</h3>
-                  <p className="text-lg font-medium">
-                    Have attended: {ticket.haveAttended ? "Yes" : "No"}
-                  </p>
-                  <p className="text-lg font-medium">
-                    Linkedin: {ticket.linkedin}
-                  </p>
-                  <p className="text-lg font-medium">
-                    Instagram: {ticket.instagram}
-                  </p>
-                  <p className="text-lg font-medium">
-                    Twitter: {ticket.twitter}
-                  </p>
-                  <p className="text-lg font-medium">
-                    Facebook: {ticket.facebook}
-                  </p>
-                  <p className="text-lg font-medium">Reason: {ticket.reason}</p>
-                  <p className="text-lg font-medium">
-                    Selfish Reason: {ticket.selfishReason}
-                  </p>
-                  <p className="text-lg font-medium">
-                    Selfless Reason: {ticket.selflessReason}
-                  </p>
-                  <p className="text-lg font-medium">Goal: {ticket.goal}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-lg font-medium">
-              {isPending ? "Loading..." : "No tickets found!"}
-            </p>
-          )}
         </div>
       </div>
     </main>

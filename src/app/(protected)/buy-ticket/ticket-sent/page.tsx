@@ -3,13 +3,14 @@ import React from "react";
 import Link from "next/link";
 import { useTransition } from "react";
 
-const TicketApproved = () => {
+const TicketSent = () => {
   const [isPending, startTransition] = useTransition();
   return (
     <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
       <div className="md:px-13 flex w-full flex-col space-y-14 sm:px-10 xl:px-32">
+        <p className="text-center text-4xl">Your ticket has been sent!</p>
         <p className="text-center text-4xl">
-          Get your ticket here!
+          Checkout more about our event here!
         </p>
         <div className="flex justify-center">
           <Link href="/">
@@ -19,7 +20,7 @@ const TicketApproved = () => {
                 isPending ? "cursor-progress opacity-50" : ""
               }`}
             >
-              Get Ticket!
+              Go Home
             </button>
           </Link>
         </div>
@@ -28,4 +29,4 @@ const TicketApproved = () => {
   );
 };
 
-export default TicketApproved;
+export default TicketSent;
