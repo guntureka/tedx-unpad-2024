@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import UserTable from "@/components/admin-dashboard/UserTable";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div className="my-[150px] mx-[50px]">
+      <UserTable />
+    </div>
+  );
+};
 
-export default page
+export default page;
