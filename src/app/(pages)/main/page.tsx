@@ -67,7 +67,7 @@ export default function Mainpage() {
           About TEDxPadjadjaran University
         </h1>
         <p className="font-normal text-sm md:text-base text-white mb-4 relative z-50">
-        A vibrant community here at TEDxPadjadjaran University, we're driven by a passion to share groundbreaking ideas with the city's brightest minds. We achieve this by hosting self-organized events that bring people together for a truly immersive TED-like experience. .
+        A vibrant community here at TEDxPadjadjaran University, we&apos;re driven by a passion to share groundbreaking ideas with the city&apos;s brightest minds. We achieve this by hosting self-organized events that bring people together for a truly immersive TED-like experience. .
         </p>
       </div>
     </div>
