@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { getTicketByUserId } from "@/actions/ticket";
+import { Ticket } from "@prisma/client";
 
 interface TicketDetailsDialogProps {
   userId: string | null;
@@ -17,7 +18,7 @@ interface TicketDetailsDialogProps {
 const TicketDetailsDialog: React.FC<TicketDetailsDialogProps> = ({
   userId,
 }) => {
-  const [ticketDetails, setTicketDetails] = useState<any>(null);
+  const [ticketDetails, setTicketDetails] = useState<Ticket>(null);
 
   const fetchTicketDetails = async () => {
     if (!userId) return;
