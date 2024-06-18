@@ -20,11 +20,11 @@ const RiddleCorrectPage = ({ searchParams }: RiddlePageProps) => {
   }
 
   return (
-    <main className="flex flex-col w-full min-h-screen px-10 lg:px-20 py-40">
-      <div className="flex flex-col space-y-14 max-w-3xl mx-auto">
-        <Card className=" border-gray-600 bg-[#F5F5F5] ">
+    <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
+      <div className="mx-auto flex max-w-3xl flex-col space-y-14">
+        <Card className="border-gray-600 bg-[#F5F5F5]">
           <CardContent>
-            <CardDescription className="text-black py-5 text-center font-inter text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            <CardDescription className="font-inter py-5 text-center text-lg text-black sm:text-xl md:text-2xl lg:text-3xl">
               Congratulations on solving the first riddle! Your keen mind and
               sharp instincts have led you to your first victory. Keep up the
               great work and continue your journey through the challenges ahead.
@@ -32,9 +32,9 @@ const RiddleCorrectPage = ({ searchParams }: RiddlePageProps) => {
             </CardDescription>
           </CardContent>
         </Card>
-        <Card className=" border-gray-600 bg-[#F5F5F5] ">
+        <Card className="border-gray-600 bg-[#F5F5F5]">
           <CardContent className="space-y-4">
-            <CardHeader className="text-center text-black font-ebgaramond text-4xl font-semibold  md:text-5xl ">
+            <CardHeader className="font-ebgaramond text-center text-4xl font-semibold text-black md:text-5xl">
               Terms and Conditions Second Mission: Speech Discussion Video
             </CardHeader>
             <div className="text-justify text-lg text-black">
@@ -76,9 +76,9 @@ const RiddleCorrectPage = ({ searchParams }: RiddlePageProps) => {
             </div>
           </CardContent>
         </Card>
-        <Card className=" border-gray-600 bg-[#F5F5F5]">
+        <Card className="border-gray-600 bg-[#F5F5F5]">
           <CardContent>
-            <CardHeader className="text-black font-garamound text-center font-ebgaramond text-2xl font-semibold md:text-4xl ">
+            <CardHeader className="font-garamound font-ebgaramond text-center text-2xl font-semibold text-black md:text-4xl">
               Submit your video here!
             </CardHeader>
             <RiddleForm variants="video" />

@@ -30,7 +30,7 @@ export const registerSchema = z
     {
       message: "Password do not match!",
       path: ["confirmPassword"],
-    }
+    },
   );
 
 export const profileSchema = z.object({
@@ -69,5 +69,21 @@ export const newPasswordSchema = z
     {
       message: "Password do not match!",
       path: ["confirmPassword"],
-    }
+    },
   );
+
+export const ticketSchema = z.object({
+  nickname: z.string().min(1,"Nickname is required!"),
+  haveAttended: z.boolean(),
+  linkedin: z.string().url().min(1,"Linkedin is required!"),
+  instagram: z.string().url().min(1,"Instagram is required!"),
+  twitter: z.string(),
+  facebook: z.string(),
+  selfishReason:z.string().min(1,"selfish reason is required!"),
+  selflessReason:z.string().min(1,"Selfless reason is required"),
+  reason:z.string().min(1,"Insert the topic you like to talk about"),
+  goal:z.array(z.string())
+  .max(3,"You can specify at most 3 goals!"),
+  status: z.enum(["PAY","REVIEW","APPROVE","DECLINE","NONE"])
+
+})

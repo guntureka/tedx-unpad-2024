@@ -69,7 +69,7 @@ const FormField = ({
           name={name}
         />
       )}
-      {error && <p className="text-sm text-red-500 py-2">{error.message}</p>}
+      {error && <p className="py-2 text-sm text-red-500">{error.message}</p>}
     </div>
   );
 };

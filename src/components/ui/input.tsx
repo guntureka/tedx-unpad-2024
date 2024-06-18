@@ -45,8 +45,8 @@ const Input = ({
         defaultValue={value}
         name={name}
         className={cn(
-          "text-gray-300 w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600 py-4 relative",
-          className
+          "relative w-full border-b-2 border-white bg-transparent py-4 text-gray-300 placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600",
+          className,
         )}
       />
       {isPassword && (
@@ -55,7 +55,7 @@ const Input = ({
           onClick={togglePasswordVisibility}
           className={cn(
             "absolute bottom-4 right-4 focus:outline-none",
-            className
+            className,
           )}
           disabled={disabled}
         >

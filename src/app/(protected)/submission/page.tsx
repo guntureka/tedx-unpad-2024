@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 const SubmissionPage = () => {
   return (
-    <main className="flex flex-col w-full h-screen px-10 lg:px-20 py-40">
-      <div className="flex flex-col w-full xl:px-32  md:px-14 sm:px-10">
+    <main className="flex h-screen w-full flex-col px-10 py-40 lg:px-20">
+      <div className="flex w-full flex-col sm:px-10 md:px-14 xl:px-32">
         <FestivalBanner />
       </div>
     </main>

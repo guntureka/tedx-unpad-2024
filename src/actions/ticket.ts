@@ -19,9 +19,17 @@ export const getAllTicket = async () => {
   try {
     const tickets = await db.ticket.findMany();
 
-    return tickets;
+    return {
+      status: "success",
+      message: "Tickets retrieved successfully",
+      data: tickets,
+    };
   } catch (error) {
     console.log(error);
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
   }
 };
 
@@ -30,13 +38,21 @@ export const getAllTicket = async () => {
  * @param custom - The custom output to filter the tickets.
  * @returns A promise that resolves to an array of tickets.
  */
-export const getAllTIcketCustom = async (custom: CustomOutput) => {
+export const getAllTicketCustom = async (custom: CustomOutput) => {
   try {
     const tickets = await db.ticket.findMany(custom);
 
-    return tickets;
+    return {
+      status: "success",
+      message: "Tickets retrieved successfully",
+      data: tickets,
+    };
   } catch (error) {
     console.log(error);
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
   }
 };
 
@@ -53,9 +69,17 @@ export const getTicketById = async (id: string) => {
       },
     });
 
-    return tickets;
+    return {
+      status: "success",
+      message: "Ticket retrieved successfully",
+      data: tickets,
+    };
   } catch (error) {
     console.log(error);
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
   }
 };
 
@@ -72,9 +96,17 @@ export const getTicketByUserId = async (id: string) => {
       },
     });
 
-    return tickets;
+    return {
+      status: "success",
+      message: "Ticket retrieved successfully",
+      data: tickets,
+    };
   } catch (error) {
     console.log(error);
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
   }
 };
 
@@ -86,7 +118,7 @@ export const getTicketByUserId = async (id: string) => {
  */
 export const updateTicketStatusById = async (
   id: string,
-  status: TicketStatus
+  status: TicketStatus,
 ) => {
   try {
     const ticket = await db.ticket.update({
@@ -98,17 +130,17 @@ export const updateTicketStatusById = async (
       },
     });
 
-    return ticket;
-
-    // if return is a message, uncomment the comment section and uncomment previous return
-    // return {
-    //   success: "Ticket updated successfully",
-    // };
+    return {
+      status: "success",
+      message: "Ticket updated successfully",
+      data: ticket,
+    };
   } catch (error) {
     console.log(error);
-    // return {
-    //   error: "Something went wrong!",
-    // };
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
   }
 };
 
@@ -120,7 +152,7 @@ export const updateTicketStatusById = async (
  */
 export const updateTicketStatusByUserId = async (
   id: string,
-  status: TicketStatus
+  status: TicketStatus,
 ) => {
   try {
     const ticket = await db.ticket.update({
@@ -132,16 +164,48 @@ export const updateTicketStatusByUserId = async (
       },
     });
 
-    return ticket;
-
-    // if return is a message, uncomment the comment section and uncomment previous return
-    // return {
-    //   success: "Ticket updated successfully",
-    // };
+    return {
+      status: "success",
+      message: "Ticket updated successfully",
+      data: ticket,
+    };
   } catch (error) {
     console.log(error);
-    // return {
-    //   error: "Something went wrong!",
-    // };
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
+  }
+};
+
+/**
+ * Creates a new ticket.
+ * @param data - The data to create the ticket.
+ * @returns The created ticket.
+ */
+export const createTicketByUserId = async (data: any, userId: string) => {
+  try {
+    const ticket = await db.ticket.create({
+      data: {
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+        ...data,
+      },
+    });
+
+    return {
+      status: "success",
+      message: "Ticket created successfully",
+      data: ticket,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "error",
+      message: "Something went wrong!",
+    };
   }
 };
