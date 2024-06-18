@@ -15,17 +15,23 @@ interface TicketDetailsDialogProps {
   userId: string | null;
 }
 
+interface TicketResponseProps {
+  status: String,
+  message: String,
+  ticket: Ticket | null;
+}
+
 const TicketDetailsDialog: React.FC<TicketDetailsDialogProps> = ({
   userId,
 }) => {
-  const [ticketDetails, setTicketDetails] = useState<Ticket | null>(null);
+  const [ticketDetails, setTicketDetails] = useState<Ticket | null | undefined >(null);
 
   const fetchTicketDetails = async () => {
     if (!userId) return;
 
     try {
       const ticket = await getTicketByUserId(userId);
-      setTicketDetails(ticket);
+      setTicketDetails(ticket.data);
     } catch (error) {
       console.error("Failed to fetch ticket details:", error);
     }
