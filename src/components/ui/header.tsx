@@ -47,18 +47,18 @@ const Header = ({ session }: { session: Session | null }) => {
                   <Link href={"/profile"} className="text-black">
                     Profile
                   </Link>
-                  <Link href={"/submission"} className="text-black">
-                    Submission
+                  <Link href={"/buy-ticket"} className="text-black">
+                    Buy Ticket
                   </Link>
                 </div>
               ) : (
                 <div className="flex items-center justify-center gap-4 text-black">
-                  <Link href={"#"} className="text-black">
+                  <Link href={"/main-event"} className="text-black">
                     Event
                   </Link>
-                  <Link href={"#"} className="text-black">
+                  {/* <Link href={"#"} className="text-black">
                     Partnership
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </div>
@@ -132,10 +132,10 @@ const Header = ({ session }: { session: Session | null }) => {
                             </Link>
                           ) : (
                             <Link
-                              href={"#"}
+                              href={"/profile"}
                               className="w-full px-2 py-4 hover:rounded-lg hover:bg-gray-200 hover:px-4"
                             >
-                              Events
+                              Profile
                             </Link>
                           )}
                           <button

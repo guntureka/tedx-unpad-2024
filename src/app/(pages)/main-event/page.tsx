@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import { EventCard } from "@/components/main/eventCard";
 
 export const metadata: Metadata = {
   title: "Main Event",
@@ -161,6 +162,23 @@ const MainEventPage = () => {
           </Card>
         </section>
       </div>
+      <div className="flex flex-col sm:flex-row justify-start gap-8 w-full mt-20 mx-auto px-4 sm:px-0 lg:mt-40">
+    <div className="flex items-center justify-center w-full sm:w-1/2 ml-0 lg:ml-60">
+        <EventCard />
+    </div>
+    <div className="flex items-center justify-center w-full sm:w-1/2 ml-0 lg:mr-40">
+        <iframe   
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.6706842215935!2d107.60792948679277!3d-6.920882922189378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e63aa98dc66b%3A0xbaa3d2206acbf2b4!2sDe%20Majestic!5e0!3m2!1sen!2sid!4v1718394433062!5m2!1sen!2sid" 
+            width="400" 
+            height="350" 
+            title="Google Maps"
+            allowFullScreen
+            loading="lazy" 
+            className="rounded-[20px]"
+            referrerPolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>
     </main>
   );
 };

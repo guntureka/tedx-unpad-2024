@@ -1,3 +1,4 @@
+"use client"
 import { Banner } from "@/components/main/banner";
 import { CardBody, CardContainer, CardItem } from "@/components/main/logoX";
 import { EventCard } from "@/components/main/eventCard";
@@ -6,9 +7,11 @@ import Carousel from '@/components/main/Carousel';
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import Timeline from "@/components/main/timeline";
-
+import Link from "next/link";
+import { useTransition } from "react";
 export default function Mainpage() {
   const images = ["/banner1.jpg"];
+  const [isPending, startTransition] = useTransition();
 
   return (
     <main>
@@ -25,9 +28,16 @@ export default function Mainpage() {
           </p>
 
           <div className="flex flex-row gap-5">
-            <button className="w-[200px] h-[50px] px-4 py-2 backdrop-blur-sm bg-[#C93420] text-white text-center rounded-[20px] relative mt-4 hover:bg-[#721E12] hover:text-[#999999]">
-              <span>Buy Ticket</span>
+          <Link href="/buy-ticket">
+            <button
+              type="button"
+              className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
+                isPending ? "cursor-progress opacity-50" : ""
+              }`}
+            >
+              Buy Tickets
             </button>
+          </Link>
           </div>
         </div>
       </Banner>
@@ -43,10 +53,7 @@ export default function Mainpage() {
           About TEDx
         </h1>
         <p className="font-normal text-sm md:text-base text-white mb-4 relative z-50">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          vestibulum dolor vel ipsum scelerisque, eget lacinia libero
-          hendrerit. Vivamus tempus ultricies metus, quis ullamcorper
-          libero accumsan id. Cras vel pharetra arcu.
+        TED is a global platform and a conference where Technology, Entertainment, and Design converge. Now, it has expanded to a multitude of worldwide communities and initiatives exploring everything from science and business to education, arts and global issues.
         </p>
       </div>
     </div>
@@ -60,10 +67,7 @@ export default function Mainpage() {
           About TEDxPadjadjaran University
         </h1>
         <p className="font-normal text-sm md:text-base text-white mb-4 relative z-50">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          vestibulum dolor vel ipsum scelerisque, eget lacinia libero
-          hendrerit. Vivamus tempus ultricies metus, quis ullamcorper
-          libero accumsan id. Cras vel pharetra arcu.
+        A vibrant community here at TEDxPadjadjaran University, we're driven by a passion to share groundbreaking ideas with the city's brightest minds. We achieve this by hosting self-organized events that bring people together for a truly immersive TED-like experience. .
         </p>
       </div>
     </div>
@@ -122,9 +126,9 @@ export default function Mainpage() {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 mt-6 md:grid-cols-4 lg:mt-15">
       <div className="mt-4 sm:mt-0">
         <ProfileCard
-          imageSrc="/pembicara1.jpg"
-          name="Joe Alwyn"
-          title="CEO of Reputation"
+          imageSrc="/mystery.png"
+          name="COMING SOON"
+          title=" "
           barText={"Master of\nInferiority Complex"}
           barColor="#C93420"
           triangleColor="#C93420" // Warna segitiga
@@ -164,14 +168,14 @@ export default function Mainpage() {
   </div>
 </div>
 
-      <div className="justify-center items-center min-h-full mt-20">
+      {/* <div className="justify-center items-center min-h-full mt-20">
         <div className="text-center mb-20 text-white">
           <h1 className="text-2xl font-bold mb-10">
             Explore Our Discussion Topics and Featured Speakers
           </h1>
           <Carousel />
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

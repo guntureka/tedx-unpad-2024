@@ -1,8 +1,11 @@
 "use client"
 
 import React from 'react';
+import Link from "next/link";
+import { useTransition } from "react";
 
 export const EventCard = () => {
+  const [isPending, startTransition] = useTransition();
   return (
     <div className="max-w-3xl mx-auto text-white rounded-lg shadow-md overflow-hidden">
       <div className="p-6">
@@ -23,8 +26,16 @@ export const EventCard = () => {
           </p>
         </div>
         <div className="flex space-x-4 mt-8">
-          <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-8 rounded">Read More</button>
-          <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-8 rounded">Get Directions</button>
+        <Link href="/main-event">
+            <button
+              type="button"
+              className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
+                isPending ? "cursor-progress opacity-50" : ""
+              }`}
+            >
+              Learn More
+            </button>
+          </Link>
         </div>
       </div>
     </div>
