@@ -71,17 +71,17 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center  w-full space-y-10 py-40 z-10">
-      <h1 className="text-2xl md:text-3xl text-start font-bold">Register</h1>
-      <div className="flex flex-col justify-center  w-full space-y-4">
+    <div className="z-10 flex w-full flex-col justify-center space-y-10 py-40">
+      <h1 className="text-start text-2xl font-bold md:text-3xl">Register</h1>
+      <div className="flex w-full flex-col justify-center space-y-4">
         <FormSuccess message={success} />
         <FormError message={error} />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col space-y-4 "
+          className="flex flex-col space-y-4"
         >
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col gap-4 md:flex-row">
             <FormField
               id="firstName"
               label="First name"
@@ -97,7 +97,7 @@ const RegisterForm = () => {
               error={errors.lastName}
             />
           </div>
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col gap-4 md:flex-row">
             <FormField
               id="born"
               label="Born"
@@ -165,7 +165,7 @@ const RegisterForm = () => {
               {interestData.map((data, index) => (
                 <div
                   key={index}
-                  className="flex justify-start items-center gap-4 py-4"
+                  className="flex items-center justify-start gap-4 py-4"
                 >
                   <Input
                     id={`interest-${index}`}
@@ -182,7 +182,7 @@ const RegisterForm = () => {
           <button
             type="submit"
             disabled={isPending}
-            className={`w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+            className={`w-full rounded-lg bg-red-600 py-4 text-white duration-150 hover:bg-red-700 ${
               isPending ? "cursor-progress opacity-50" : ""
             } `}
           >

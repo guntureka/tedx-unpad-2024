@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import Timeline from "@/components/main/timeline";
 
-export default function Home() {
+export default function Mainpage() {
   const images = ["/banner1.jpg"];
 
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           <h1 className="font-bold text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-4xl md:text-7xl">
             TEDxUNPAD
           </h1>
-          <h2 className="text-left bg-clip-text text-transparent text-[#EA887] bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-2xl md:text-4xl">
+          <h2 className="text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-2xl md:text-4xl">
             The Flavours of Wisdom
           </h2>
           <p className="text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-lg md:text-3xl">

@@ -18,7 +18,7 @@ import { sendPasswordResetByEmail } from "./mail";
 import { getPasswordResetTokenByToken } from "./token";
 
 export const registerAction = async (
-  values: z.infer<typeof registerSchema>
+  values: z.infer<typeof registerSchema>,
 ) => {
   const validatedFields = await registerSchema.safeParseAsync(values);
 
@@ -141,7 +141,7 @@ export const credentialsLogin = async (values: z.infer<typeof loginSchema>) => {
 };
 
 export const forgotPassword = async (
-  values: z.infer<typeof forgotPasswordSchema>
+  values: z.infer<typeof forgotPasswordSchema>,
 ) => {
   const validatedFields = forgotPasswordSchema.safeParse(values);
 
@@ -173,7 +173,7 @@ export const forgotPassword = async (
 
     const sendEmail = await sendPasswordResetByEmail(
       passwordResetToken.email,
-      passwordResetToken.token
+      passwordResetToken.token,
     );
 
     return { success: "Reset email has been sent!" };
@@ -186,7 +186,7 @@ export const forgotPassword = async (
 
 export const newPassword = async (
   token: string,
-  values: z.infer<typeof newPasswordSchema>
+  values: z.infer<typeof newPasswordSchema>,
 ) => {
   const validatedFields = newPasswordSchema.safeParse(values);
 

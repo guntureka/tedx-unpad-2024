@@ -59,18 +59,19 @@ const ProfileForm = (profile: Profile) => {
         .catch((error) => {
           setError("Something went wrong!");
         });
+        
     });
   };
 
   return (
-    <div className="outline outline-white outline-1 z-10 flex flex-col justify-center items-center rounded-lg p-10 bg-[#333333] w-full space-y-4">
+    <div className="z-10 flex w-full flex-col items-center justify-center space-y-4 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white">
       <h1 className="text-3xl font-bold">Profile</h1>
       <div>{/* handleImage */}</div>
-      <div className="w-full flex flex-col space-y-4">
+      <div className="flex w-full flex-col space-y-4">
         <FormSuccess message={success} />
         <FormError message={error} />
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+          <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
             <FormField
               id="firstName"
               label="First name"
@@ -133,13 +134,13 @@ const ProfileForm = (profile: Profile) => {
                   <label htmlFor={field.name}>Interest</label>
                   <select
                     {...field}
-                    className="text-gray-300 w-full border-b-2 border-white bg-transparent placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600 py-4 flex relative appearance-auto "
+                    className="relative flex w-full appearance-auto border-b-2 border-white bg-transparent py-4 text-gray-300 placeholder-opacity-0 duration-150 focus:outline-0 disabled:border-gray-600"
                   >
                     {interestData.map((data, index) => (
                       <option
                         value={data}
                         key={index}
-                        className="bg-white text-black row-start-1 col-start-1 py-4"
+                        className="col-start-1 row-start-1 bg-white py-4 text-black"
                       >
                         {data}
                       </option>
@@ -149,10 +150,10 @@ const ProfileForm = (profile: Profile) => {
               )}
             />
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             <button
               type="submit"
-              className={`px-8 rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+              className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
                 isPending ? "cursor-progress opacity-50" : ""
               }`}
             >

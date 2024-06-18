@@ -10,7 +10,7 @@ const ButtonHomepage = () => {
     <button
       type="button"
       onClick={() => router.push("/")}
-      className="rounded bg-red-500 p-2 font-inter text-white sm:p-3 md:p-4 lg:p-5"
+      className="font-inter rounded bg-red-500 p-2 text-white sm:p-3 md:p-4 lg:p-5"
     >
       Back to home
     </button>
