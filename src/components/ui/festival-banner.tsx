@@ -8,9 +8,9 @@ const FestivalBanner = () => {
           The Flavors of Wisdom
         </h1>
         <p className="text-sm">
-          A place where wisdom can be seen and discovered
+          A Place Where Wisdom Can Be Seen and Discovered
         </p>
-        <p className="text-sm">TEDx Padjadjaran University</p>
+        <p className="text-sm">TEDxPadjadjaran University</p>
       </div>
       <div className="flex flex-col place-content-end items-center">
         <h3 className="text-center text-sm text-white">Follow Us On:</h3>

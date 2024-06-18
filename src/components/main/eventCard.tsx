@@ -10,7 +10,7 @@ export const EventCard = () => {
     <div className="max-w-3xl mx-auto text-white rounded-lg shadow-md overflow-hidden">
       <div className="p-6">
         <h2 className="text-xl font-bold mb-6">Are you ready for our Main Event?</h2>
-        <p className="text-lg mb-6 " style={{ color: '#EA887B' }}>TEDx Padjadjaran University 2024: The Flavors of Wisdom</p>
+        <p className="text-lg mb-6 " style={{ color: '#EA887B' }}>TEDxPadjadjaran University 2024: The Flavors of Wisdom</p>
         <div className="mb-6">
           <p className="mb-4">
             <span className="text-gray-400">Date</span>

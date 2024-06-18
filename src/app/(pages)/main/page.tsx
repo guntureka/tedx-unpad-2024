@@ -18,13 +18,13 @@ export default function Mainpage() {
       <Banner className="h-[40rem]" images={images}>
         <div className="z-50 flex flex-col justify-center items-start px-8 md:px-16">
           <h1 className="font-bold text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-4xl md:text-7xl">
-            TEDxUNPAD
+            TEDxPadjadjaran University 
           </h1>
           <h2 className="text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-2xl md:text-4xl">
-            The Flavours of Wisdom
+            The Flavors of Wisdom
           </h2>
           <p className="text-left bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4 text-lg md:text-3xl">
-            A place where wisdom can be seen and discovered
+            A Place Where Wisdom Can Be Seen and Discovered
           </p>
 
           <div className="flex flex-row gap-5">
@@ -67,7 +67,7 @@ export default function Mainpage() {
           About TEDxPadjadjaran University
         </h1>
         <p className="font-normal text-sm md:text-base text-white mb-4 relative z-50">
-        A vibrant community here at TEDxPadjadjaran University, we&apos;re driven by a passion to share groundbreaking ideas with the city&apos;s brightest minds. We achieve this by hosting self-organized events that bring people together for a truly immersive TED-like experience. .
+        A vibrant community here at TEDxPadjadjaran University, we&apos;re driven by a passion to share groundbreaking ideas with the city&apos;s brightest minds. We achieve this by hosting self-organized events that bring people together for a truly immersive TED-like experience.
         </p>
       </div>
     </div>

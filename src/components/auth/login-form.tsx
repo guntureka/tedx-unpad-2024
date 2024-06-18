@@ -105,7 +105,7 @@ const LoginForm = () => {
             href="/auth/forgot-password"
             className="text-sm text-white underline underline-offset-4"
           >
-            Forget Password?
+            Forgot Password?
           </Link>
           <button
             type="submit"
