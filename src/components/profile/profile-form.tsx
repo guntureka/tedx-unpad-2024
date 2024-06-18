@@ -59,6 +59,7 @@ const ProfileForm = (profile: Profile) => {
         .catch((error) => {
           setError("Something went wrong!");
         });
+        
     });
   };
 
