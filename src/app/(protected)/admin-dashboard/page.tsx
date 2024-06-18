@@ -17,6 +17,7 @@ const page = async () => {
     redirect('/')
   
   }
+  
   return (
     <div className="my-[150px] mx-[50px]">
       <UserTable />
