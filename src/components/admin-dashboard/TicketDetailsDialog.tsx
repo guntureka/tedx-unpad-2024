@@ -18,7 +18,7 @@ interface TicketDetailsDialogProps {
 const TicketDetailsDialog: React.FC<TicketDetailsDialogProps> = ({
   userId,
 }) => {
-  const [ticketDetails, setTicketDetails] = useState<Ticket>(null);
+  const [ticketDetails, setTicketDetails] = useState<Ticket | null>(null);
 
   const fetchTicketDetails = async () => {
     if (!userId) return;
