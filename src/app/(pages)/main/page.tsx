@@ -126,8 +126,8 @@ export default function Mainpage() {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 mt-6 md:grid-cols-4 lg:mt-15">
       <div className="mt-4 sm:mt-0">
         <ProfileCard
-          imageSrc="/mystery.png"
-          name="COMING SOON"
+          imageSrc="/speakers-1.jpg"
+          name="Dr. Fredrick Dermawan Purba, M.Psi."
           title=" "
           barText={"Master of\nInferiority Complex"}
           barColor="#C93420"
@@ -168,14 +168,14 @@ export default function Mainpage() {
   </div>
 </div>
 
-      {/* <div className="justify-center items-center min-h-full mt-20">
+      <div className="justify-center items-center min-h-full mt-20">
         <div className="text-center mb-20 text-white">
           <h1 className="text-2xl font-bold mb-10">
             Explore Our Discussion Topics and Featured Speakers
           </h1>
           <Carousel />
         </div>
-      </div> */}
+      </div>
     </main>
   );
 }
