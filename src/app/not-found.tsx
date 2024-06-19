@@ -2,15 +2,15 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 const AnimationNotFound = dynamic(
-  () => import("@/components/not-found/lottie-animation")
+  () => import("@/components/not-found/lottie-animation"),
 );
 
 const NotFound = () => {
   return (
-    <main className="flex flex-col justify-center w-full h-screen lg:p-20 p-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
-        <div className="flex flex-col space-y-10 justify-center ">
-          <h1 className="md:text-6xl text-2xl font-extrabold">
+    <main className="flex h-screen w-full flex-col justify-center p-10 lg:p-20">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+        <div className="flex flex-col justify-center space-y-10">
+          <h1 className="text-2xl font-extrabold md:text-6xl">
             Sorry, Page Not Found
           </h1>
           <p className="text-sm">
@@ -18,12 +18,12 @@ const NotFound = () => {
             stumbled upon a 404 - Page Not Found. Don&apos;t fret, it happens to
             the best of us! Let&apos;s navigate back to familiar territory.
           </p>
-          <button className="bg-red-600 py-2 text-white rounded-lg w-52">
+          <button className="w-52 rounded-lg bg-red-600 py-2 text-white">
             Back to Home
           </button>
         </div>
-        <div className="flex flex-col justify-center items-center">
-          <div className="p-20 bg-red-600 rounded-lg">
+        <div className="flex flex-col items-center justify-center">
+          <div className="rounded-lg bg-red-600 p-20">
             <AnimationNotFound />
           </div>
         </div>

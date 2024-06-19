@@ -25,7 +25,7 @@ export const getProfileByUserId = async (userId: string) => {
 
 export const updateProfileById = async (
   id: string,
-  values: z.infer<typeof profileSchema>
+  values: z.infer<typeof profileSchema>,
 ) => {
   const validatedFields = await profileSchema.safeParseAsync(values);
 

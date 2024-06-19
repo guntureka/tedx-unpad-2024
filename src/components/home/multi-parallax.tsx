@@ -11,7 +11,7 @@ export default function MultiParallax() {
   const bubbleTranslateX = useTransform(
     scrollYProgress,
     [0, 0.5],
-    [-300, -1000]
+    [-300, -1000],
   );
   const podiumTranslateY = useTransform(scrollYProgress, [0, 1], [-1200, 400]);
   const podiumTranslateX = useTransform(scrollYProgress, [0, 1], [-300, 2500]);
@@ -38,7 +38,7 @@ export default function MultiParallax() {
               y: -200,
             }}
           >
-            <h1 className="text-black py-8 text-center font-inter text-2xl font-semibold">
+            <h1 className="font-inter py-8 text-center text-2xl font-semibold text-black">
               Fancy to taste the flavors of wisdom?
             </h1>
           </motion.div>
@@ -112,7 +112,7 @@ export default function MultiParallax() {
             }}
           />
         </div>
-        <div className="hidden overflow-hidden bg-black-abs pb-24 pt-[50px] sm:block">
+        <div className="bg-black-abs hidden overflow-hidden pb-24 pt-[50px] sm:block">
           <motion.img
             src="./assets/parallax/podium.svg"
             alt=""
@@ -160,7 +160,7 @@ export default function MultiParallax() {
           y: -200,
         }}
       >
-        <h1 className="text-wrap px-3 py-4 text-center font-inter text-xs">
+        <h1 className="font-inter text-wrap px-3 py-4 text-center text-xs">
           Open via desktop for a better experience!
         </h1>
       </motion.div>
@@ -174,7 +174,7 @@ export default function MultiParallax() {
           y: -400,
         }}
       >
-        <h1 className="text-wrap px-3 py-2 text-center font-inter text-xs">
+        <h1 className="font-inter text-wrap px-3 py-2 text-center text-xs">
           Remember to rescan the QR code after login & register!
         </h1>
       </motion.div>

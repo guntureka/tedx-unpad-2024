@@ -19,17 +19,19 @@ enum UserRole {
 }
 
 model User {
-  id                 String            @id @default(auto()) @map("_id") @db.ObjectId
-  name               String?
-  email              String?           @unique
-  emailVerified      DateTime?
-  image              String?
-  password           String?
-  role               UserRole          @default(USER)
-  accounts           Account[]
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole  @default(USER)
+  accounts      Account[]
+  Profile       Profile?
+  Ticket        Ticket?
+
   isTwoFactorEnabled Boolean           @default(false)
   // twoFactorConfirmation TwoFactorConfirmation?
-  Profile            Profile?
   // RiddleSubmission   RiddleSubmission[]
   RiddleSubmission   RiddleSubmission?
 }
@@ -95,6 +97,35 @@ model RiddleSubmission {
   userId String @unique @db.ObjectId
 
   @@unique([userId, url])
+}
+
+enum TicketStatus {
+  PAY
+  REVIEW
+  APPROVE
+  DECLINE
+  NONE
+}
+
+model Ticket {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  nickname       String?
+  haveAttended   Boolean      @default(false)
+  linkedin       String?
+  instagram      String?
+  facebook       String?
+  twitter        String?
+  reason         String?
+  selfishReason  String?
+  selflessReason String?
+  goal           String[]
+  payment_image  String?
+  status         TicketStatus @default(NONE)
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique @db.ObjectId
+
+  @@unique([userId, id])
 }
 
 // model RiddleSubmission {

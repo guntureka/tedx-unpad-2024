@@ -24,8 +24,8 @@ const ProfilePage = async () => {
   }
 
   return (
-    <main className="flex flex-col w-full min-h-screen px-10 lg:px-20 py-40">
-      <div className="flex flex-col w-full xl:px-32  md:px-14 sm:px-10 space-y-14">
+    <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
+      <div className="flex w-full flex-col space-y-14 sm:px-10 md:px-14 xl:px-32">
         <FestivalBanner />
         <ProfileForm {...profile} />
       </div>

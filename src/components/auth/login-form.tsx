@@ -61,6 +61,7 @@ const LoginForm = () => {
             setSuccess("Login successed!");
             reset();
             router.push("/");
+            router.refresh();
           }
         })
         .catch((error) => setError(error));
@@ -76,14 +77,14 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center  w-full space-y-10 py-40 z-10">
-      <h1 className="text-2xl md:text-3xl text-start font-bold">Login</h1>
-      <div className="flex flex-col justify-center  w-full space-y-4">
+    <div className="z-10 flex w-full flex-col justify-center space-y-10 py-40">
+      <h1 className="text-start text-2xl font-bold md:text-3xl">Login</h1>
+      <div className="flex w-full flex-col justify-center space-y-4">
         <FormSuccess message={success} />
         <FormError message={error} />
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col space-y-4 "
+          className="flex flex-col space-y-4"
         >
           <FormField
             id="email"
@@ -102,13 +103,13 @@ const LoginForm = () => {
           />
           <Link
             href="/auth/forgot-password"
-            className=" text-sm text-white underline-offset-4 underline"
+            className="text-sm text-white underline underline-offset-4"
           >
-            Forget Password?
+            Forgot Password?
           </Link>
           <button
             type="submit"
-            className={`w-full rounded-lg bg-red-600 text-white duration-150 hover:bg-red-700 py-4 ${
+            className={`w-full rounded-lg bg-red-600 py-4 text-white duration-150 hover:bg-red-700 ${
               isPending ? "cursor-progress opacity-50" : ""
             }`}
           >
@@ -119,7 +120,7 @@ const LoginForm = () => {
         <button
           type="button"
           onClick={() => handleProviderLogin("google")}
-          className={`w-full rounded-lg flex items-center justify-center gap-4  bg-white text-black py-4 duration-150 hover:bg-gray-400 ${
+          className={`flex w-full items-center justify-center gap-4 rounded-lg bg-white py-4 text-black duration-150 hover:bg-gray-400 ${
             isPending ? "cursor-progress opacity-50" : ""
           }`}
         >

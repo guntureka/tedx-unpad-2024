@@ -13,7 +13,7 @@ import { transporter } from "@/utils/mail";
 
 export const sendPasswordResetByEmail = async (
   email: string,
-  token: string
+  token: string,
 ) => {
   const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
   const resetLink = `${appUrl}/auth/new-password?token=${token}`;
