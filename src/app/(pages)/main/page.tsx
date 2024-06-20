@@ -49,10 +49,10 @@ export default function Mainpage() {
         className="relative bg-darkgrey md:bg-black px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-center text-left"
         style={{ boxShadow: "0 0 20px rgba(255, 255, 255, 0.5)" }}
       >
-        <h1 className="font-bold text-lg md:text-xl text-white mb-4 relative z-50">
+        <h1 className="font-bold text-justify text-lg md:text-xl text-white mb-4 relative z-50">
           About TEDx
         </h1>
-        <p className="font-normal text-sm md:text-base text-white mb-4 relative z-50">
+        <p className="font-normal text-justify text-sm md:text-base text-white mb-4 relative z-50">
         TED is a global platform and a conference where Technology, Entertainment, and Design converge. Now, it has expanded to a multitude of worldwide communities and initiatives exploring everything from science and business to education, arts and global issues.
         </p>
       </div>
@@ -66,7 +66,7 @@ export default function Mainpage() {
         <h1 className="font-bold text-lg md:text-xl text-white mb-4 relative z-50">
           About TEDxPadjadjaran University
         </h1>
-        <p className="font-normal text-sm md:text-base text-white mb-4 relative z-50">
+        <p className="font-normal text- text-sm md:text-base text-white mb-4 relative z-50">
         A vibrant community here at TEDxPadjadjaran University, we&apos;re driven by a passion to share groundbreaking ideas with the city&apos;s brightest minds. We achieve this by hosting self-organized events that bring people together for a truly immersive TED-like experience.
         </p>
       </div>
@@ -126,10 +126,10 @@ export default function Mainpage() {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 mt-6 md:grid-cols-4 lg:mt-15">
       <div className="mt-4 sm:mt-0">
         <ProfileCard
-          imageSrc="/mystery.png"
-          name="COMING SOON"
+          imageSrc="/speakers-1.jpg"
+          name="Dr. Fredrick Dermawan Purba, M.Psi."
           title=" "
-          barText={"Master of\nInferiority Complex"}
+          barText={"Master of\nQuarter Life Crisis"}
           barColor="#C93420"
           triangleColor="#C93420" // Warna segitiga
         />
@@ -139,7 +139,17 @@ export default function Mainpage() {
           imageSrc="/mystery.png"
           name="COMING SOON"
           title=""
-          barText={"Master of\nQuarter Life Crisis"}
+          barText={"Master of\nEconomics and Entrepreneurship"}
+          barColor="#EA887B"
+          triangleColor="#EA887B" // Warna segitiga
+        />
+      </div>
+      <div className="mt-20 sm:mt-0 font">
+        <ProfileCard
+          imageSrc="/mystery.png"
+          name="COMING SOON"
+          title=""
+          barText={"Master of\n Inferiority Complex"}
           barColor="#EA887B"
           triangleColor="#EA887B" // Warna segitiga
         />
@@ -154,28 +164,18 @@ export default function Mainpage() {
           triangleColor="#EA887B" // Warna segitiga
         />
       </div>
-      <div className="mt-20 sm:mt-0">
-        <ProfileCard
-          imageSrc="/mystery.png"
-          name="COMING SOON"
-          title=""
-          barText={"Master of\nEconomics & Entrepreneurship"}
-          barColor="#EA887B"
-          triangleColor="#EA887B" // Warna segitiga
-        />
-      </div>
     </div>
   </div>
 </div>
 
-      {/* <div className="justify-center items-center min-h-full mt-20">
+      <div className="justify-center items-center min-h-full mt-20">
         <div className="text-center mb-20 text-white">
           <h1 className="text-2xl font-bold mb-10">
             Explore Our Discussion Topics and Featured Speakers
           </h1>
           <Carousel />
         </div>
-      </div> */}
+      </div>
     </main>
   );
 }
