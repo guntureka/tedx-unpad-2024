@@ -56,9 +56,9 @@ const Header = ({ session }: { session: Session | null }) => {
                   <Link href={"/main-event"} className="text-black">
                     Event
                   </Link>
-                  {/* <Link href={"#"} className="text-black">
+                  <Link href={"/partnership"} className="text-black">
                     Partnership
-                  </Link> */}
+                  </Link>
                 </div>
               )}
             </div>

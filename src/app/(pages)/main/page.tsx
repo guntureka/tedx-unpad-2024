@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Timeline from "@/components/main/timeline";
 import Link from "next/link";
 import { useTransition } from "react";
+
 export default function Mainpage() {
   const images = ["/banner1.jpg"];
   const [isPending, startTransition] = useTransition();

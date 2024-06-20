@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import VideoCarousel from "@/components/partnership/VideoCarousel";
 import SponsorsCollage from "@/components/partnership/SponsorsCollage";
 import MediaPartnersCollage from "@/components/partnership/MediaPartnersCollage";
@@ -14,7 +13,7 @@ export default function Partnership() {
       <h1 className="font-inter text-[24px] font-bold text-white">
         SPECIAL THANKS TO
       </h1>
-      <VideoCarousel />
+      {/* <VideoCarousel /> */}
       <div
         className={cn(
           "flex w-full flex-col items-center justify-center",
@@ -33,7 +32,7 @@ export default function Partnership() {
         )}
       >
         <h2 className="font-lora pb-[25px] text-[18px] font-normal text-white">
-          Our Media & Partners
+          Our Media &  Community Partners
         </h2>
         <MediaPartnersCollage />
       </div>

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     /**
      * Represents the default title.
      */
-    default: "Home | TEDxUNPAD",
+    default: "TEDxUNPAD",
     /**
      * Represents the title template.
      */

@@ -12,7 +12,6 @@ import {
 import Image from "next/image";
 import { Metadata } from "next";
 
-
 interface Speaker {
   slug: string;
   Foto_Speakers: string;
@@ -53,12 +52,12 @@ const SpeakersPage: React.FC<SpeakersPageProps> = ({ params }) => {
   return (
     <article>
       <div className="min-h-screen px-10 py-40">
-        <p className="flex justify-center font-bold text-center">
+        <p className="flex justify-center text-center font-bold">
           Explore Our Discussion Topics and Featured Speakers
         </p>
-        <div className="container flex flex-col items-center mt-7  ">
-          <Card className="bg-white  w-[320px] md:w-full md:grid md:grid-cols-2 md:bg-transparent md:border-none">
-            <CardHeader className="relative flex mx-auto my-1 w-[100px] h-[100px] md:w-[227px] md:h-[258px] ">
+        <div className="container mt-7 flex flex-col items-center">
+          <Card className="w-[320px] bg-white md:grid md:w-full md:grid-cols-2 md:border-none md:bg-transparent">
+            <CardHeader className="relative mx-auto my-1 flex h-[100px] w-[100px] md:h-[258px] md:w-[227px]">
               <Image
                 src={Foto_Speakers}
                 alt={title}
@@ -68,19 +67,17 @@ const SpeakersPage: React.FC<SpeakersPageProps> = ({ params }) => {
               />
             </CardHeader>
             <CardContent className="content-center">
-              <p className="text-black md:text-white md:-py-10 font-bold">
+              <p className="md:-py-10 font-bold text-black md:text-white">
                 {title}
               </p>
-              <p className="text-black md:text-white font-semibold">
+              <p className="font-semibold text-black md:text-white">
                 {Nama_Speakers}
               </p>
-              <p className="text-black md:text-white text-sm text-justify">
+              <p className="text-justify text-sm text-black md:text-white">
                 {Profile_Singkat}
               </p>
-              <p>
-                <CardDescription className="text-black md:text-white text-justify">
-                  {Garis_Besar_Ted_Talks}
-                </CardDescription>
+              <p className="text-justify text-black md:text-white">
+                {Garis_Besar_Ted_Talks}
               </p>
             </CardContent>
           </Card>
