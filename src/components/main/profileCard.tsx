@@ -25,7 +25,7 @@ export const ProfileCard = ({ imageSrc, name, title, barText, barColor, triangle
           borderRight: "18px solid transparent",
           borderTop: `30px solid ${triangleColor}`
         }}></div>
-        <img src={imageSrc} alt={name} className="rounded-lg w-32 h-32 object-cover mt-16" />
+        <img src={imageSrc} alt={name} className="rounded-lg w-32 h-32 object-cover object-top mt-16" />
       </div>
       <div className="text-center mt-4">
         <p className={`text-xl font-bold ${name === 'COMING SOON' ? 'text-sm' : ''}`}>{name}</p>

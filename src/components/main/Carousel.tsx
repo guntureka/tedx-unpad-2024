@@ -17,13 +17,13 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    title: "The Power of Vulnerability",
+    title: "Quarter Life Crisis",
     subtitle: "Dr. Fredrick Dermawan Purba, M.Psi.",
     description:"Dr. Fredrick Dermawan Purba, M.Psi., or more often addressed as Bang Jeki, is a lecturer and clinical psychologist who is actively involved in research and interventions in the area of health psychology, especially quality of life, mental health, and well-being. He is currently serving as Vice Dean for Learning, Student Affairs, and Research at the Faculty of Psychology, Universitas Padjadjaran",
     buttonText: "Click to Read More",
     imagePath: "/speakers-1.jpg",
     buttonColor: "red",
-    link: "/read-more/vulnerability", // Example link
+    link: "/speakers-page/post-colonialism-and-inferiority-complex", // Example link
   },
 ];
 
