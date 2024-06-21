@@ -137,8 +137,8 @@ export default function Mainpage() {
       </div>
       <div className="mt-20 sm:mt-0">
         <ProfileCard
-          imageSrc="/mystery.png"
-          name="COMING SOON"
+          imageSrc="/speakers-2.jpg"
+          name="Yoel Tristan Kurniawan"
           title=""
           barText={"Master of\nEconomics and Entrepreneurship"}
           barColor="#EA887B"

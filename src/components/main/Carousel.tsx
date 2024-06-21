@@ -18,12 +18,23 @@ interface Slide {
 const slides: Slide[] = [
   {
     title: "Quarter Life Crisis",
-    subtitle: "Dr. Fredrick Dermawan Purba, M.Psi.",
-    description:"Dr. Fredrick Dermawan Purba, M.Psi., or more often addressed as Bang Jeki, is a lecturer and clinical psychologist who is actively involved in research and interventions in the area of health psychology, especially quality of life, mental health, and well-being. He is currently serving as Vice Dean for Learning, Student Affairs, and Research at the Faculty of Psychology, Universitas Padjadjaran",
+    subtitle: "Dr. Fredrick Dermawan Purba, M.Psi",
+    description:
+      "Dr. Fredrick Dermawan Purba, M.Psi., or more often addressed as Bang Jeki, is a lecturer and clinical psychologist who is actively involved in research and interventions in the area of health psychology, especially quality of life, mental health, and well-being. He is currently serving as Vice Dean for Learning, Student Affairs, and Research at the Faculty of Psychology, Universitas Padjadjaran",
     buttonText: "Click to Read More",
     imagePath: "/speakers-1.jpg",
     buttonColor: "red",
     link: "/speakers-page/post-colonialism-and-inferiority-complex", // Example link
+  },
+  {
+    title: "Economics and Entrepreneurship",
+    subtitle: "Yoel Tristan Kurniawan",
+    description:
+      "Starting his entrepreneurial journey at the young age of 17, Yoel Tristan has navigated through numerous challenges, experiencing eight business failures along the way. Demonstrating unwavering resilience, he completed his studies at SBM ITB and now helms the flourishing enterprises Fit Fuel and Poppy's Dream. His relentless drive and innovative vision earned him the distinguished title of winner at Gen-Zesia's premier business competition, the Diplomat Success Challenge",
+    buttonText: "Click to Read More",
+    imagePath: "/speakers-2.jpg",
+    buttonColor: "red",
+    link: "/speakers-page/economics-and-entrepreneurship", // Example link
   },
 ];
 
