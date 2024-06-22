@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     /**
      * Represents the default title.
      */
-    default: "TEDxUNPAD",
+    default: "TEDxPadjadjaran University",
     /**
      * Represents the title template.
      */
-    template: "%s | TEDxUNPAD",
+    template: "%s | TEDxPadjadjaran University",
   },
   /**
    * Represents the icons for the layout.
