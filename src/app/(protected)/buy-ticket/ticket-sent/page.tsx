@@ -8,9 +8,9 @@ const TicketSent = () => {
   return (
     <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
       <div className="md:px-13 flex w-full flex-col space-y-14 sm:px-10 xl:px-32">
-        <p className="text-center text-4xl">Your ticket has been sent!</p>
+        <p className="text-center text-4xl">Your Ticket Has Been Sent and Under review!</p>
         <p className="text-center text-4xl">
-          Checkout more about our event here!
+        Please check your email for further information about the registration process
         </p>
         <div className="flex justify-center">
           <Link href="/">
