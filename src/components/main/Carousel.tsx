@@ -36,6 +36,15 @@ const slides: Slide[] = [
     buttonColor: "red",
     link: "/speakers-page/economics-and-entrepreneurship", // Example link
   },
+  {
+    title: "Post Colonialism and Inferiority Complex",
+    subtitle: "Guru Gembul",
+    description:"Guru Gembul is a widely recognized content creator, teacher, and author. He frequently attends national-level seminars as a speaker, discussing topics such as history, education, and various other issues. Guru Gembul creates educational content that is both critical and presented in an engaging, easy-to-understand manner on social media platforms like YouTube, Instagram, and TikTok.",
+    buttonText: "Click to Read More",
+    imagePath: "/speakers-3.jpg",
+    buttonColor: "red",
+    link: "/speakers-page/post-colonialism-and-inferiority-complex", // Example link
+  },
 ];
 
 const MyCarousel: React.FC = () => {
