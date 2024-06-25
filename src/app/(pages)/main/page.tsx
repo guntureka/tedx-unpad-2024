@@ -141,8 +141,8 @@ export default function Mainpage() {
           name="Yoel Tristan Kurniawan"
           title=""
           barText={"Master of\nEconomics and Entrepreneurship"}
-          barColor="#EA887B"
-          triangleColor="#EA887B" // Warna segitiga
+          barColor="#C93420"
+          triangleColor="#C93420" // Warna segitiga
         />
       </div>
       <div className="mt-20 sm:mt-0 font">
@@ -151,8 +151,8 @@ export default function Mainpage() {
           name="Guru Gembul"
           title=""
           barText={"Master of\n Inferiority Complex"}
-          barColor="#EA887B"
-          triangleColor="#EA887B" // Warna segitiga
+          barColor="#C93420"
+          triangleColor="#C93420" // Warna segitiga
         />
       </div>
       <div className="mt-20 sm:mt-0">
@@ -161,8 +161,8 @@ export default function Mainpage() {
           name="Dea Anugrah"
           title=""
           barText={"Master of\nPersonalized Algorithm"}
-          barColor="#EA887B"
-          triangleColor="#EA887B" // Warna segitiga
+          barColor="#C93420"
+          triangleColor="#C93420" // Warna segitiga
         />
       </div>
     </div>
