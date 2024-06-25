@@ -45,6 +45,15 @@ const slides: Slide[] = [
     buttonColor: "red",
     link: "/speakers-page/post-colonialism-and-inferiority-complex", // Example link
   },
+  {
+    title: "Personalized Algorithm",
+    subtitle: "Dea Anugrah",
+    description:"Over a writing career spanning more than 15 years, Dea Anugrah has developed a distinctive style and built a unique body of work. His insatiable appetite for storytelling led him to create content through Asumsi Distrik, and now through Malaka Project. He is a keen observer of social phenomena, with the ability to make fresh, insightful, and relatable yet non-controversial remarks on social media. This unique brand of maturity is deeply rooted in his educational background in philosophy.",
+    buttonText: "Click to Read More",
+    imagePath: "/speakers-4.jpg",
+    buttonColor: "red",
+    link: "/speakers-page/personalized-algorithm", // Example link
+  },
 ];
 
 const MyCarousel: React.FC = () => {

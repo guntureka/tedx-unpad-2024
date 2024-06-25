@@ -40,7 +40,7 @@ const VideoCarousel: React.FC = () => {
                 <CarouselItem key={video.id} className="w-full">
                   <iframe
                     width="100%"
-                    height="auto"
+                    height="100%"
                     src={video.url}
                     title={`YouTube video player ${video.id}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

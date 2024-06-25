@@ -13,7 +13,7 @@ export default function Partnership() {
       <h1 className="font-inter text-[24px] font-bold text-white">
         SPECIAL THANKS TO
       </h1>
-      {/* <VideoCarousel /> */}
+      <VideoCarousel />
       <div
         className={cn(
           "flex w-full flex-col items-center justify-center",

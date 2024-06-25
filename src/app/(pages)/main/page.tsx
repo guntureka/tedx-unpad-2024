@@ -157,8 +157,8 @@ export default function Mainpage() {
       </div>
       <div className="mt-20 sm:mt-0">
         <ProfileCard
-          imageSrc="/mystery.png"
-          name="COMING SOON"
+          imageSrc="/speakers-4.jpg"
+          name="Dea Anugrah"
           title=""
           barText={"Master of\nPersonalized Algorithm"}
           barColor="#EA887B"
