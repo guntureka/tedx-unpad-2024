@@ -115,6 +115,7 @@ model Ticket {
   instagram      String?
   facebook       String?
   twitter        String?
+  jobstreet      String?
   reason         String?
   selfishReason  String?
   selflessReason String?

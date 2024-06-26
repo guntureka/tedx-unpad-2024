@@ -79,6 +79,7 @@ export const ticketSchema = z.object({
   instagram: z.string().url().min(1,"Instagram is required!"),
   twitter: z.string(),
   facebook: z.string(),
+  jobstreet: z.string(),
   selfishReason:z.string().min(1,"selfish reason is required!"),
   selflessReason:z.string().min(1,"Selfless reason is required"),
   reason:z.string().min(1,"Insert the topic you like to talk about"),
