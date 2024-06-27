@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 import BuyTicketForm from '@/components/buy-ticket/buy-ticket-form'
 import TicketReview from '@/components/buy-ticket/ticket-review'
 import TicketApproved from '@/components/buy-ticket/ticket-approved'
+import Link from 'next/link'
 
 export const metadata: Metadata ={
     title:"Buy Ticket"
@@ -14,6 +15,7 @@ export const metadata: Metadata ={
 
 
 const BuyTicket = async () => {
+    
     
     const session = await auth()
     if (!session){

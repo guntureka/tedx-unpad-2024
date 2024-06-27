@@ -15,7 +15,7 @@ import { createTicketByUserId } from "@/actions/ticket";
 import { getAllTicket } from "@/actions/ticket";
 import { ticketSchema } from "@/lib/schemas";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 interface BuyTicketFormProps {
   userID: string;
 }
@@ -100,6 +100,15 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
       <div className="z-10 flex w-full flex-col items-center justify-center space-y-4 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white">
         {/* Create Ticket Data */}
         <div className="flex w-full flex-col space-y-10">
+          <Link href="https://bit.ly/FreeTicketTEDxPU_Jobstreet ">
+            <button
+              type="button"
+              className={`rounded-lg bg-red-600 px-8 py-4 text-white font-bold duration-150 hover:bg-red-700`}
+            >
+              JOBSTREET FREE TICKETS
+            </button>
+          </Link>
+
           <h1 className="text-4xl font-bold">Create Ticket</h1>
           <div className="flex w-full flex-col space-y-4">
             <FormSuccess message={success} />
@@ -122,7 +131,7 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
                   type="checkbox"
                   register={register("haveAttended")}
                   error={errors.haveAttended}
-                  className="block "
+                  className="block"
                 />
                 <FormField
                   id="linkedin"
