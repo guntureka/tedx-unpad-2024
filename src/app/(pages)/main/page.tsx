@@ -160,7 +160,7 @@ export default function Mainpage() {
           imageSrc="/speakers-4.jpg"
           name="Dea Anugrah"
           title=""
-          barText={"Master of\nPersonalized Algorithm"}
+          barText={"Master of\nSocial Media"}
           barColor="#C93420"
           triangleColor="#C93420" // Warna segitiga
         />

@@ -18,7 +18,7 @@ export const EventCard = () => {
           </p>
           <p className="mb-4">
             <span className="text-gray-400">Time</span>
-            <span className="text-white ml-8">14:00 - 20:00 WIB</span>
+            <span className="text-white ml-8">13:00 - 20:30 WIB</span>
           </p>
           <p className="mb-4">
             <span className="text-gray-400">Place</span>
