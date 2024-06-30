@@ -29,14 +29,16 @@ export default function Mainpage() {
           </p>
 
           <div className="flex flex-row gap-5">
-          <Link href="/buy-ticket">
+          <Link href="">
             <button
               type="button"
               className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
                 isPending ? "cursor-progress opacity-50" : ""
               }`}
+              disabled
+              style={{ filter: "grayscale(100%)" }}
             >
-              Buy Tickets
+              See You at the Event!
             </button>
           </Link>
           </div>

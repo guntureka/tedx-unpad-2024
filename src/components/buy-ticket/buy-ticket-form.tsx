@@ -75,151 +75,162 @@ const BuyTicketForm: React.FC<BuyTicketFormProps> = ({ userID }) => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof ticketSchema>) => {
-    setError("");
-    setSuccess("");
-    startTransition(() => {
-      createTicketByUserId(values, userID)
-        .then((data) => {
-          if (data && data.status === "success") {
-            setSuccess("Ticket created successfully!");
-            reset();
-            router.push("buy-ticket/ticket-sent");
-          } else {
-            setError(data.message);
-          }
-        })
-        .catch((error) => {
-          setError("Something went wrong!");
-        });
-    });
-  };
+  // const onSubmit = async (values: z.infer<typeof ticketSchema>) => {
+  //   setError("");
+  //   setSuccess("");
+  //   startTransition(() => {
+  //     createTicketByUserId(values, userID)
+  //       .then((data) => {
+  //         if (data && data.status === "success") {
+  //           setSuccess("Ticket created successfully!");
+  //           reset();
+  //           router.push("buy-ticket/ticket-sent");
+  //         } else {
+  //           setError(data.message);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         setError("Something went wrong!");
+  //       });
+  //   });
+  // };
 
   return (
-    <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
-      <div className="z-10 flex w-full flex-col items-center justify-center space-y-4 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white">
-        {/* Create Ticket Data */}
-        <div className="flex w-full flex-col space-y-10">
-          <Link href="https://bit.ly/FreeTicketTEDxPU_Jobstreet ">
-            <button
-              type="button"
-              className={`rounded-lg bg-red-600 px-8 py-4 text-white font-bold duration-150 hover:bg-red-700`}
-            >
-              JOBSTREET FREE TICKETS
-            </button>
-          </Link>
+    <main className="flex min-h-screen w-full flex-col items-center justify-center px-10 py-40 lg:px-20">
+    <div className="z-10 flex w-full max-w-md flex-col items-center justify-center space-y-4 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white text-center">
+      <h1 className="text-3xl font-bold text-white mb-4">Thank you for your participation!</h1>
+      <p className="text-xl text-white mb-6">We look forward to seeing you at the event!</p>
+      <Link href="/">
+        <button className="rounded-lg bg-red-600 px-8 py-4 text-white font-bold duration-150 hover:bg-red-700">
+          Return Home
+        </button>
+      </Link>
+    </div>
+  </main>
+    // <main className="flex min-h-screen w-full flex-col px-10 py-40 lg:px-20">
+    //   <div className="z-10 flex w-full flex-col items-center justify-center space-y-4 rounded-lg bg-[#333333] p-10 outline outline-1 outline-white">
+    //     {/* Create Ticket Data */}
+    //     <div className="flex w-full flex-col space-y-10">
+    //       <Link href="https://bit.ly/FreeTicketTEDxPU_Jobstreet ">
+    //         <button
+    //           type="button"
+    //           className={`rounded-lg bg-red-600 px-8 py-4 text-white font-bold duration-150 hover:bg-red-700`}
+    //         >
+    //           JOBSTREET FREE TICKETS
+    //         </button>
+    //       </Link>
 
-          <h1 className="text-4xl font-bold">Create Ticket</h1>
-          <div className="flex w-full flex-col space-y-4">
-            <FormSuccess message={success} />
-            <FormError message={error} />
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex w-full flex-col space-y-4"
-            >
-              <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
-                <FormField
-                  id="nickname"
-                  label="Nickname (to put on badges):"
-                  placeholder="Enter your nickname"
-                  register={register("nickname")}
-                  error={errors.nickname}
-                />
-                <FormField
-                  id="haveAttended"
-                  label="Have you attended a TED or TEDx event before? (check if you have)"
-                  type="checkbox"
-                  register={register("haveAttended")}
-                  error={errors.haveAttended}
-                  className="block"
-                />
-                <FormField
-                  id="linkedin"
-                  label="Linkedin"
-                  type="url"
-                  placeholder="Enter your LinkedIn profile"
-                  register={register("linkedin")}
-                  error={errors.linkedin}
-                />
-                <FormField
-                  id="instagram"
-                  label="Instagram Username"
-                  placeholder="Enter your Instagram username"
-                  register={register("instagram")}
-                  error={errors.instagram}
-                />
-                <FormField
-                  id="twitter"
-                  label="Twitter URL (Optional)"
-                  placeholder="Enter your Twitter URL (Optional)"
-                  register={register("twitter")}
-                  error={errors.twitter}
-                />
-                <FormField
-                  id="facebook"
-                  label="Twitter Facebook (Optional)"
-                  placeholder="Enter your Facebook URL (Optional)"
-                  register={register("facebook")}
-                  error={errors.facebook}
-                />
-                <FormField
-                  id="reason"
-                  label="What are the most topic you like to talk about? "
-                  placeholder="e.g.: K-Pop, Technology, etc."
-                  register={register("reason")}
-                  error={errors.reason}
-                />
-                <FormField
-                  id="selfishReason"
-                  label="What's your selfish reason for wanting to join TEDx?"
-                  placeholder="Write your selfish reason here (max. 20 words)"
-                  register={register("selfishReason")}
-                  error={errors.selfishReason}
-                />
-                <FormField
-                  id="selflessReason"
-                  label="What's your selfless reason for wanting to join TEDx?"
-                  placeholder="Write your selfless reason here (max. 20 words)"
-                  register={register("selflessReason")}
-                  error={errors.selflessReason}
-                />
-                <div className="flex w-full flex-col space-y-4">
-                  <label htmlFor="goal" className="text-lg font-semibold">
-                    What are your top three goals for attending this TEDx event?
-                    (You can choose max 3)
-                  </label>
-                  {goalOptions.map((goal, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <input
-                        type="checkbox"
-                        id={goal}
-                        value={goal}
-                        {...register("goal")}
-                      />
-                      <label htmlFor={goal}>{goal}</label>
-                    </div>
-                  ))}
-                  {errors.goal && (
-                    <span className="text-red-500">{errors.goal.message}</span>
-                  )}
-                </div>
+    //       <h1 className="text-4xl font-bold">Create Ticket</h1>
+    //       <div className="flex w-full flex-col space-y-4">
+    //         <FormSuccess message={success} />
+    //         <FormError message={error} />
+    //         <form
+    //           onSubmit={handleSubmit(onSubmit)}
+    //           className="flex w-full flex-col space-y-4"
+    //         >
+    //           <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2">
+    //             <FormField
+    //               id="nickname"
+    //               label="Nickname (to put on badges):"
+    //               placeholder="Enter your nickname"
+    //               register={register("nickname")}
+    //               error={errors.nickname}
+    //             />
+    //             <FormField
+    //               id="haveAttended"
+    //               label="Have you attended a TED or TEDx event before? (check if you have)"
+    //               type="checkbox"
+    //               register={register("haveAttended")}
+    //               error={errors.haveAttended}
+    //               className="block"
+    //             />
+    //             <FormField
+    //               id="linkedin"
+    //               label="Linkedin"
+    //               type="url"
+    //               placeholder="Enter your LinkedIn profile"
+    //               register={register("linkedin")}
+    //               error={errors.linkedin}
+    //             />
+    //             <FormField
+    //               id="instagram"
+    //               label="Instagram Username"
+    //               placeholder="Enter your Instagram username"
+    //               register={register("instagram")}
+    //               error={errors.instagram}
+    //             />
+    //             <FormField
+    //               id="twitter"
+    //               label="Twitter URL (Optional)"
+    //               placeholder="Enter your Twitter URL (Optional)"
+    //               register={register("twitter")}
+    //               error={errors.twitter}
+    //             />
+    //             <FormField
+    //               id="facebook"
+    //               label="Twitter Facebook (Optional)"
+    //               placeholder="Enter your Facebook URL (Optional)"
+    //               register={register("facebook")}
+    //               error={errors.facebook}
+    //             />
+    //             <FormField
+    //               id="reason"
+    //               label="What are the most topic you like to talk about? "
+    //               placeholder="e.g.: K-Pop, Technology, etc."
+    //               register={register("reason")}
+    //               error={errors.reason}
+    //             />
+    //             <FormField
+    //               id="selfishReason"
+    //               label="What's your selfish reason for wanting to join TEDx?"
+    //               placeholder="Write your selfish reason here (max. 20 words)"
+    //               register={register("selfishReason")}
+    //               error={errors.selfishReason}
+    //             />
+    //             <FormField
+    //               id="selflessReason"
+    //               label="What's your selfless reason for wanting to join TEDx?"
+    //               placeholder="Write your selfless reason here (max. 20 words)"
+    //               register={register("selflessReason")}
+    //               error={errors.selflessReason}
+    //             />
+    //             <div className="flex w-full flex-col space-y-4">
+    //               <label htmlFor="goal" className="text-lg font-semibold">
+    //                 What are your top three goals for attending this TEDx event?
+    //                 (You can choose max 3)
+    //               </label>
+    //               {goalOptions.map((goal, index) => (
+    //                 <div key={index} className="flex items-center space-x-2">
+    //                   <input
+    //                     type="checkbox"
+    //                     id={goal}
+    //                     value={goal}
+    //                     {...register("goal")}
+    //                   />
+    //                   <label htmlFor={goal}>{goal}</label>
+    //                 </div>
+    //               ))}
+    //               {errors.goal && (
+    //                 <span className="text-red-500">{errors.goal.message}</span>
+    //               )}
+    //             </div>
 
-                <div className="flex items-center justify-center">
-                  <button
-                    type="submit"
-                    className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
-                      isPending ? "cursor-progress opacity-50" : ""
-                    }`}
-                  >
-                    Buy Ticket!
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </main>
+    //             <div className="flex items-center justify-center">
+    //               <button
+    //                 type="submit"
+    //                 className={`rounded-lg bg-red-600 px-8 py-4 text-white duration-150 hover:bg-red-700 ${
+    //                   isPending ? "cursor-progress opacity-50" : ""
+    //                 }`}
+    //               >
+    //                 Buy Ticket!
+    //               </button>
+    //             </div>
+    //           </div>
+    //         </form>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </main>
   );
 };
 

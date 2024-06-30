@@ -47,9 +47,9 @@ const Header = ({ session }: { session: Session | null }) => {
                   <Link href={"/profile"} className="text-black">
                     Profile
                   </Link>
-                  <Link href={"/buy-ticket"} className="text-black">
+                  {/* <Link href={"/buy-ticket"} className="text-black">
                     Buy Ticket
-                  </Link>
+                  </Link> */}
                 </div>
               ) : (
                 <div className="flex items-center justify-center gap-4 text-black">
