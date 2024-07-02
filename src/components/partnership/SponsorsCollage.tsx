@@ -1,53 +1,33 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-interface Sponsors {
-  id: string;
-  url: string;
-  size: "small" | "medium" | "large";
-}
-
-const SponsorsCollage: React.FC = () => {
-  const [sponsors, setSponsors] = useState<Sponsors[]>([]);
+const SponsorsCollage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchSponsors = async () => {
-      setIsLoading(true);
-      const response = await fetch("/partnership/sponsors.json");
-      const data = await response.json();
-      const sortedData = data.sort((a: Sponsors, b: Sponsors) => {
-        const sizeOrder = { large: 1, medium: 2, small: 3 };
-        return sizeOrder[a.size] - sizeOrder[b.size];
-      });
-      setSponsors(sortedData);
+    const img = new Image();
+    img.src = "partnership/sponsor_2-7-2024.png";
+    img.onload = () => {
       setIsLoading(false);
     };
-    fetchSponsors();
   }, []);
 
   return (
-    <div className="flex w-full max-w-sm flex-wrap items-center justify-center md:max-w-md lg:max-w-xl">
+    <div className="flex w-full justify-center px-[50px] md:px-[100px] lg:px-[140px]">
       {isLoading ? (
-        <div className="flex flex-wrap items-center justify-center">
-          <Skeleton className="m-2 h-[100px] w-[100px]" />
-          <Skeleton className="m-2 h-[75px] w-[75px]" />
-          <Skeleton className="m-2 h-[50px] w-[50px]" />
+        <div className="flex w-full justify-center">
+          <div className="relative w-full" style={{ paddingTop: "18.25%" }}>
+            <Skeleton className="absolute left-0 top-0 h-full w-full" />
+          </div>
         </div>
       ) : (
-        sponsors.length > 0 &&
-        sponsors.map((sponsor) => (
-          <div
-            key={sponsor.id}
-            className={`m-2 flex items-center justify-center ${sponsor.size === "large" ? "h-[100px]" : ""} ${sponsor.size === "medium" ? "h-[75px]" : ""} ${sponsor.size === "small" ? "h-[50px]" : ""} `}
-          >
-            <img
-              src={sponsor.url}
-              alt={`Sponsorship logo ${sponsor.id}`}
-              className="h-full w-auto object-contain"
-            />
-          </div>
-        ))
+        <div className="flex w-full justify-center">
+          <img
+            src="partnership/sponsor_2-7-2024.png"
+            className="w-full"
+            alt="Sponsor"
+          />
+        </div>
       )}
     </div>
   );

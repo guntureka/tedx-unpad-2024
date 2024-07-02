@@ -32,7 +32,7 @@ export default function Partnership() {
         )}
       >
         <h2 className="font-lora pb-[25px] text-[18px] font-normal text-white">
-          Our Media &  Community Partners
+          Our Media & Community Partners
         </h2>
         <MediaPartnersCollage />
       </div>
