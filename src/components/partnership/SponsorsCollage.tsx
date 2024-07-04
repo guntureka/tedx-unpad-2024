@@ -6,7 +6,7 @@ const SponsorsCollage = () => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = "partnership/sponsor_2-7-2024.png";
+    img.src = "partnership/sponsor_5-7-2024.png";
     img.onload = () => {
       setIsLoading(false);
     };
@@ -23,7 +23,7 @@ const SponsorsCollage = () => {
       ) : (
         <div className="flex w-full justify-center">
           <img
-            src="partnership/sponsor_2-7-2024.png"
+            src="partnership/sponsor_5-7-2024.png"
             className="w-full"
             alt="Sponsor"
           />
